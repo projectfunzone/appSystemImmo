@@ -1,5 +1,5 @@
 package fr.adaming.model;
 
-public class Proprio {
+public class Proprietaire {
 
 }
