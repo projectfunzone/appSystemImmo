@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import javax.persistence.TemporalType;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "clients")
-public class Client extends Personne {
+public class Client extends Personne implements Serializable {
 
 	// numéro de référence, correspondant à la date d'enregistrement auprès d'un
 	// conseiller

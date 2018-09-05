@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "classeStandard")
-public class ClasseStandard {
+public class ClasseStandard implements Serializable {
 
 	/*
 	 * Attributs

@@ -1,6 +1,7 @@
 package fr.adaming.model;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="acuqisitions")
-public class Acquisition {
+public class Acquisition implements Serializable {
 
 	/*
 	 * Attributs

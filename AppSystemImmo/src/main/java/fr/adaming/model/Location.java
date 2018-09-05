@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "locations")
-public class Location extends BienImmo {
+public class Location extends BienImmo implements Serializable {
 
 	/*
 	 * Attributs

@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 		 * compte par l'ORM)
 		 */
 @Table(name = "achats") /** Spécifier la table correspondante à cette classe */
-public class Achat extends BienImmo {
+public class Achat extends BienImmo implements Serializable {
 
 	/** Les attributs de BienImmo */
 	private double prixDemande;
