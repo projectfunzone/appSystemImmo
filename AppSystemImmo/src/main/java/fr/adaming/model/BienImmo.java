@@ -14,11 +14,11 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
 @MappedSuperclass
-public class BienImmo implements Serializable{
-	//************************************************************
-	/**Les attributs de BienImmo*/
+public class BienImmo implements Serializable {
+	// ************************************************************
+	/** Les attributs de BienImmo */
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String categorie;
 	private String type;
@@ -29,59 +29,27 @@ public class BienImmo implements Serializable{
 	private double revenueCadastre;
 	@Lob
 	private Byte[] photo;
-	//************************************************************
-	/**Transformation de l'association UML en JAVA*/
+	// ************************************************************
+	/** Transformation de l'association UML en JAVA */
 	@ManyToOne
-	@JoinColumn(name="proprietaire_id", referencedColumnName="id")
+	@JoinColumn(name = "proprietaire_id", referencedColumnName = "id")
 	private Proprietaire proprietaire;
-	
+
 	private Adresse adresse;
 	@ManyToOne
-	@JoinColumn(name="classeStandard_id", referencedColumnName="id", nullable=true)
+	@JoinColumn(name = "classeStandard_id", referencedColumnName = "id", nullable = true)
 	private ClasseStandard classeStandard;
-	@OneToMany(mappedBy="bienImmo")
+	@OneToMany(mappedBy = "bienImmo")
 	private List<Visite> listeVisiteImmo;
 
-	//************************************************************
-	/**Construsteur vide*/
+	// ************************************************************
+	/** Construsteur vide */
 	public BienImmo() {
 		super();
 	}
-	
-	
-public BienImmo(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo) {
-		super();
-		this.categorie = categorie;
-		this.type = type;
-		this.noChambre = noChambre;
-		this.statut = statut;
-		this.dateSoumis = dateSoumis;
-		this.dateDispo = dateDispo;
-		this.revenueCadastre = revenueCadastre;
-		this.photo = photo;
-	}
-	
-
-
-	public BienImmo(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-		double revenueCadastre, Byte[] photo) {
-	super();
-	this.id = id;
-	this.categorie = categorie;
-	this.type = type;
-	this.noChambre = noChambre;
-	this.statut = statut;
-	this.dateSoumis = dateSoumis;
-	this.dateDispo = dateDispo;
-	this.revenueCadastre = revenueCadastre;
-	this.photo = photo;
-}
-
 
 	public BienImmo(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
-			ClasseStandard classeStandard, List<Visite> listeVisiteImmo) {
+			double revenueCadastre, Byte[] photo, Adresse adresse) {
 		super();
 		this.categorie = categorie;
 		this.type = type;
@@ -91,16 +59,11 @@ public BienImmo(String categorie, String type, int noChambre, String statut, Dat
 		this.dateDispo = dateDispo;
 		this.revenueCadastre = revenueCadastre;
 		this.photo = photo;
-		this.proprietaire = proprietaire;
 		this.adresse = adresse;
-		this.classeStandard = classeStandard;
-		this.listeVisiteImmo = listeVisiteImmo;
 	}
-	
 
 	public BienImmo(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis,
-			Date dateDispo, double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
-			ClasseStandard classeStandard, List<Visite> listeVisiteImmo) {
+			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse) {
 		super();
 		this.id = id;
 		this.categorie = categorie;
@@ -111,90 +74,71 @@ public BienImmo(String categorie, String type, int noChambre, String statut, Dat
 		this.dateDispo = dateDispo;
 		this.revenueCadastre = revenueCadastre;
 		this.photo = photo;
-		this.proprietaire = proprietaire;
 		this.adresse = adresse;
-		this.classeStandard = classeStandard;
-		this.listeVisiteImmo = listeVisiteImmo;
 	}
 
-	//************************************************************
-	/**Getters et setters*/
-
+	// ************************************************************
+	/** Getters et setters */
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getCategorie() {
 		return categorie;
 	}
 
-
 	public void setCategorie(String categorie) {
 		this.categorie = categorie;
 	}
-
 
 	public String getType() {
 		return type;
 	}
 
-
 	public void setType(String type) {
 		this.type = type;
 	}
-
 
 	public int getNoChambre() {
 		return noChambre;
 	}
 
-
 	public void setNoChambre(int noChambre) {
 		this.noChambre = noChambre;
 	}
-
 
 	public String getStatut() {
 		return statut;
 	}
 
-
 	public void setStatut(String statut) {
 		this.statut = statut;
 	}
-
 
 	public Date getDateSoumis() {
 		return dateSoumis;
 	}
 
-
 	public void setDateSoumis(Date dateSoumis) {
 		this.dateSoumis = dateSoumis;
 	}
-
 
 	public Date getDateDispo() {
 		return dateDispo;
 	}
 
-
 	public void setDateDispo(Date dateDispo) {
 		this.dateDispo = dateDispo;
 	}
 
-
 	public double getRevenueCadastre() {
 		return revenueCadastre;
 	}
-
 
 	public void setRevenueCadastre(double revenueCadastre) {
 		this.revenueCadastre = revenueCadastre;
@@ -207,8 +151,9 @@ public BienImmo(String categorie, String type, int noChambre, String statut, Dat
 	public void setPhoto(Byte[] photo) {
 		this.photo = photo;
 	}
-	//************************************************************
-	/**Getters et setters pour la transformation de l'asso UML en JAVA*/
+
+	// ************************************************************
+	/** Getters et setters pour la transformation de l'asso UML en JAVA */
 
 	public Proprietaire getProprietaire() {
 		return proprietaire;
@@ -241,8 +186,5 @@ public BienImmo(String categorie, String type, int noChambre, String statut, Dat
 	public void setListeVisiteImmo(List<Visite> listeVisiteImmo) {
 		this.listeVisiteImmo = listeVisiteImmo;
 	}
-	
-	
-	
 
 }
