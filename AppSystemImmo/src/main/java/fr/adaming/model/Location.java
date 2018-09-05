@@ -48,14 +48,11 @@ public class Location extends BienImmo{
 	}
 
 
-	
 
 	public Location(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
-			ClasseStandard classeStandard, List<Visite> listeVisiteImmo, double caution, double loyer, double charge,
+			double revenueCadastre, Byte[] photo, Adresse adresse, double caution, double loyer, double charge,
 			String bail, String garniture) {
-		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, proprietaire, adresse,
-				classeStandard, listeVisiteImmo);
+		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
@@ -63,25 +60,17 @@ public class Location extends BienImmo{
 		this.garniture = garniture;
 	}
 
-	
-	
-	
 
 	public Location(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis,
-			Date dateDispo, double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
-			ClasseStandard classeStandard, List<Visite> listeVisiteImmo, double caution, double loyer, double charge,
-			String bail, String garniture) {
-		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, proprietaire,
-				adresse, classeStandard, listeVisiteImmo);
+			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double caution, double loyer,
+			double charge, String bail, String garniture) {
+		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
 		this.bail = bail;
 		this.garniture = garniture;
 	}
-
-	
-	
 
 
 	/*
