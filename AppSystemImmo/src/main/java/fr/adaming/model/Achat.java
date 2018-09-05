@@ -18,27 +18,23 @@ public class Achat extends BienImmo{
 	public Achat() {
 		super();
 	}
-	public Achat(double prixDemande, String etat) {
-		super();
+	
+	public Achat(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
+			double revenueCadastre, Byte[] photo, Adresse adresse, double prixDemande, String etat) {
+		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
+	
 	
 
-	public Achat(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, double prixDemande, String etat) {
-		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo);
-		this.prixDemande = prixDemande;
-		this.etat = etat;
-	}
-	
-	
 	public Achat(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, double prixDemande, String etat) {
-		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo);
+			double revenueCadastre, Byte[] photo, Adresse adresse, double prixDemande, String etat) {
+		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
+
 	//************************************************************
 	/**Getters et setters*/
 	public double getPrixDemande() {
