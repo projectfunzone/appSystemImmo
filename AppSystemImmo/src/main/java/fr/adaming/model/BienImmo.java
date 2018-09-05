@@ -2,17 +2,17 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
 
 import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
+
 
 @MappedSuperclass
 public class BienImmo implements Serializable {
