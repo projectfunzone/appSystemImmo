@@ -84,13 +84,14 @@ public class Conseiller {
 		this.nom = nom;
 	}
 
-	public List<Visite> getListeVisiteCons() {
-		return listeVisiteCons;
+	public List<Visite> getListeVisiteConseiller() {
+		return listeVisiteConseiller;
 	}
 
-	public void setListeVisiteCons(List<Visite> listeVisiteCons) {
-		this.listeVisiteCons = listeVisiteCons;
+	public void setListeVisiteConseiller(List<Visite> listeVisiteConseiller) {
+		this.listeVisiteConseiller = listeVisiteConseiller;
 	}
+
 	
 	
 	

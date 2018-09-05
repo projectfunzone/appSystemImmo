@@ -164,15 +164,15 @@ public class ClasseStandard {
 
 
 
-	public List<BienImmo> getListeIm() {
-		return listeIm;
+	public List<BienImmo> getListeImmo() {
+		return listeImmo;
 	}
 
 
 
 
-	public void setListeIm(List<BienImmo> listeIm) {
-		this.listeIm = listeIm;
+	public void setListeIm(List<BienImmo> listeImmo) {
+		this.listeImmo = listeImmo;
 	}
 
 
