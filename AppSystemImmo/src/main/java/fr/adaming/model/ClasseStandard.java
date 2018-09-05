@@ -35,7 +35,7 @@ public class ClasseStandard {
 	 * association
 	 */
 	@OneToMany(mappedBy="classeStandard")
-	private List<BienImmo> listeIm;
+	private List<BienImmo> listeImmo;
 	
 	@ManyToMany(mappedBy="listeClasseStandard")
 	private List<Client> listeClient;

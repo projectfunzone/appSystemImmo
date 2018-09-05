@@ -32,7 +32,7 @@ public class Conseiller {
 	 * association
 	 */
 	@OneToMany(mappedBy="conseiller")
-	private List<Visite> listeVisiteCons; 
+	private List<Visite> listeVisiteConseiller; 
 	
 	
 	
