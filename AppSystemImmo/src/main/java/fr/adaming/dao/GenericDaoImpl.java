@@ -48,8 +48,8 @@ public class GenericDaoImpl<T, PK extends Serializable> implements IGenericDao<T
 	 * @param T
 	 */
 	@Override
-	public int update(T updInstance) {
-		return (int) em.merge(updInstance);
+	public void update(T updInstance) {
+		em.merge(updInstance);
 	}
 
 	/**

@@ -20,7 +20,7 @@ public interface IGenericDao<T, PK extends Serializable> {
 	public T read(PK id);
 
 	/** Save changes made to a persistent object. */
-	public int update(T transientObject);
+	public void update(T transientObject);
 
 	/** Remove an object from persistent storage in the database */
 	public void delete(T persistentObject);
