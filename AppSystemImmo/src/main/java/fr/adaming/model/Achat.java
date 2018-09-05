@@ -1,5 +1,10 @@
 package fr.adaming.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity /**Cette annaotation permet de rendre cette classe persitante(prise en compte par l'ORM)*/
+@Table(name="achats")/**Spécifier la table correspondante à cette classe*/
 public class Achat extends BienImmo{
 	
 	/**Les attributs de BienImmo*/
