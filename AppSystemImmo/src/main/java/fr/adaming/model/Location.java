@@ -1,6 +1,7 @@
 package fr.adaming.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -47,10 +48,14 @@ public class Location extends BienImmo{
 	}
 
 
+	
+
 	public Location(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte photo, double caution, double loyer, double charge, String bail,
-			String garniture) {
-		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo);
+			double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
+			ClasseStandard classeStandard, List<Visite> listeVisiteImmo, double caution, double loyer, double charge,
+			String bail, String garniture) {
+		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, proprietaire, adresse,
+				classeStandard, listeVisiteImmo);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
@@ -58,17 +63,26 @@ public class Location extends BienImmo{
 		this.garniture = garniture;
 	}
 
+	
+	
+	
 
 	public Location(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis,
-			Date dateDispo, double revenueCadastre, Byte photo, double caution, double loyer, double charge,
+			Date dateDispo, double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
+			ClasseStandard classeStandard, List<Visite> listeVisiteImmo, double caution, double loyer, double charge,
 			String bail, String garniture) {
-		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo);
+		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, proprietaire,
+				adresse, classeStandard, listeVisiteImmo);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
 		this.bail = bail;
 		this.garniture = garniture;
 	}
+
+	
+	
+
 
 	/*
 	 * getters et setters
