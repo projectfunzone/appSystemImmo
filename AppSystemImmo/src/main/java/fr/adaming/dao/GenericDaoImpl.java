@@ -18,7 +18,7 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 	private EntityManager em;
 
 	// déclaration de l'entité classe
-	private Class<T> type;
+	protected Class<T> type;
 
 	public void setType(Class<T> type) {
 		this.type = type;
@@ -30,7 +30,7 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 	 * @param T
 	 */
 	@Override
-	public T create(T addInstance) {
+	public T add(T addInstance) {
 
 		em.persist(addInstance);
 		return (T) addInstance;
@@ -42,7 +42,7 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 	 * @param id
 	 */
 	@Override
-	public T read(int id) {
+	public T get(int id) {
 
 		return em.find(type, id);
 	}
@@ -73,7 +73,7 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 	 * recuperation de l'ensemble des données d'une classe avec Criteria
 	 */
 	@Override
-	public List<T> ListeAll() {
+	public List<T> getAll() {
 
 		// 1. recup du builder pour construire une requete criteria
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
