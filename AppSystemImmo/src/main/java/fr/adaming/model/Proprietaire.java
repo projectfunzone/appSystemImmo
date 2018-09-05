@@ -15,7 +15,11 @@ public class Proprietaire extends Personne implements Serializable {
 	private String telPro;
 	
 	@OneToMany(mappedBy="proprietaire")
-	private List<BienImmo> listeBienImmo;
+	private List<Location> listeBienLocation;
+	
+	
+	@OneToMany(mappedBy="proprietaire")
+	private List<Achat> listeBienAchat;
 
 	public Proprietaire() {
 		super();
@@ -39,13 +43,23 @@ public class Proprietaire extends Personne implements Serializable {
 		this.telPro = telPro;
 	}
 
-	public List<BienImmo> getListeBienImmo() {
-		return listeBienImmo;
+	public List<Location> getListeBienLocation() {
+		return listeBienLocation;
 	}
 
-	public void setListeBienImmo(List<BienImmo> listeBienImmo) {
-		this.listeBienImmo = listeBienImmo;
+	public void setListeBienLocation(List<Location> listeBienLocation) {
+		this.listeBienLocation = listeBienLocation;
 	}
+
+	public List<Achat> getListeBienAchat() {
+		return listeBienAchat;
+	}
+
+	public void setListeBienAchat(List<Achat> listeBienAchat) {
+		this.listeBienAchat = listeBienAchat;
+	}
+
+
 
 	
 }

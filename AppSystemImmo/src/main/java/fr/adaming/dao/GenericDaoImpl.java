@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -14,9 +15,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class GenericDaoImpl<T, PK extends Serializable> implements IGenericDao<T, PK> {
-
-	@PersistenceContext(unitName = "AppSystemImmo")
-	private EntityManager em;
 
 	// déclaration de l'entité classe
 	private Class<T> type;
@@ -28,6 +26,9 @@ public class GenericDaoImpl<T, PK extends Serializable> implements IGenericDao<T
 	 */
 	@Override
 	public T create(T addInstance) {
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("AppSystemImmo");
+		EntityManager em=emf.createEntityManager();
+		
 		em.persist(addInstance);
 		return (T) addInstance;
 	}
@@ -39,6 +40,8 @@ public class GenericDaoImpl<T, PK extends Serializable> implements IGenericDao<T
 	 */
 	@Override
 	public T read(Serializable id) {
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("AppSystemImmo");
+		EntityManager em=emf.createEntityManager();
 		return em.find(type, id);
 	}
 
@@ -49,6 +52,8 @@ public class GenericDaoImpl<T, PK extends Serializable> implements IGenericDao<T
 	 */
 	@Override
 	public void update(T updInstance) {
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("AppSystemImmo");
+		EntityManager em=emf.createEntityManager();
 		em.merge(updInstance);
 	}
 
@@ -59,6 +64,8 @@ public class GenericDaoImpl<T, PK extends Serializable> implements IGenericDao<T
 	 */
 	@Override
 	public void delete(T delInstance) {
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("AppSystemImmo");
+		EntityManager em=emf.createEntityManager();
 		em.remove(delInstance);
 	}
 
@@ -67,7 +74,9 @@ public class GenericDaoImpl<T, PK extends Serializable> implements IGenericDao<T
 	 */
 	@Override
 	public List<T> ListeAll() {
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("AppSystemImmo");
 
+		EntityManager em=emf.createEntityManager();
 		// 1. recup du builder pour construire une requete criteria
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 

@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="conseillers")
+@Table(name = "conseillers")
 public class Conseiller {
 
 	/*
@@ -26,16 +26,13 @@ public class Conseiller {
 	private int id;
 	private String mdp;
 	private String nom;
-	
 
 	/*
 	 * association
 	 */
-	@OneToMany(mappedBy="conseiller")
-	private List<Visite> listeVisiteConseiller; 
-	
-	
-	
+	@OneToMany(mappedBy = "conseiller")
+	private List<Visite> listeVisiteConseiller;
+
 	/*
 	 * constructeur
 	 */
@@ -92,8 +89,4 @@ public class Conseiller {
 		this.listeVisiteConseiller = listeVisiteConseiller;
 	}
 
-	
-	
-	
-	
 }

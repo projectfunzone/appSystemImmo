@@ -3,14 +3,23 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="AppSystemImmo"
-		transaction-type="RESOURCE_LOCAL">
+		transaction-type="JTA">
 
 		<!-- specifier le fournisseur d'implementation de JPA : Hibernate -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<!-- declaration des classes persistantes : presentes dans la base de donnée, 
 			entités managées -->
+		<class>fr.adaming.model.Achat</class>
+		<class>fr.adaming.model.Acquisition</class>
+		<class>fr.adaming.model.ClasseStandard</class>
 		<class>fr.adaming.model.Client</class>
+		<class>fr.adaming.model.Conseiller</class>
+		<class>fr.adaming.model.Visite</class>
+		<class>fr.adaming.model.Proprietaire</class>
+		<class>fr.adaming.model.Location</class>
+
+
 
 		<!-- specifier les informations de la connexion -->
 		<properties>
@@ -25,7 +34,7 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<!-- 2.2 :specifier la strategie pour la generation des tables -->
 			<!-- les valeurs possibles : create, update, validate, create-drop -->
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 
 			<!-- 2.3 :aficher les requetes sql générées -->
 			<property name="hibernate.show_sql" value="true" />

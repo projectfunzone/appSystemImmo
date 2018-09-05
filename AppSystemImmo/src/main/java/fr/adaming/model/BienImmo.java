@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,16 +32,9 @@ public class BienImmo implements Serializable {
 	private Byte[] photo;
 	// ************************************************************
 	/** Transformation de l'association UML en JAVA */
-	@ManyToOne
-	@JoinColumn(name = "proprietaire_id", referencedColumnName = "id")
-	private Proprietaire proprietaire;
 
+	@Embedded
 	private Adresse adresse;
-	@ManyToOne
-	@JoinColumn(name = "classeStandard_id", referencedColumnName = "id", nullable = true)
-	private ClasseStandard classeStandard;
-	@OneToMany(mappedBy = "bienImmo")
-	private List<Visite> listeVisiteImmo;
 
 	// ************************************************************
 	/** Construsteur vide */
@@ -155,36 +149,12 @@ public class BienImmo implements Serializable {
 	// ************************************************************
 	/** Getters et setters pour la transformation de l'asso UML en JAVA */
 
-	public Proprietaire getProprietaire() {
-		return proprietaire;
-	}
-
-	public void setProprietaire(Proprietaire proprietaire) {
-		this.proprietaire = proprietaire;
-	}
-
 	public Adresse getAdresse() {
 		return adresse;
 	}
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
-	}
-
-	public ClasseStandard getClasseStandard() {
-		return classeStandard;
-	}
-
-	public void setClasseStandard(ClasseStandard classeStandard) {
-		this.classeStandard = classeStandard;
-	}
-
-	public List<Visite> getListeVisiteImmo() {
-		return listeVisiteImmo;
-	}
-
-	public void setListeVisiteImmo(List<Visite> listeVisiteImmo) {
-		this.listeVisiteImmo = listeVisiteImmo;
 	}
 
 }

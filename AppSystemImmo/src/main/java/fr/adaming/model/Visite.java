@@ -34,20 +34,24 @@ public class Visite {
 	 * association
 	 */
 	@OneToOne
-	@JoinColumn(name="id", referencedColumnName="id")
+	@JoinColumn(name="acquisition_id", referencedColumnName="id")
 	private Acquisition acquisition;
 	
 	@ManyToOne
-	@JoinColumn(name="id", referencedColumnName="id")
+	@JoinColumn(name="conseiller_id", referencedColumnName="id")
 	private Conseiller conseiller;
 	
 	@ManyToOne
-	@JoinColumn(name="id", referencedColumnName="id")
+	@JoinColumn(name="client_id", referencedColumnName="id")
 	private Client client;
 	
 	@ManyToOne
-	@JoinColumn(name="id", referencedColumnName="id")
-	private BienImmo bienImmo;
+	@JoinColumn(name="location_id", referencedColumnName="id")
+	private Location location;
+	
+	@ManyToOne
+	@JoinColumn(name="achat_id", referencedColumnName="id")
+	private Achat achat;
 	
 	/*
 	 * constructeur
@@ -113,14 +117,23 @@ public class Visite {
 		this.client = client;
 	}
 
-	public BienImmo getBienImmo() {
-		return bienImmo;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setBienImmo(BienImmo bienImmo) {
-		this.bienImmo = bienImmo;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
-	
+
+	public Achat getAchat() {
+		return achat;
+	}
+
+	public void setAchat(Achat achat) {
+		this.achat = achat;
+	}
+
+
 
 	
 	

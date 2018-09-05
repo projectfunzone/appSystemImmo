@@ -37,7 +37,7 @@ public class Acquisition {
 	 * association
 	 */
 	@OneToOne
-	@JoinColumn(name="id", referencedColumnName="id")
+	@JoinColumn(name="visite_id", referencedColumnName="id")
 	private Visite visiteAcqui;
 	
 	/*

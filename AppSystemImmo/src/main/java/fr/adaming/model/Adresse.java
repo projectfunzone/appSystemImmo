@@ -1,9 +1,11 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Adresse {
+public class Adresse implements Serializable {
 
 	private String rue;
 	private String cp;

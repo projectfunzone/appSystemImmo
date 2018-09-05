@@ -12,9 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="classeStandard")
+@Table(name = "classeStandard")
 public class ClasseStandard {
-
 
 	/*
 	 * Attributs
@@ -27,30 +26,25 @@ public class ClasseStandard {
 	private double prixMax;
 	private int surfaceMin;
 	private String typeImmo;
-	
-	
-	
 
 	/*
 	 * association
 	 */
-	@OneToMany(mappedBy="classeStandard")
-	private List<BienImmo> listeImmo;
-	
-	@ManyToMany(mappedBy="listeClasseStandard")
+	@OneToMany(mappedBy = "classeStandard")
+	private List<Location> listeImmoLocation;
+
+	@OneToMany(mappedBy = "classeStandard")
+	private List<Achat> listeImmoAchat;
+
+	@ManyToMany(mappedBy = "listeClasseStandard")
 	private List<Client> listeClient;
-	
-	
-	
+
 	/*
 	 * constructeur
 	 */
 	public ClasseStandard() {
 		super();
 	}
-
-
-
 
 	public ClasseStandard(int id, String codeClasse, String modeOffre, double prixMax, int surfaceMin,
 			String typeImmo) {
@@ -63,9 +57,6 @@ public class ClasseStandard {
 		this.typeImmo = typeImmo;
 	}
 
-
-
-
 	public ClasseStandard(String codeClasse, String modeOffre, double prixMax, int surfaceMin, String typeImmo) {
 		super();
 		this.codeClasse = codeClasse;
@@ -75,7 +66,6 @@ public class ClasseStandard {
 		this.typeImmo = typeImmo;
 	}
 
-
 	/*
 	 * getters et setters
 	 */
@@ -84,112 +74,72 @@ public class ClasseStandard {
 		return id;
 	}
 
-
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
-
 
 	public String getCodeClasse() {
 		return codeClasse;
 	}
 
-
-
-
 	public void setCodeClasse(String codeClasse) {
 		this.codeClasse = codeClasse;
 	}
-
-
-
 
 	public String getModeOffre() {
 		return modeOffre;
 	}
 
-
-
-
 	public void setModeOffre(String modeOffre) {
 		this.modeOffre = modeOffre;
 	}
-
-
-
 
 	public double getPrixMax() {
 		return prixMax;
 	}
 
-
-
-
 	public void setPrixMax(double prixMax) {
 		this.prixMax = prixMax;
 	}
-
-
-
 
 	public int getSurfaceMin() {
 		return surfaceMin;
 	}
 
-
-
-
 	public void setSurfaceMin(int surfaceMin) {
 		this.surfaceMin = surfaceMin;
 	}
-
-
-
 
 	public String getTypeImmo() {
 		return typeImmo;
 	}
 
-
-
-
 	public void setTypeImmo(String typeImmo) {
 		this.typeImmo = typeImmo;
 	}
-
-
-
-
-	public List<BienImmo> getListeImmo() {
-		return listeImmo;
-	}
-
-
-
-
-	public void setListeIm(List<BienImmo> listeImmo) {
-		this.listeImmo = listeImmo;
-	}
-
-
-
 
 	public List<Client> getListeClient() {
 		return listeClient;
 	}
 
-
-
-
 	public void setListeClient(List<Client> listeClient) {
 		this.listeClient = listeClient;
 	}
-	
-	
-	
-	
+
+	public List<Location> getListeImmoLocation() {
+		return listeImmoLocation;
+	}
+
+	public void setListeImmoLocation(List<Location> listeImmoLocation) {
+		this.listeImmoLocation = listeImmoLocation;
+	}
+
+	public List<Achat> getListeImmoAchat() {
+		return listeImmoAchat;
+	}
+
+	public void setListeImmoAchat(List<Achat> listeImmoAchat) {
+		this.listeImmoAchat = listeImmoAchat;
+	}
+
 }
