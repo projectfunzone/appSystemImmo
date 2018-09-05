@@ -8,7 +8,7 @@ public interface IGenericDao<T, PK extends Serializable> {
 	/**
 	 * Find all the instance object of the class
 	 */
-	public List<T> Liste();
+	public List<T> ListeAll();
 
 	/** Persist the newInstance object into database */
 	public T create(T newInstance);
