@@ -48,6 +48,37 @@ public class BienImmo implements Serializable{
 		super();
 	}
 	
+	
+public BienImmo(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
+			double revenueCadastre, Byte[] photo) {
+		super();
+		this.categorie = categorie;
+		this.type = type;
+		this.noChambre = noChambre;
+		this.statut = statut;
+		this.dateSoumis = dateSoumis;
+		this.dateDispo = dateDispo;
+		this.revenueCadastre = revenueCadastre;
+		this.photo = photo;
+	}
+	
+
+
+	public BienImmo(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
+		double revenueCadastre, Byte[] photo) {
+	super();
+	this.id = id;
+	this.categorie = categorie;
+	this.type = type;
+	this.noChambre = noChambre;
+	this.statut = statut;
+	this.dateSoumis = dateSoumis;
+	this.dateDispo = dateDispo;
+	this.revenueCadastre = revenueCadastre;
+	this.photo = photo;
+}
+
+
 	public BienImmo(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
 			double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
 			ClasseStandard classeStandard, List<Visite> listeVisiteImmo) {

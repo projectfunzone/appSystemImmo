@@ -24,20 +24,18 @@ public class Achat extends BienImmo{
 		this.etat = etat;
 	}
 	
+
 	public Achat(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
-			ClasseStandard classeStandard, List<Visite> listeVisiteImmo, double prixDemande, String etat) {
-		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, proprietaire, adresse,
-				classeStandard, listeVisiteImmo);
+			double revenueCadastre, Byte[] photo, double prixDemande, String etat) {
+		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
 	
+	
 	public Achat(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
-			ClasseStandard classeStandard, List<Visite> listeVisiteImmo, double prixDemande, String etat) {
-		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, proprietaire,
-				adresse, classeStandard, listeVisiteImmo);
+			double revenueCadastre, Byte[] photo, double prixDemande, String etat) {
+		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
