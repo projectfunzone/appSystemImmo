@@ -1,5 +1,8 @@
 package fr.adaming.model;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -17,6 +20,24 @@ public class Achat extends BienImmo{
 	}
 	public Achat(double prixDemande, String etat) {
 		super();
+		this.prixDemande = prixDemande;
+		this.etat = etat;
+	}
+	
+	public Achat(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
+			double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
+			ClasseStandard classeStandard, List<Visite> listeVisiteImmo, double prixDemande, String etat) {
+		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, proprietaire, adresse,
+				classeStandard, listeVisiteImmo);
+		this.prixDemande = prixDemande;
+		this.etat = etat;
+	}
+	
+	public Achat(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
+			double revenueCadastre, Byte[] photo, Proprietaire proprietaire, Adresse adresse,
+			ClasseStandard classeStandard, List<Visite> listeVisiteImmo, double prixDemande, String etat) {
+		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, proprietaire,
+				adresse, classeStandard, listeVisiteImmo);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
