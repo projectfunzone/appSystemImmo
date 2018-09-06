@@ -163,8 +163,8 @@
 			<artifactId>hibernate-commons-annotations</artifactId>
 			<version>4.0.2.Final</version>
 		</dependency>
-	<!-- ********************************************************** -->
-				<!-- ********* Mail -->
+		<!-- ********************************************************** -->
+		<!-- ********* Mail -->
 		<!-- javax.mail/mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -189,6 +189,22 @@
 		</dependency>
 		<!-- ********************************************************** -->
 
+
+
+		<!-- Spring Test pour intégrer Junit avec Spring IoC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.1.9.RELEASE</version>
+		</dependency>
+
+		<!-- Intégration de Junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 
