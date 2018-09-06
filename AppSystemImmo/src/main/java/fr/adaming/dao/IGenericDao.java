@@ -24,5 +24,6 @@ public interface IGenericDao<T> {
 	/** Remove an object from persistent storage in the database */
 	public void delete(T persistentObject);
 
+	// setters
 	public void setType(Class<T> type);
 }

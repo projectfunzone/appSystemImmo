@@ -33,7 +33,7 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 	public T add(T addInstance) {
 
 		em.persist(addInstance);
-		return (T) addInstance;
+		return addInstance;
 	}
 
 	/**
@@ -82,7 +82,6 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 		CriteriaQuery query = criteriaBuilder.createQuery();
 
 		// 3. def de la requete racine : l'entity ciblée
-
 		Root from = query.from(type);
 
 		// 4. recup des données
