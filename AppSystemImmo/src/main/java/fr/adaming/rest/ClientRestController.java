@@ -60,8 +60,7 @@ public class ClientRestController {
 	public void updateClient(@RequestBody Client cl) {
 		clientService.updateClient(cl);
 	}
-	
-	
+
 	/**
 	 * Supprimer le client ciblé
 	 * 
