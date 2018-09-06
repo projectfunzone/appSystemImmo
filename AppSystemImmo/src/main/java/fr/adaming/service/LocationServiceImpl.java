@@ -3,44 +3,49 @@ package fr.adaming.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.ILocationDao;
 import fr.adaming.model.Location;
 
+@Service
+@Transactional
 public class LocationServiceImpl implements ILocationService{
 	
 	//********************************************
 	@Autowired
-	ILocationService locService;
+	ILocationDao locDao;
 	//********************************************
 	
 	@Override
 	public List<Location> getAllLocation() {
 		// TODO Auto-generated method stub
-		return locService.getAllLocation();
+		return locDao.getAll();
 	}
 	//********************************************
 	@Override
 	public Location addLocation(Location loc) {
 		// TODO Auto-generated method stub
-		return locService.addLocation(loc);
+		return locDao.add(loc);
 	}
 	//********************************************
 	@Override
 	public Location getLocation(int id) {
 		// TODO Auto-generated method stub
-		return locService.getLocation(id);
+		return locDao.get(id);
 	}
 	//********************************************
 	@Override
 	public void updateLocation(Location loc) {
 		// TODO Auto-generated method stub
-		locService.updateLocation(loc);
+		locDao.update(loc);
 	}
 	//********************************************
 	@Override
 	public void deleteLocation(Location loc) {
 		// TODO Auto-generated method stub
-		locService.deleteLocation(loc);
+		locDao.delete(loc.getId());
 	}
 
 }

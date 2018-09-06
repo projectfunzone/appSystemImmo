@@ -5,10 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -30,7 +34,9 @@ public class Location extends BienImmo implements Serializable {
 	private String bail;
 	private String garniture;
 
-	@OneToMany(mappedBy = "location")
+	@Fetch(FetchMode.SELECT)
+	
+	@OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
 	private List<Visite> listeVisiteLocation;
 
 	@ManyToOne

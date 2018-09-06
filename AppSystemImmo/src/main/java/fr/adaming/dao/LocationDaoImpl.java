@@ -1,7 +1,9 @@
 package fr.adaming.dao;
 
-import fr.adaming.model.Location;
+import org.springframework.stereotype.Repository;
 
+import fr.adaming.model.Location;
+@Repository
 public class LocationDaoImpl extends GenericDaoImpl<Location> implements ILocationDao{
 
 
