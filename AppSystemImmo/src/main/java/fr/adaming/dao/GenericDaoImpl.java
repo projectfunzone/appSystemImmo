@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 
 	@PersistenceContext(unitName = "AppSystemImmo")
-	private EntityManager em;
+	protected EntityManager em;
 
 	// déclaration de l'entité classe
 	protected Class<T> type;
