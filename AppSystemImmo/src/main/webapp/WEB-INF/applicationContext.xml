@@ -46,7 +46,4 @@
 	<tx:annotation-driven transaction-manager="transactionManagerBean" />
 
 
-
-
-
 </beans>
