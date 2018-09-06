@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Visite;
@@ -29,11 +30,12 @@ public class VisiteRest {
 		public List<Visite> getAllVisite(){
 			return vService.getAllVisite();
 		}
-	
-		public Visite rechercherVisite(){
+		@RequestMapping(value="/rechercheVisite", method=RequestMethod.GET, produces="application/json")
+		public Visite rechercherVisite(@RequestParam(value="pId") int id){
 			return vService.getVisite(id);
 		}
 		
+	
 		
 		
 		
