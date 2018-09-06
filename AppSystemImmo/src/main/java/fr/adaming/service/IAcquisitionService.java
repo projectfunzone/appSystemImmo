@@ -14,7 +14,7 @@ public interface IAcquisitionService {
 
 	public void updateAcquisition(Acquisition ac);
 
-	public void deleteAcquisition(Acquisition ac);
+	public void deleteAcquisition(int id);
 	
 	
 	

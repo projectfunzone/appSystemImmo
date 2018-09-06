@@ -3,6 +3,7 @@ package fr.adaming.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,23 @@ public class AcquisitionRest {
 	public List<Acquisition> getAllAcquision(){
 		return acService.getAllAcquisition();
 	}
+	
+	@RequestMapping(value="/rechercheAcquisition", method=RequestMethod.GET, produces="application/json")
+	public Acquisition rechercherAcquisition(@RequestParam(value="pId") int id){
+		return acService.getAcquisition(id);
+	}
+	
+	@RequestMapping(value="/modifierAcquisition", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+	public void modifierAcquisition (@RequestBody Acquisition ac){
+		acService.updateAcquisition(ac);
+	}
+	@RequestMapping(value="/supprimerAcquisition/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
+	public void supprimerAcquisition(@PathVariable(value="pId") int id){
+		Acquisition acOut=new Acquisition();
+		acOut.setId(id);
+		acService.deleteAcquisition(id);
+	}
+	
 	
 	
 	
