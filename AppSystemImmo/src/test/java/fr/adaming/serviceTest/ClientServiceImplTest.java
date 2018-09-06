@@ -2,6 +2,7 @@ package fr.adaming.serviceTest;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,10 @@ public class ClientServiceImplTest {
 	private IClientService clientService;
 
 	// Cas de test de ajout Client
-	// @Ignore
+	//@Ignore
 	@Test
 	@Transactional
-	@Rollback(false)
+	@Rollback(true)
 	public void testAddClient() {
 		int expected = 1;
 		Client clAdd = new Client("JOSSELIN", "Thibault", "0610444267", null, null);
