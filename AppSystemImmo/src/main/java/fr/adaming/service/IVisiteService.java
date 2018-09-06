@@ -16,7 +16,7 @@ public interface IVisiteService {
 
 	public void updateVisite(Visite ac);
 
-	public void deleteVisite(Visite ac);
+	public void deleteVisite(int id);
 	
 	
 }

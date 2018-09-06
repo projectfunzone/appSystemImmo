@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IVisiteDao;
 import fr.adaming.model.Visite;
 
 @Service
+@Transactional
 public class VisiteServiceImpl implements IVisiteService{
 	@Autowired
 	IVisiteDao vDao;
@@ -35,8 +37,8 @@ public class VisiteServiceImpl implements IVisiteService{
 	}
 
 	@Override
-	public void deleteVisite(Visite ac) {
-		vDao.delete(ac);
+	public void deleteVisite(int id) {
+		vDao.delete(id);
 		
 	}
 	

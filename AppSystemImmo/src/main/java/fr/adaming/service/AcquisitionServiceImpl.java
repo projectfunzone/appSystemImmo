@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.AcquisitionDaoImpl;
 
 import fr.adaming.model.Acquisition;
 
 @Service
+@Transactional
 public class AcquisitionServiceImpl implements IAcquisitionService{
 	@Autowired
 	AcquisitionDaoImpl acDao;
@@ -35,8 +37,8 @@ public class AcquisitionServiceImpl implements IAcquisitionService{
 	}
 
 	@Override
-	public void deleteAcquisition(Acquisition ac) {
-		acDao.delete(ac);
+	public void deleteAcquisition(int id) {
+		acDao.delete(id);
 		
 	}
 
