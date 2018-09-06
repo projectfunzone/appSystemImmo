@@ -2,8 +2,6 @@ package fr.adaming.serviceTest;
 
 import static org.junit.Assert.*;
 
-import java.util.Date;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +22,16 @@ public class ClientServiceImplTest {
 
 	@Autowired
 	private IClientService clientService;
-	
-	//Cas de test de ajout Client
-		//@Ignore
-		@Test
-		@Transactional
-		@Rollback(false)
-		public void testAddClient() {
-			//int expectedAdd = 3;
-			Client clAdd=new Client("JOSSELIN", "Thibault", "0610444267", null, null);
-			//Client clIn = new Client(null, "toto", "titi", null, null, null, null, true);
-			clientService.addClient(clAdd);
-			assertEquals(1, clientService.getAllClients().size());
-		}
+
+	// Cas de test de ajout Client
+	// @Ignore
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void testAddClient() {
+		int expected = 1;
+		Client clAdd = new Client("JOSSELIN", "Thibault", "0610444267", null, null);
+		clientService.addClient(clAdd);
+		assertEquals(expected, clientService.getAllClients().size());
+	}
 }
