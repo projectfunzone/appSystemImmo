@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @SuppressWarnings("serial")
 @Entity /**
 		 * Cette annaotation permet de rendre cette classe persitante(prise en
@@ -79,6 +81,7 @@ public class Achat extends BienImmo implements Serializable {
 		this.listeVisiteAchat = listeVisiteAchat;
 	}
 
+	@JsonIgnoreProperties("listeBienAchat")
 	public Proprietaire getProprietaire() {
 		return proprietaire;
 	}
