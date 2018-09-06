@@ -10,52 +10,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.adaming.model.Proprietaire;
-import fr.adaming.service.IProprietaireService;
+import fr.adaming.model.Conseiller;
+import fr.adaming.service.IConseillerService;
 
 @RestController
-@RequestMapping("/proprietaire")
-public class PropretaireRest {
-
+@RequestMapping("/conseiller")
+public class ConseillerRest {
+	
 	@Autowired
-	private IProprietaireService proprioService;
+	private IConseillerService conseilService;
 
-	public void setProprioService(IProprietaireService proprioService) {
-		this.proprioService = proprioService;
+	public void setConseilService(IConseillerService conseilService) {
+		this.conseilService = conseilService;
 	}
 	
-	
 	@RequestMapping(value="/liste", method=RequestMethod.GET, produces="application/json")
-	public List<Proprietaire> getAll () {
+	public List<Conseiller> getAll () {
 		
-		return proprioService.getAll();
+		return conseilService.getAll();
 	}
 	
 	@RequestMapping(value="/get", method=RequestMethod.GET, produces="application/json")
-	public Proprietaire getOne (@RequestParam("pId") int id) {
+	public Conseiller getOne (@RequestParam("pId") int id) {
 		
-		return proprioService.get(id);
+		return conseilService.get(id);
 	}
 	
 	@RequestMapping(value="/add",  method=RequestMethod.POST, produces = "application/json", consumes="application/json" )
-	public Proprietaire add (@RequestBody Proprietaire proprio){
+	public Conseiller add (@RequestBody Conseiller conseil){
 		
-		return proprioService.add(proprio);
+		return conseilService.add(conseil);
 	}
 	
 	@RequestMapping(value="/update",  method=RequestMethod.PUT, produces = "application/json", consumes="application/json" )
-	public void update (@RequestBody Proprietaire proprio) {
+	public void update (@RequestBody Conseiller conseil) {
 		
-		proprioService.update(proprio);
+		conseilService.update(conseil);
 	}
 	
 	@RequestMapping(value="/delete/{pId}",  method=RequestMethod.DELETE)
 	public void deleteCarg (@PathVariable("pId") int id) {
-		Proprietaire proprio=new Proprietaire();
-		proprio.setId(id);
+		Conseiller conseil=new Conseiller();
+		conseil.setId(id);
 		
-		proprioService.delete(proprio);
+		conseilService.delete(conseil);
 	}
-	
-	
+
 }

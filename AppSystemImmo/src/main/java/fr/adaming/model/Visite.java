@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /*
  * Amandine
  * Classe modele Visite 
@@ -101,6 +103,7 @@ public class Visite {
 		this.acquisition = acquisition;
 	}
 
+	@JsonIgnoreProperties("listeVisiteConseiller")
 	public Conseiller getConseiller() {
 		return conseiller;
 	}

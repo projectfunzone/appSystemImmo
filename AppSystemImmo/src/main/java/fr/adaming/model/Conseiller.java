@@ -4,11 +4,17 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /*
  * Amandine
@@ -31,7 +37,8 @@ public class Conseiller implements Serializable {
 	/*
 	 * association
 	 */
-	@OneToMany(mappedBy = "conseiller")
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy = "conseiller", fetch=FetchType.EAGER)
 	private List<Visite> listeVisiteConseiller;
 
 	/*
@@ -82,6 +89,7 @@ public class Conseiller implements Serializable {
 		this.nom = nom;
 	}
 
+	@JsonIgnoreProperties("conseiller")
 	public List<Visite> getListeVisiteConseiller() {
 		return listeVisiteConseiller;
 	}
