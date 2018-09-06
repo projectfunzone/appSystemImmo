@@ -11,7 +11,7 @@ import fr.adaming.model.Client;
 import fr.adaming.service.IClientService;
 
 @RestController
-@RequestMapping("/ws")
+@RequestMapping("/client")
 public class ClientRestController {
 
 	// transformation del 'association uml java

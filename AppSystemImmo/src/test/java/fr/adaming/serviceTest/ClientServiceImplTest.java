@@ -25,7 +25,7 @@ public class ClientServiceImplTest {
 	private IClientService clientService;
 
 	// Cas de test de ajout Client
-	//@Ignore
+	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)

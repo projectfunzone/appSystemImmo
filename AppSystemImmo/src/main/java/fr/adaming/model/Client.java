@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -12,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @SuppressWarnings("serial")
 @Entity
@@ -22,16 +26,18 @@ public class Client extends Personne implements Serializable {
 	// conseiller
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date num;
-	
-	//transformation des associations UML en java
-	@OneToMany(mappedBy="client")
+
+	// transformation des associations UML en java
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
 	private List<Visite> listeVisiteCl;
-	
-	@ManyToMany
-	@JoinTable(name="client_classeStandard", joinColumns=@JoinColumn(name="client_id"), inverseJoinColumns = @JoinColumn(name="id"))
+
+	@Fetch(FetchMode.SELECT)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "client_classeStandard", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "id"))
 	private List<ClasseStandard> listeClasseStandard;
 
-	//constructeur
+	// constructeur
 	public Client() {
 		super();
 	}
@@ -46,7 +52,7 @@ public class Client extends Personne implements Serializable {
 		this.num = num;
 	}
 
-	//getter et setter
+	// getter et setter
 	public Date getNum() {
 		return num;
 	}
