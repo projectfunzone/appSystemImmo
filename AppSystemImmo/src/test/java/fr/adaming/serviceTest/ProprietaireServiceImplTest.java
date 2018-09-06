@@ -18,7 +18,6 @@ public class ProprietaireServiceImplTest {
 	
 	@Autowired
 	private IProprietaireService proprioService;
-	
-	public void 
+
 
 }
