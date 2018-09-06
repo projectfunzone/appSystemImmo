@@ -11,7 +11,7 @@ public interface IBienImmoService {
 	public BienImmo getBienImmoById(int id);
 	
 	public BienImmo getBienImmoByType(String typeImmo);
-	
+
 	public BienImmo getBienImmoByCategorie(String categorie);
 	
 	public BienImmo addBienImmo(BienImmo BI);

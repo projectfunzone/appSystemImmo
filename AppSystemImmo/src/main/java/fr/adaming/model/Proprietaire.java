@@ -4,8 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @SuppressWarnings("serial")
 @Entity
@@ -14,11 +20,12 @@ public class Proprietaire extends Personne implements Serializable {
 
 	private String telPro;
 	
-	@OneToMany(mappedBy="proprietaire")
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER)
 	private List<Location> listeBienLocation;
 	
-	
-	@OneToMany(mappedBy="proprietaire")
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER)
 	private List<Achat> listeBienAchat;
 
 	public Proprietaire() {
@@ -43,6 +50,7 @@ public class Proprietaire extends Personne implements Serializable {
 		this.telPro = telPro;
 	}
 
+	@JsonIgnoreProperties("proprietaire")
 	public List<Location> getListeBienLocation() {
 		return listeBienLocation;
 	}
@@ -51,6 +59,7 @@ public class Proprietaire extends Personne implements Serializable {
 		this.listeBienLocation = listeBienLocation;
 	}
 
+	@JsonIgnoreProperties("proprietaire")
 	public List<Achat> getListeBienAchat() {
 		return listeBienAchat;
 	}

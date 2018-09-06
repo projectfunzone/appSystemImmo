@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +12,9 @@ import javax.persistence.ManyToMany;
 
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "classeStandard")
@@ -31,13 +35,16 @@ public class ClasseStandard implements Serializable {
 	/*
 	 * association
 	 */
-	@OneToMany(mappedBy = "classeStandard")
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy = "classeStandard", fetch = FetchType.EAGER)
 	private List<Location> listeImmoLocation;
 
-	@OneToMany(mappedBy = "classeStandard")
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy = "classeStandard", fetch = FetchType.EAGER)
 	private List<Achat> listeImmoAchat;
 
-	@ManyToMany(mappedBy = "listeClasseStandard")
+	@Fetch(FetchMode.SELECT)
+	@ManyToMany(mappedBy = "listeClasseStandard", fetch = FetchType.EAGER)
 	private List<Client> listeClient;
 
 	/*
