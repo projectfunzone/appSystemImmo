@@ -32,7 +32,7 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public void deleteClient(Client cl) {
-		clDao.delete(cl);
+		clDao.delete(cl.getId());
 
 	}
 
