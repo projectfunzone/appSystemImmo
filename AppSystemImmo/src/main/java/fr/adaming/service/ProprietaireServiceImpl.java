@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IProprietaireDao;
 import fr.adaming.model.Proprietaire;
 @Service
+@Transactional
 public class ProprietaireServiceImpl implements IProprietaireService {
 
 	@Autowired
@@ -40,7 +42,7 @@ public class ProprietaireServiceImpl implements IProprietaireService {
 
 	@Override
 	public void delete(Proprietaire proprio) {
-		proprioDao.delete(proprio);
+		proprioDao.delete(proprio.getId());
 	}
 
 

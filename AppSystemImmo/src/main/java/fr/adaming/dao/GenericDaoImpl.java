@@ -64,9 +64,11 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 	 * @param T
 	 */
 	@Override
-	public void delete(T delInstance) {
+	public void delete(int id) {
 
-		em.remove(delInstance);
+		T typeOut=em.find(type, id);
+		
+		em.remove(typeOut);
 	}
 
 	/**

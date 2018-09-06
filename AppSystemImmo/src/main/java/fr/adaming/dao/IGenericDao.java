@@ -22,7 +22,7 @@ public interface IGenericDao<T> {
 	public void update(T transientObject);
 
 	/** Remove an object from persistent storage in the database */
-	public void delete(T persistentObject);
+	public void delete(int id);
 
 	// setters
 	public void setType(Class<T> type);
