@@ -10,13 +10,13 @@ public interface IBienImmoService {
 	
 	public BienImmo getBienImmoById(int id);
 	
-	public BienImmo getBienImmoById(String type);
+	public BienImmo getBienImmoByType(String typeImmo);
 	
 	public BienImmo getBienImmoByCategorie(String categorie);
 	
 	public BienImmo addBienImmo(BienImmo BI);
 	
-	public BienImmo updateBienImmo(BienImmo BI);
+	public void updateBienImmo(BienImmo BI);
 	
 	public void deleteBienImmo(BienImmo BI);
 
