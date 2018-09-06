@@ -21,23 +21,23 @@ public class AchatRest {
 	@Autowired
 	private IAchatService aService;
 	
-	@RequestMapping(value="/ajoutAchat", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+	@RequestMapping(value="/add", method=RequestMethod.POST, produces="application/json", consumes="application/json")
 	public Achat ajouterAchat(@RequestBody Achat ac){
 		return aService.addAchat(ac);
 	}
-	@RequestMapping(value="/listeAchat", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/liste", method=RequestMethod.GET, produces="application/json")
 	public List<Achat> getAllAchat(){
 		return aService.getAllAchat();
 	}
-	@RequestMapping(value="/rechercheAchat", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/get", method=RequestMethod.GET, produces="application/json")
 	public Achat rechercheAchat (@RequestParam(value="pId") int id){
 		return aService.getAchat(id);
 	}
-	@RequestMapping(value="/modifierAchat", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+	@RequestMapping(value="/update", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
 	public void modifierAchat(@RequestBody Achat ac){
 		aService.updateAchat(ac);
 	}
-	@RequestMapping(value="/supprimerAchat/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
+	@RequestMapping(value="/delete/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
 	public void supprimerAchat(@PathVariable(value="pId") int id){
 		Achat aOut=new Achat();
 		aOut.setId(id);

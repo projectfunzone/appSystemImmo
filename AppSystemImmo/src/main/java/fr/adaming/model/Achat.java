@@ -5,10 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -24,7 +28,8 @@ public class Achat extends BienImmo implements Serializable {
 	private double prixDemande;
 	private String etat;
 
-	@OneToMany(mappedBy = "achat")
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy = "achat", fetch = FetchType.EAGER)
 	private List<Visite> listeVisiteAchat;
 
 	@ManyToOne
