@@ -21,6 +21,7 @@ public class ClientRestController {
 	@Autowired
 	private IClientService clientService;
 
+	
 	/**
 	 * Recupérer la liste des Clients enregistrés
 	 * 
@@ -31,6 +32,7 @@ public class ClientRestController {
 		return clientService.getAllClients();
 	}
 
+	
 	/**
 	 * Recupérer le client par son id
 	 * 
