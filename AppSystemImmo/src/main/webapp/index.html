@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Page d'accueil</title>
+<!-- ajouter la lib de bootstrap -->
+<link rel="stylesheet" href="assets/resources/css/bootstrap.css">
+
+<!-- ajouter les libs de angularJS -->
+<script type="text/javascript" src="assets/resources/js/angular.js"></script>
+<script type="text/javascript"
+	src="assets/resources/js/angular-route.js"></script>
+
+<!-- ajouter mes scripts -->
+<script type="text/javascript" src="assets/js/modules/app.js"></script>
+<script type="text/javascript"
+	src="assets/js/controllers/controllers.js"></script>
+<script type="text/javascript" src="assets/js/routing/routage.js"></script>
+<script type="text/javascript" src="assets/js/services/etudiantServices.js"></script>
+</head>
+<body ng-app="monApp">
+	<nav class="navbar navbar-inverse">
+		<ul class="nav nav-pills">
+			<li role="presentation"><a href="#!liste">Accueil</a></li>
+			<li role="presentation"><a href="#!rech">Rechercher</a></li>
+			<li role="presentation"><a href="#!add">Ajouter</a></li>
+			<li role="presentation"><a href="#!update">Modifier</a></li>
+			<li role="presentation"><a href="#!delete">Supprimer</a></li>
+		</ul>
+	</nav>
+
+<div class="container">
+	<div ng-view></div>
+</div>
+
+
+
+</body>
+</html>

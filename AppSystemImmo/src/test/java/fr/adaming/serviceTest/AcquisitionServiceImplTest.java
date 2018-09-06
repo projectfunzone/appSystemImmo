@@ -23,7 +23,7 @@ public class AcquisitionServiceImplTest {
 	IAcquisitionService acService;
 
 	// test ajouter
-	// @Ignore
+	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)
