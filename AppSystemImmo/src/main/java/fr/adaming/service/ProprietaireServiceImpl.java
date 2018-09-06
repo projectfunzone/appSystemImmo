@@ -3,10 +3,11 @@ package fr.adaming.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.adaming.dao.IProprietaireDao;
 import fr.adaming.model.Proprietaire;
-
+@Service
 public class ProprietaireServiceImpl implements IProprietaireService {
 
 	@Autowired

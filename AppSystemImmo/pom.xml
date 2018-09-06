@@ -15,69 +15,85 @@
 	<dependencies>
 
 		<!-- Pour le WebService -->
-		<!-- javax.servlet-api -->
+
+		<!-- *************************************librairie de hibernate -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- jackson-databind -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.4.1</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>1.2</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- ****************** Spring MVC -->
-		<!-- spring-web: pour integrer JSF avec le conteneur Spring IoC -->
+		<!-- permet de gérer le nombre de connexion simultanée sur hibernate -->
+		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
 		</dependency>
 
-		<!-- spring-webmvc : le module du framework Spring MVC -->
+		<!-- sert à gérer les bytecode (pseudocode) => optimise le bytecode -->
+		<!-- https://mvnrepository.com/artifact/javassist/javassist -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+		</dependency>
+
+
+		<!-- Driver mysql -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
 		</dependency>
 
 
 
-		<!-- Portail Utilisateurs -->
-		<!-- ****************** Libs de Spring -->
-		<!--spring-beans -->
+		<!-- ********************************** librairie de spring -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- spring-core -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- spring-context -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- ****************** Libs de Spring IoC -->
+		<!-- pour intégrer une technologie web avec le conteneur léger de spring 
+			IoC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
 		<!-- spring-orm: pour integrer Hibernate avec le conteneur Spring IoC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -92,110 +108,49 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- ****************** Hibernate -->
-		<!-- hibernate-core -->
+		<!-- ajout de la lib webmvc, vu qu'on va utiliser spring mvc rest -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- hibernate-c3p0 -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-
-		<!-- hibernate-entitymanager -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-
-		<!-- commons-dbcp : optimisation du bytecode -->
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
-		</dependency>
-
-		<!-- javassist -->
-		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.12.1.GA</version>
-		</dependency>
-
-		<!-- mysql-connector-java -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.38</version>
-		</dependency>
-
-		<!-- jboss-logging -->
-		<dependency>
-			<groupId>org.jboss.logging</groupId>
-			<artifactId>jboss-logging</artifactId>
-			<version>3.1.0.GA</version>
-		</dependency>
-
-		<!-- jboss-transaction-api_1.1_spec -->
-		<dependency>
-			<groupId>org.jboss.spec.javax.transaction</groupId>
-			<artifactId>jboss-transaction-api_1.1_spec</artifactId>
-			<version>1.0.1.Final</version>
-		</dependency>
-
-		<!-- hibernate-commons-annotations -->
-		<dependency>
-			<groupId>org.hibernate.common</groupId>
-			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>4.0.2.Final</version>
-		</dependency>
-		<!-- ********************************************************** -->
-		<!-- ********* Mail -->
-		<!-- javax.mail/mail -->
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.3</version>
-		</dependency>
-
-
-
-		<!-- #### librairie itextpdf -->
-		<dependency>
-			<groupId>com.itextpdf</groupId>
-			<artifactId>itextpdf</artifactId>
-			<version>5.0.6</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
-		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-			<version>1.5.5</version>
-		</dependency>
-		<!-- ********************************************************** -->
-
-
-
-		<!-- Spring Test pour intégrer Junit avec Spring IoC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>4.1.9.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- Intégration de Junit -->
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- ***************************lib de servlet -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- ****************************implementation de jackson -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
 		</dependency>
 	</dependencies>
 
