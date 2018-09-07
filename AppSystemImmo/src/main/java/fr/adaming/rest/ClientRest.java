@@ -39,7 +39,7 @@ public class ClientRest {
 	 * @return le client correspondant à l'id
 	 */
 	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = "application/json")
-	public Client getClientbyID(@RequestParam("pID") int id) {
+	public Client getClientbyID(@RequestParam("pId") int id) {
 		return clientService.getClient(id);
 	}
 

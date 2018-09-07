@@ -14,6 +14,19 @@ monApp.controller("clientCtrlFindAll", function($scope, clientProvider) {
 	// client
 
 	// initialiser le client de rootScope
+	$rootScope.clUpdate = {
+		id : undefined,
+		num : "",
+		nom : "",
+		prenom : "",
+		telPrive : "",
+		adresse : {
+			rue : "",
+			cp : "",
+			ville : "",
+			pays : ""
+		}
+	};
 
 	// appel de la fonction à partir du lien de la liste pour modifier un client
 
@@ -29,7 +42,7 @@ monApp.controller("clientCtrlFindAll", function($scope, clientProvider) {
 		clientProvider.get($scope.id, function(donnees) {
 
 			if (typeof donnees == 'object') {
-				$scope.client = donnees;
+				$scope.cl = donnees;
 				$scope.indice = true;
 			} else {
 				$scope.indice = false;
