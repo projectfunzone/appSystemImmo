@@ -61,7 +61,7 @@ monApp.factory("achatProvider", function($http) {
 	function modif(achatIn, callBack) {
 		$http({
 			method : "PUT",
-			url : "http://localhost:8080/AppSystemImmo/achat/upd",
+			url : "http://localhost:8080/AppSystemImmo/achat/update",
 			data : angular.toJson(achatIn),
 			headers : {
 				'Content-Type' : 'application/json'

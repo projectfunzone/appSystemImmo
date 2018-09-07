@@ -181,7 +181,7 @@ monApp.controller("achatCtrlFindAll",
 			$scope.modifier = function() {
 
 				// appel de la fonction service pour modifier dans la bd
-				achatProvider.update($scope.achatModif, function(donnees) {
+				achatProvider.update($scope.achatForm, function(donnees) {
 					if (typeof donnees == 'object') {
 						$scope.msg = "";
 						// redirection vers l'accueil
