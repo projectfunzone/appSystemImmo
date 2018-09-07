@@ -46,16 +46,16 @@ public class Achat extends BienImmo implements Serializable {
 		super();
 	}
 
-	public Achat(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, Adresse adresse, double prixDemande, String etat) {
-		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
+	public Achat(String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
+			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double prixDemande, String etat) {
+		super(categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
 
-	public Achat(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, Adresse adresse, double prixDemande, String etat) {
-		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
+	public Achat(int id, String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
+			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double prixDemande, String etat) {
+		super(id, categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
@@ -77,11 +77,12 @@ public class Achat extends BienImmo implements Serializable {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
+
 	@JsonIgnoreProperties("achat")
 	public List<Visite> getListeVisiteAchat() {
 		return listeVisiteAchat;
 	}
-	
+
 	public void setListeVisiteAchat(List<Visite> listeVisiteAchat) {
 		this.listeVisiteAchat = listeVisiteAchat;
 	}

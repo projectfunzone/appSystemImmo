@@ -35,7 +35,7 @@ public class Location extends BienImmo implements Serializable {
 	private String garniture;
 
 	@Fetch(FetchMode.SELECT)
-	
+
 	@OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
 	private List<Visite> listeVisiteLocation;
 
@@ -54,30 +54,21 @@ public class Location extends BienImmo implements Serializable {
 		super();
 	}
 
-	public Location(double caution, double loyer, double charge, String bail, String garniture) {
-		super();
-		this.caution = caution;
-		this.loyer = loyer;
-		this.charge = charge;
-		this.bail = bail;
-		this.garniture = garniture;
-	}
-
-	public Location(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, Adresse adresse, double caution, double loyer, double charge,
-			String bail, String garniture) {
-		super(categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
-		this.caution = caution;
-		this.loyer = loyer;
-		this.charge = charge;
-		this.bail = bail;
-		this.garniture = garniture;
-	}
-
-	public Location(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis,
+	public Location(String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
 			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double caution, double loyer,
 			double charge, String bail, String garniture) {
-		super(id, categorie, type, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
+		super(categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
+		this.caution = caution;
+		this.loyer = loyer;
+		this.charge = charge;
+		this.bail = bail;
+		this.garniture = garniture;
+	}
+
+	public Location(int id, String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
+			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double caution, double loyer,
+			double charge, String bail, String garniture) {
+		super(id, categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
@@ -127,6 +118,7 @@ public class Location extends BienImmo implements Serializable {
 	public void setGarniture(String garniture) {
 		this.garniture = garniture;
 	}
+
 	@JsonIgnoreProperties("location")
 	public List<Visite> getListeVisiteLocation() {
 		return listeVisiteLocation;

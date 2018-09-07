@@ -4,6 +4,7 @@ monApp.controller("locationCtrlAdd", function($scope, locationProvider, $locatio
 	$scope.locIn = {
 			categorie:"",
 			type:"",
+			surface:"",
 			noChambre:"",
 			statut:"",
 			dateSoumis:"",
