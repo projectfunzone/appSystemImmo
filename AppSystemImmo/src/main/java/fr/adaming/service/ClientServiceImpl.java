@@ -23,7 +23,8 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public Client addClient(Client cl) {
-
+		Date num = new Date();
+		cl.setNum(num);
 		return clDao.add(cl);
 	}
 

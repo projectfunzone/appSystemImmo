@@ -2,7 +2,7 @@
  * Controllers pour la gestion des Clients
  */
 
-monApp.controller("clientCtrlFindAll", function($scope, clientProvider) {
+monApp.controller("clientCtrlFindAll", function($scope, clientProvider, $rootScope) {
 
 	// appel de la fonction Liste de 'clientProvider'
 	clientProvider.getListe(function(donnees) {
