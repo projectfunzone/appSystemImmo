@@ -21,4 +21,13 @@ monApp.config(function($routeProvider) {
 	.when("/achat/add", {templateUrl: "views/achatAddVue.html", controller: "achatCtrlAdd"})
 	.when("/achat/update", {templateUrl: "views/achatUpdateVue.html", controller: "achatCtrlUpdate"})
 	.when("/achat/delete", {templateUrl: "views/achatDeleteVue.html", controller: "achatCtrlDelete"})
+	
+	//****************************************************************************************************************
+	// Amandine: routage pour la visite
+	$routeProvider.when("/visite/liste", {templateUrl:"views/visiteListe.html", controller: "visiteCrltGetAll"})
+	.when ("/visite/add", {templateUrl:"views/visiteAdd.html", controller: "visiteCtrlAdd"})
+	.when ("/visite/get", {templateUrl:"views/visiteGet.html", controller: "visiteCtrlGet"})
+	.when ("/visite/update", {templateUrl:"views/visiteUpdate.html", controller: "visiteCtrlUpdate"})
+	.when ("/visite/delete", {templateUrl:"views/visiteDelete.html", controller: "visiteCtrlDelete"})
+	
 });
