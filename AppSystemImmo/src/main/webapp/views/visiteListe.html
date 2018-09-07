@@ -3,11 +3,17 @@
 	<tr>
 		<th>id</th>
 		<th>Date</th>
+		<th>rue</th>
+		<th>ville</th>
+		<th>Pays</th>
 	
 	</tr>
 	<tr ng-repeat="v in liste">
 		<td>{{v.id}}</td>
-		<td>{{v.date}}</td>
+		<td>{{v.date | date: "dd/MM/yyyy hh:mm:ss"}}</td>
+		<td>{{v.adresse.rue}}</td>
+		<td>{{v.adresse.ville}}</td>
+		<td>{{v.adresse.pays}}</td>
 	</tr>
 
 

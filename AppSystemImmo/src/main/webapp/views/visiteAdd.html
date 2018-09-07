@@ -1,22 +1,4 @@
 <!-- Formilaire Ajout de visite (sélection date et heure) -->
 <h1>Ajouter une date et une heure de visite</h1>
-<form class="form-horizontal">
-<div class="well">
-	<label for="date" class="col-sm-2 control-label">Date et heure</label>
-  <div id="datetimepicker1" class="input-append date">
-    <input data-format="dd/MM/yyyy hh:mm" type="text" class="form-control" id="date" ng-model="visiteForm.date"></input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-  </div>
-</div>
-</form>
 
-<script type="text/javascript">
-  $(function() {
-    $('#datetimepicker1').datetimepicker({
-      language: 'pt-BR'
-    });
-  });
-</script>
+<input type="datetime-local" ng-model="visiteCtrlAdd" placeholder="Selectionner un rendez-vous">
