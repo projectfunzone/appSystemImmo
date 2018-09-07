@@ -3,7 +3,6 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.Date;
 
-
 import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +14,6 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @MappedSuperclass
 public class BienImmo implements Serializable {
 	// ************************************************************
@@ -25,17 +23,19 @@ public class BienImmo implements Serializable {
 	private int id;
 	private String categorie;
 	private String type;
+
+	private int surface;
 	private int noChambre;
 	private String statut;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dateSoumis;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dateDispo;
-	
+
 	private double revenueCadastre;
-	
+
 	@Lob
 	private Byte[] photo;
 	// ************************************************************
@@ -50,11 +50,12 @@ public class BienImmo implements Serializable {
 		super();
 	}
 
-	public BienImmo(String categorie, String type, int noChambre, String statut, Date dateSoumis, Date dateDispo,
-			double revenueCadastre, Byte[] photo, Adresse adresse) {
+	public BienImmo(String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
+			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse) {
 		super();
 		this.categorie = categorie;
 		this.type = type;
+		this.surface = surface;
 		this.noChambre = noChambre;
 		this.statut = statut;
 		this.dateSoumis = dateSoumis;
@@ -64,12 +65,13 @@ public class BienImmo implements Serializable {
 		this.adresse = adresse;
 	}
 
-	public BienImmo(int id, String categorie, String type, int noChambre, String statut, Date dateSoumis,
+	public BienImmo(int id, String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
 			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse) {
 		super();
 		this.id = id;
 		this.categorie = categorie;
 		this.type = type;
+		this.surface = surface;
 		this.noChambre = noChambre;
 		this.statut = statut;
 		this.dateSoumis = dateSoumis;
@@ -104,6 +106,14 @@ public class BienImmo implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public int getSurface() {
+		return surface;
+	}
+
+	public void setSurface(int surface) {
+		this.surface = surface;
 	}
 
 	public int getNoChambre() {

@@ -1,10 +1,141 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<h1>Création d'une fiche "location"</h1>
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idCategorie" class="col-sm-2 control-label">Catégorie
+			de bien</label>
+		<div class="col-sm-5">
+			<select id="idCategorie" class=form-control
+				ng-model="locIn.categorie">
+				<option value="Habitation">Habitation</option>
+				<option value="Commercial">Commercial</option>
+				<option value="Terrain">Terrain</option>
+			</select>
+		</div>
+	</div>
 
-</body>
-</html>
+	<div class="form-group">
+		<label for="idType" class="col-sm-2 control-label">Type de
+			bien</label>
+		<div class="col-sm-5">
+			<select id="idType" class=form-control ng-model="locIn.type">
+				<option value="Studio">Studio</option>
+				<option value="Appartement">Appartement</option>
+				<option value="Maison">Maison</option>
+				<option value="Entrepot">Entrepot</option>
+				<option value="Bureaux">Bureaux</option>
+				<option value="Commerce">Commerce</option>
+			</select>
+		</div>
+	</div>
+
+
+
+	<div class="form-group">
+		<label for="idChambre" class="col-sm-2 control-label">Nombre
+			de chambre</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="idChambre"
+				placeholder="Nombre de chambre" ng-model="locIn.noChambre">
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<label for="idStatut" class="col-sm-2 control-label">Statut</label>
+		<div class="col-sm-5">
+			<select id="idStatut" class=form-control ng-model="locIn.statut">
+				<option value="disponible">Disponible</option>
+				<option value="loue">Loué</option>
+			</select>
+		</div>
+	</div>
+
+
+
+	<div class="form-group">
+		<label for="idDateSoumis" class="col-sm-2 control-label">Date
+			de soumission du bien</label>
+		<div class="col-sm-5">
+			<input type="date" class="form-control" id="idDateSoumis"
+				placeholder="Nombre de chambre" ng-model="locIn.dateSoumis">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idDateDispo" class="col-sm-2 control-label">Date
+			de disponibilité du bien</label>
+		<div class="col-sm-5">
+			<input type="date" class="form-control" id="idDateDispo"
+				placeholder="Nombre de chambre" ng-model="locIn.dateDispo">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idRevenue" class="col-sm-2 control-label">Revenue
+			Cadastral</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="idRevenue"
+				placeholder="Revenue Cadastral" ng-model="locIn.revenueCadastre">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idCaution" class="col-sm-2 control-label">Caution
+			demandée</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="idCaution"
+				placeholder="Caution demandée" ng-model="locIn.caution">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idLoyer" class="col-sm-2 control-label">Loyer</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="idLoyer"
+				placeholder="Loyer" ng-model="locIn.loyer">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idCharge" class="col-sm-2 control-label">Charge</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="idCharge"
+				placeholder="Charge" ng-model="locIn.charge">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idBail" class="col-sm-2 control-label">Type de bail</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="idBail"
+				placeholder="Type de bail" ng-model="locIn.bail">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idGarniture" class="col-sm-2 control-label">Garniture</label>
+		<div class="col-sm-5">
+			<select id="idGarniture" class=form-control ng-model="locIn.garniture">
+				<option value="meublé">meublé</option>
+				<option value="non meublé">non meublé</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label Class="col-sm-2 control-label">Photo du logement</label>
+		<div class="col-sm-5">
+			<input Class="form-control" type="file" name="file" />
+		</div>
+	</div>
+
+
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="add()">Créer</button>
+		</div>
+	</div>
+</form>
+
+<h1 style="color: red; text-align: center">{{msg}}</h1>
