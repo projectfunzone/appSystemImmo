@@ -1,6 +1,6 @@
 //Créer mes controllers
 
-monApp.controller("findAllCtrl",
+monApp.controller("AchatCtrlfindAll",
 		function($scope, etudiantProvider, $rootScope, $location) {
 			// appel de la function getListe de mon etudiantProvider
 			// ici la function a l'intérieur de getListe représente l'accès au
