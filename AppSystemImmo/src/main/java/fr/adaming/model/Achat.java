@@ -77,11 +77,11 @@ public class Achat extends BienImmo implements Serializable {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
-
+	@JsonIgnoreProperties("achat")
 	public List<Visite> getListeVisiteAchat() {
 		return listeVisiteAchat;
 	}
-
+	
 	public void setListeVisiteAchat(List<Visite> listeVisiteAchat) {
 		this.listeVisiteAchat = listeVisiteAchat;
 	}

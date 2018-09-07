@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "classeStandard")
 public class ClasseStandard implements Serializable {
@@ -125,7 +127,7 @@ public class ClasseStandard implements Serializable {
 	public void setTypeImmo(String typeImmo) {
 		this.typeImmo = typeImmo;
 	}
-
+	@JsonIgnoreProperties("classeStandard")
 	public List<Client> getListeClient() {
 		return listeClient;
 	}
@@ -133,7 +135,7 @@ public class ClasseStandard implements Serializable {
 	public void setListeClient(List<Client> listeClient) {
 		this.listeClient = listeClient;
 	}
-
+	@JsonIgnoreProperties("classeStandard")
 	public List<Location> getListeImmoLocation() {
 		return listeImmoLocation;
 	}
@@ -141,7 +143,7 @@ public class ClasseStandard implements Serializable {
 	public void setListeImmoLocation(List<Location> listeImmoLocation) {
 		this.listeImmoLocation = listeImmoLocation;
 	}
-
+	@JsonIgnoreProperties("classeStandard")
 	public List<Achat> getListeImmoAchat() {
 		return listeImmoAchat;
 	}

@@ -124,7 +124,7 @@ public class Visite {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
+	@JsonIgnoreProperties("listeVisiteLocation")
 	public Location getLocation() {
 		return location;
 	}
@@ -132,7 +132,7 @@ public class Visite {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-
+	@JsonIgnoreProperties("listeVisiteAchat")
 	public Achat getAchat() {
 		return achat;
 	}

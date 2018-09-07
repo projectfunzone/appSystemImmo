@@ -17,6 +17,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "clients")
@@ -60,15 +62,15 @@ public class Client extends Personne implements Serializable {
 	public void setNum(Date num) {
 		this.num = num;
 	}
-
+	@JsonIgnoreProperties("client")
 	public List<Visite> getListeVisiteCl() {
 		return listeVisiteCl;
 	}
-
+	
 	public void setListeVisiteCl(List<Visite> listeVisiteCl) {
 		this.listeVisiteCl = listeVisiteCl;
 	}
-
+	@JsonIgnoreProperties("client")
 	public List<ClasseStandard> getListeClasseStandard() {
 		return listeClasseStandard;
 	}

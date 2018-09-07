@@ -127,7 +127,7 @@ public class Location extends BienImmo implements Serializable {
 	public void setGarniture(String garniture) {
 		this.garniture = garniture;
 	}
-
+	@JsonIgnoreProperties("location")
 	public List<Visite> getListeVisiteLocation() {
 		return listeVisiteLocation;
 	}
