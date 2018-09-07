@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /*
  * Amandine
@@ -29,6 +31,7 @@ public class Acquisition implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private double prixAchat;
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	private String ref;
 	private File contrat;
