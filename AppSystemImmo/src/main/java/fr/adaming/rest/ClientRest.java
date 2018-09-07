@@ -15,7 +15,7 @@ import fr.adaming.service.IClientService;
 
 @RestController
 @RequestMapping("/client")
-public class ClientRestController {
+public class ClientRest {
 
 	// transformation del 'association uml java
 	@Autowired

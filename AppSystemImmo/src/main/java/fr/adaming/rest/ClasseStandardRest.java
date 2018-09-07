@@ -15,7 +15,7 @@ import fr.adaming.service.IClasseStandardService;
 
 @RestController
 @RequestMapping("/classestandard")
-public class ClasseStandardRestController {
+public class ClasseStandardRest {
 
 	// transformation del 'association uml java
 	@Autowired
