@@ -40,7 +40,7 @@ monApp.config(function($routeProvider) {
 	
 	//****************************************************************************************************************
 	// JD : routage pour le propriétaire
-	$routeProvider.when("/proprietaire/liste", {templateUrl:"views/proprietaireListe.html", controller: "proprietaireCrltFindAll"})
+	$routeProvider.when("/proprietaire/liste", {templateUrl:"views/proprietaireListe.html", controller: "proprietaireCtrlFindAll"})
 	.when ("/proprietaire/add", {templateUrl:"views/proprietaireAdd.html", controller: "proprietaireCtrlAdd"})
 	.when ("/proprietaire/get", {templateUrl:"views/proprietaireGet.html", controller: "proprietaireCtrlGet"})
 	.when ("/proprietaire/update", {templateUrl:"views/proprietaireUpdate.html", controller: "proprietaireCtrlUpdate"})

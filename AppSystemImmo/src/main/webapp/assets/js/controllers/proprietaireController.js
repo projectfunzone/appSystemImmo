@@ -32,18 +32,14 @@ monApp.controller("proprietaireCtrlAdd", function($scope, proprietaireProvider, 
 			}
 		})
 	}
+})
 
-	.controller("proprietaireCtrlFindAll", function($scope, proprietaireProvider, $location){
+.controller("proprietaireCtrlFindAll", function($scope, proprietaireProvider, $location){
 		// appel de la fonction de proprietaireProvider qui permet de récupérer la liste
 		proprietaireProvider.getListeS(function(donnees){
 			
 			// stocker les informations récupérées par l'intermédiaire du proprietaireService
 			$scope.liste=donnees;
 			
-		})
+		});
 	})
-	
-	
-	
-	
-})
