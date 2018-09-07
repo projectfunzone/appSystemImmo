@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @MappedSuperclass
@@ -25,9 +27,15 @@ public class BienImmo implements Serializable {
 	private String type;
 	private int noChambre;
 	private String statut;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dateSoumis;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dateDispo;
+	
 	private double revenueCadastre;
+	
 	@Lob
 	private Byte[] photo;
 	// ************************************************************
