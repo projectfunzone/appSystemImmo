@@ -1,0 +1,21 @@
+<h1 style="text-align: center">Liste des achats</h1>
+<table class="table table-bordered">
+	<tr>
+		<th>id</th>
+		<th>Nom</th>
+		<th>Prenom</th>
+		<th>Age</th>
+		<th>Operations</th>	
+	</tr>
+	<tr ng-repeat="achat in liste">
+		<td>{{achat.id}}</td>
+		<td>{{achat.nom}}</td>
+		<td>{{achat.prenom}}</td>
+		<td>{{achat.age}}</td>
+		<td><a ng-click="deleteLien(e)">Supprimer</a> | <a ng-click="updateLien(e)">Modifier</a></td>
+	</tr>
+
+
+
+</table>
+

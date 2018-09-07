@@ -1,141 +1,171 @@
-//Créer mes controllers
+/**Créer mes controllers*/
 
-monApp.controller("AchatCtrlfindAll",
-		function($scope, etudiantProvider, $rootScope, $location) {
-			// appel de la function getListe de mon etudiantProvider
-			// ici la function a l'intérieur de getListe représente l'accès au
-			// callBack
-			// dans le service
-			etudiantProvider.getListe(function(donnees) {
-				// stocker les données récupéré de service
+monApp.controller("achatCtrlFindAll",
+		function($scope, achatProvider, $rootScope, $location) {
+	
+			/** appel de la function getListe de mon achatProvider*/
+			/** ici la function a l'intérieur de getListe représente l'accès au callBack dans le service*/
+	
+			achatProvider.getListe(function(donnees) {
+				/** stocker les données récupéré de service*/
 				$scope.liste = donnees;
 			})
 
-			// appel de la fonction à partir du lien de la liste pour supprimer
-			// un
-			// etudiant
-			$scope.deleteLien = function(eIn) {
-				etudiantProvider.delet(eIn.id, function(retour) {
+			/** appel de la fonction à partir du lien de la liste pour supprimer*/
+			/** un achat*/
+			$scope.deleteLien = function(achatIn) {
+				achatProvider.delet(achatIn.id, function(retour) {
 
-					// mettre à jour la liste de la page d'accueil
-					etudiantProvider.getListe(function(donnees) {
-						// stocker les données récupéré de service
+					/** mettre à jour la liste de la page d'accueil*/
+					achatProvider.getListe(function(donnees) {
+						/** stocker les données récupéré de service*/
 						$scope.liste = donnees;
 					})
 				});
 
 			}
-
-			// initialiser l'etudiant de rootScope
+//*****************************************************************************************************
+			/** initialiser l'achat de rootScope*/
 			$rootScope.eUpdate = {
 				id : undefined,
-				nom : "",
-				prenom : "",
-				age : ""
+				cp : "",
+				pays : "",
+				rue : "",
+				ville : "",
+				categorie : "",
+				dateDispo : "",
+				dateSoumis : "",
+				noChambre : "",
+				photo : "",
+				revenueCadastre : "",
+				statut : "",
+				type : "",
+				etat : "",
+				prixDemande : ""
 			};
-			// appel de la fonction à partir du lien de la liste pour modifier
-			// un
-			// etudiant
-			$scope.updateLien = function(eIn) {
-				$rootScope.eUpdate = eIn;
+			/** appel de la fonction à partir du lien de la liste pour modifier un achat*/
+			$scope.updateLien = function(achatIn) {
+				$rootScope.achatUpdate = achatIn;
 
 				// aller dans la vue modif
 				$location.path("update");
 			}
-
-		}).controller("getOneCtrl", function($scope, etudiantProvider) {
+			//*****************************************************************************************************
+		}).controller("achatCtrlGetOne", function($scope, achatProvider) {
 	$scope.indice = false;
 	$scope.id = undefined;
 	$scope.msg = "";
 	$scope.rechercher = function() {
-		// appel de la fonction du etudiantProvider afin de récupérer l'etudiant
-		etudiantProvider.getById($scope.id, function(donnees) {
+		// appel de la fonction du achatProvider afin de récupérer l'achat
+		achatProvider.getById($scope.id, function(donnees) {
 
 			if (typeof donnees == 'object') {
-				$scope.etu = donnees;
+				$scope.achat = donnees;
 				$scope.indice = true;
 			} else {
 				$scope.indice = false;
-				$scope.msg = "l'étudiant recherché n'existe pas"
+				$scope.msg = "l'achat recherché n'existe pas"
 			}
 			;
 
 		})
 	}
-}).controller("addCtrl", function($scope, etudiantProvider, $location) {
+}).controller("achatCtrlAdd", function($scope, achatProvider, $location) {
 
 	// initialiser l'objet dans le model du scope
-	$scope.eForm = {
-		nom : "",
-		prenom : "",
-		age : ""
+	$scope.achatForm = {
+			cp : "",
+			pays : "",
+			rue : "",
+			ville : "",
+			categorie : "",
+			dateDispo : "",
+			dateSoumis : "",
+			noChambre : "",
+			photo : "",
+			revenueCadastre : "",
+			statut : "",
+			type : "",
+			etat : "",
+			prixDemande : ""
 	}
 
 	// la fonction ajouter à partir du bouton d'appel "ajouter"
 	$scope.ajouter = function() {
 
 		// appel de la fonction service pour ajouter dans la bd
-		etudiantProvider.add($scope.eForm, function(donnees) {
+		achatProvider.add($scope.achatForm, function(donnees) {
 			if (typeof donnees == 'object') {
 				$scope.msg = "";
 				// redirection vers l'accueil
 				$location.path("liste");
 			} else {
-				$scope.msg = "L'ajout a échoué ! ";
+				$scope.msg = "L'ajout d'achat a échoué ! ";
 			}
 		})
 	}
 })
-
-.controller("updateCtrl",
-		function($scope, etudiantProvider, $location, $rootScope) {
+//**************************************************************************************************
+.controller("achatCtrlupdate",
+		function($scope, achatProvider, $location, $rootScope) {
 
 			// initialiser l'objet dans le model du scope s'il n'est pas dans le
 			// rootscope
 
-			if ($rootScope.eUpdate.id == undefined) {
+			if ($rootScope.achatUpdate.id == undefined) {
 
-				$scope.eModif = {
+				$scope.achatModif = {
 					id : undefined,
-					nom : "",
-					prenom : "",
-					age : ""
+					cp : "",
+					pays : "",
+					rue : "",
+					ville : "",
+					categorie : "",
+					dateDispo : "",
+					dateSoumis : "",
+					noChambre : "",
+					photo : "",
+					revenueCadastre : "",
+					statut : "",
+					type : "",
+					etat : "",
+					prixDemande : ""
 				};
 			} else {
-				// si le rootScope est utilisé, alors on initialise eModif avec
-				$scope.eModif = $rootScope.eUpdate;
+				// si le rootScope est utilisé, alors on initialise achatModif avec
+				$scope.achatModif = $rootScope.achatUpdate;
 			}
 
 			// la fonction modifier à partir du bouton d'appel "modifier"
 			$scope.modifier = function() {
 
 				// appel de la fonction service pour modifier dans la bd
-				etudiantProvider.update($scope.eModif, function(donnees) {
+				achatProvider.update($scope.achatModif, function(donnees) {
 					if (typeof donnees == 'object') {
 						$scope.msg = "";
 						// redirection vers l'accueil
 						$location.path("liste");
 					} else {
-						$scope.msg = "La modification a échoué ! ";
+						$scope.msg = "La modification de l'ajout a échoué ! ";
 					}
 				})
 			}
-
-		}).controller("deleteCtrl",
-		function($scope, etudiantProvider, $location) {
+//
+		}).controller("achatCtrldelete",
+		function($scope, achatProvider, $location) {
 			$scope.id = undefined;
 
 			// la fonction appeler à partir du bouton
 			$scope.supprimer = function() {
 
 				// appel de la fonction service pour supprimer dans la bd
-				etudiantProvider.delet($scope.id, function(retour) {
+				achatProvider.delet($scope.id, function(retour) {
 					if (retour == 'OK') {
 						$scope.msg = "";
 						// redirection vers l'accueil
 						$location.path("liste");
 					} else {
-						$scope.msg = "La suppression a échoué ! ";
+						$scope.msg = "La suppression de l'achat a échoué ! ";
 					}
 				})
 			}
