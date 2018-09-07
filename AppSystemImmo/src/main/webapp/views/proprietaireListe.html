@@ -1,0 +1,42 @@
+<h1 style="color: darkblue; text-align: center;">Liste des
+	propriétaires</h1>
+
+<table class="table table-hover">
+	<tr>
+		<th>ID</th>
+		<th>Nom</th>
+		<th>Prenom</th>
+		<th>Rue</th>
+		<th>Code Postal</th>
+		<th>Ville</th>
+		<th>Pays</th>
+		<th>Téléphone Privé</th>
+		<th>Téléphone Professionnel</th>
+		<th>Opérations rapides</th>
+	</tr>
+	<tr ng-repeat="proprio in liste">
+		<td>{{proprio.id}}</td>
+		<td>{{proprio.nom}}</td>
+		<td>{{proprio.prenom}}</td>
+		<td>{{proprio.adresse.rue}}</td>
+		<td>{{proprio.adresse.cp}}</td>
+		<td>{{proprio.adresse.ville}}</td>
+		<td>{{proprio.adresse.pays}}</td>
+		<td>{{proprio.telPrive}}</td>
+		<td>{{proprio.telPro}}</td>
+		<td><a ng-click="deleteLien(e)">Supprimer</a> | <a
+			ng-click="updateLien(e)">Modifier</a></td>
+	</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+</table>

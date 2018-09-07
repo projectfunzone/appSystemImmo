@@ -38,4 +38,12 @@ monApp.config(function($routeProvider) {
 	.when ("/client/update", {templateUrl:"views/clientUpdate.html", controller: "clientCtrlUpdate"})
 	.when ("/client/delete", {templateUrl:"views/clientDelete.html", controller: "clientCtrlDelete"})
 	
+	//****************************************************************************************************************
+	// JD : routage pour le propriétaire
+	$routeProvider.when("/proprietaire/liste", {templateUrl:"views/proprietaireListe.html", controller: "proprietaireCrltFindAll"})
+	.when ("/proprietaire/add", {templateUrl:"views/proprietaireAdd.html", controller: "proprietaireCtrlAdd"})
+	.when ("/proprietaire/get", {templateUrl:"views/proprietaireGet.html", controller: "proprietaireCtrlGet"})
+	.when ("/proprietaire/update", {templateUrl:"views/proprietaireUpdate.html", controller: "proprietaireCtrlUpdate"})
+	.when ("/proprietaire/delete", {templateUrl:"views/proprietaireDelete.html", controller: "proprietaireCtrlDelete"})
+
 });
