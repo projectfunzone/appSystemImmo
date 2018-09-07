@@ -8,6 +8,12 @@ monApp.controller("locationCtrlAdd", function($scope, locationProvider, $locatio
 			noChambre:"",
 			statut:"",
 			dateSoumis:"",
+			adresse: {
+				rue:"",
+				cp:"",
+				ville:"",
+				pays:""
+			},
 			dateDispo:"",
 			revenueCadastre:"",
 			photo:"",
