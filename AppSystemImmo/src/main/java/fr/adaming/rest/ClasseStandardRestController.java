@@ -40,7 +40,7 @@ public class ClasseStandardRestController {
 	 * 
 	 * @return le classe standard correspondant à l'id
 	 */
-	@RequestMapping(value = "/getID", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = "application/json")
 	public ClasseStandard getClasseStandardbyID(@RequestParam("pID") int id) {
 		return classeStandardService.getClasseStandard(id);
 	}
@@ -70,7 +70,7 @@ public class ClasseStandardRestController {
 	 * 
 	 * @return pas de retour
 	 */
-	@RequestMapping(value = "/del/{pId}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/{pId}", method = RequestMethod.DELETE)
 	public void deleteClasseStandard(@PathVariable("pId") int id) {
 		ClasseStandard csIn = new ClasseStandard();
 		csIn.setId(id);

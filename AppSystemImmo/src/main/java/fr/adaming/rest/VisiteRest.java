@@ -23,25 +23,25 @@ public class VisiteRest {
 		private IVisiteService vService;
 		
 		
-		@RequestMapping(value="/ajoutVisite", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+		@RequestMapping(value="/add", method=RequestMethod.POST, produces="application/json", consumes="application/json")
 		public Visite ajouterVisite(@RequestBody Visite ac){
 			return vService.addVisite(ac);
 		}
 	
-		@RequestMapping(value="/listeVisite", method=RequestMethod.GET, produces="application/json")
+		@RequestMapping(value="/liste", method=RequestMethod.GET, produces="application/json")
 		public List<Visite> getAllVisite(){
 			return vService.getAllVisite();
 		}
-		@RequestMapping(value="/rechercheVisite", method=RequestMethod.GET, produces="application/json")
+		@RequestMapping(value="/get", method=RequestMethod.GET, produces="application/json")
 		public Visite rechercherVisite(@RequestParam(value="pId") int id){
 			return vService.getVisite(id);
 		}
 		
-		@RequestMapping(value="/modifierVisite", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+		@RequestMapping(value="/update", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
 		public void modifierVisite(@RequestBody Visite ac){
 			vService.updateVisite(ac);
 		}
-		@RequestMapping(value="/supprimerVisite/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
+		@RequestMapping(value="/delete/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
 		public void supprimerVisite(@PathVariable(value="pId") int id){
 			Visite sOut= new Visite();
 			sOut.setId(id);

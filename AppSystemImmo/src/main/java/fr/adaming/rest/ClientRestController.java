@@ -38,7 +38,7 @@ public class ClientRestController {
 	 * 
 	 * @return le client correspondant à l'id
 	 */
-	@RequestMapping(value = "/getID", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = "application/json")
 	public Client getClientbyID(@RequestParam("pID") int id) {
 		return clientService.getClient(id);
 	}
@@ -68,7 +68,7 @@ public class ClientRestController {
 	 * 
 	 * @return pas de retour
 	 */
-	@RequestMapping(value = "/del/{pId}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/{pId}", method = RequestMethod.DELETE)
 	public void deleteEtudiant(@PathVariable("pId") int id) {
 		Client clIn = new Client();
 		clIn.setId(id);

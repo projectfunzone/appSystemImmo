@@ -21,27 +21,27 @@ public class AcquisitionRest {
 	@Autowired
 	private IAcquisitionService acService;
 	
-	@RequestMapping(value="/ajoutAcquisition", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+	@RequestMapping(value="/add", method=RequestMethod.POST, produces="application/json", consumes="application/json")
 	public Acquisition ajouterAcquisition(@RequestBody Acquisition ac){
 		return acService.addAcquisition(ac);
 	}
 	
 	
-	@RequestMapping(value="/listeAcquisition", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/liste", method=RequestMethod.GET, produces="application/json")
 	public List<Acquisition> getAllAcquision(){
 		return acService.getAllAcquisition();
 	}
 	
-	@RequestMapping(value="/rechercheAcquisition", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/get", method=RequestMethod.GET, produces="application/json")
 	public Acquisition rechercherAcquisition(@RequestParam(value="pId") int id){
 		return acService.getAcquisition(id);
 	}
 	
-	@RequestMapping(value="/modifierAcquisition", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+	@RequestMapping(value="/update", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
 	public void modifierAcquisition (@RequestBody Acquisition ac){
 		acService.updateAcquisition(ac);
 	}
-	@RequestMapping(value="/supprimerAcquisition/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
+	@RequestMapping(value="/delete/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
 	public void supprimerAcquisition(@PathVariable(value="pId") int id){
 		Acquisition acOut=new Acquisition();
 		acOut.setId(id);
