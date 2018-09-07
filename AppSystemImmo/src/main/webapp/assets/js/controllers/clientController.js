@@ -48,10 +48,12 @@ monApp.controller("clientCtrlFindAll", function($scope, clientProvider) {
 		nom : "",
 		prenom : "",
 		telPrive : "",
-		rue : "",
-		cp : "",
-		ville : "",
-		pays : ""
+		adresse : {
+			rue : "",
+			cp : "",
+			ville : "",
+			pays : ""
+		}
 	}
 
 	// la fonction ajouter à partir du bouton d'appel "add"
