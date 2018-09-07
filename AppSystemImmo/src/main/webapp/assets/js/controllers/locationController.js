@@ -1,5 +1,9 @@
 monApp.controller("locationCtrlAdd", function($scope, locationProvider, $location) {
 	
+	
+	$scope.habitation=true;
+	$scope.commercial=false;
+	$scope.terrain=false;
 	//initialiser l'objet dans le model du scope
 	$scope.locIn = {
 			categorie:"",
@@ -35,4 +39,32 @@ monApp.controller("locationCtrlAdd", function($scope, locationProvider, $locatio
 			}
 		})
 	}
+	
+	
+	
+    $scope.locIn.categorie = "Male";
+
+    $scope.RadioChange = function (s) {
+        $scope.CategorieSelected = s;
+        
+        if (s == "Habitation") {
+        	$scope.habitation=true;
+        	$scope.commercial=false;
+        	$scope.terrain=false;
+        }
+        
+        if (s == "Commercial") {
+        	$scope.habitation=false;
+        	$scope.commercial=true;
+        	$scope.terrain=false;
+        }
+        
+        if (s == "Terrain") {
+        	$scope.habitation=false;
+        	$scope.commercial=false;
+        	$scope.terrain=true;
+        }
+    };
+	
+	
 })

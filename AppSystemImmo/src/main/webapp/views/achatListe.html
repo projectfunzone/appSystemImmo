@@ -1,0 +1,49 @@
+<h1 style="text-align: center">Liste des achats</h1>
+<table class="table table-bordered">
+	<tr>
+		<th>id</th>
+		<th>Code Postal</th>
+		<th>Pays</th>
+		<th>Rue</th>
+		<th>Ville</th>
+		<th>Categorie</th>
+
+		<th>Date Disponibilité</th>
+		<th>Date de Soumission</th>
+		<th>Nombre de chambre</th>
+		<th>Photo</th>
+
+		<th>Revenue Cadastre</th>
+		<th>Statut</th>
+		<th>Type</th>
+		<th>Etat</th>
+		<th>Prix Demandé</th>
+		<th>Operations</th>
+	</tr>
+	<tr ng-repeat="achat in liste">
+		<td>{{achat.id}}</td>
+		
+		<td>{{achat.adresse.cp}}</td>
+		<td>{{achat.adresse.pays}}</td>
+		<td>{{achat.adresse.rue}}</td>
+		<td>{{achat.adresse.ville}}</td>
+		
+		<td>{{achat.categorie}}</td>
+		<td>{{achat.dateDispo}}</td>
+		<td>{{achat.dateSoumis}}</td>
+
+		<td>{{achat.noChambre}}</td>
+		<td>{{achat.photo}}</td>
+		<td>{{achat.revenueCadastre}}</td>
+		<td>{{achat.statut}}</td>
+
+		<td>{{achat.type}}</td>
+		<td>{{achat.etat}}</td>
+		<td>{{achat.prixDemande}}</td>
+
+		<td><a ng-click="deleteLien(e)">Supprimer</a> | <a
+			ng-click="updateLien(e)">Modifier</a></td>
+	</tr>
+
+</table>
+

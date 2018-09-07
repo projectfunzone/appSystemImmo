@@ -11,8 +11,7 @@ monApp.controller("achatCtrlFindAll",
 				$scope.liste = donnees;
 			})
 
-			/** appel de la fonction à partir du lien de la liste pour supprimer*/
-			/** un achat*/
+			/** appel de la fonction à partir du lien de la liste pour supprimer un achat*/
 			$scope.deleteLien = function(achatIn) {
 				achatProvider.delet(achatIn.id, function(retour) {
 
@@ -26,12 +25,14 @@ monApp.controller("achatCtrlFindAll",
 			}
 //*****************************************************************************************************
 			/** initialiser l'achat de rootScope*/
-			$rootScope.eUpdate = {
+			$rootScope.achatUpdate = {
 				id : undefined,
-				cp : "",
-				pays : "",
-				rue : "",
-				ville : "",
+				adresse :{
+						cp : "",
+						pays : "",
+						rue : "",
+						ville : "",
+						},
 				categorie : "",
 				dateDispo : "",
 				dateSoumis : "",
@@ -43,6 +44,7 @@ monApp.controller("achatCtrlFindAll",
 				etat : "",
 				prixDemande : ""
 			};
+
 			/** appel de la fonction à partir du lien de la liste pour modifier un achat*/
 			$scope.updateLien = function(achatIn) {
 				$rootScope.achatUpdate = achatIn;
@@ -50,7 +52,7 @@ monApp.controller("achatCtrlFindAll",
 				// aller dans la vue modif
 				$location.path("update");
 			}
-			//*****************************************************************************************************
+//*****************************************************************************************************
 		}).controller("achatCtrlGetOne", function($scope, achatProvider) {
 	$scope.indice = false;
 	$scope.id = undefined;
@@ -70,6 +72,7 @@ monApp.controller("achatCtrlFindAll",
 
 		})
 	}
+//*****************************************************************************************************
 }).controller("achatCtrlAdd", function($scope, achatProvider, $location) {
 
 	// initialiser l'objet dans le model du scope
@@ -150,7 +153,7 @@ monApp.controller("achatCtrlFindAll",
 					}
 				})
 			}
-//
+//*****************************************************************************************************
 		}).controller("achatCtrldelete",
 		function($scope, achatProvider, $location) {
 			$scope.id = undefined;
