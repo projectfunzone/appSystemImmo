@@ -16,11 +16,11 @@ monApp.config(function($routeProvider) {
 	
 	//****************************************************************************************************************
 	// Demba: routage pour l'achat
-	$routeProvider.when("/achat/liste", {templateUrl: "views/achatListeVue.html", controller: "achatCtrlFindAll"})
-	.when("/achat/get", {templateUrl: "views/achatGetVue.html", controller: "achatCtrlGet"})
-	.when("/achat/add", {templateUrl: "views/achatAddVue.html", controller: "achatCtrlAdd"})
-	.when("/achat/update", {templateUrl: "views/achatUpdateVue.html", controller: "achatCtrlUpdate"})
-	.when("/achat/delete", {templateUrl: "views/achatDeleteVue.html", controller: "achatCtrlDelete"})
+	$routeProvider.when("/achat/liste", {templateUrl: "views/achatListe.html", controller: "achatCtrlFindAll"})
+	.when("/achat/get", {templateUrl: "views/achatGet.html", controller: "achatCtrlGet"})
+	.when("/achat/add", {templateUrl: "views/achatAdd.html", controller: "achatCtrlAdd"})
+	.when("/achat/update", {templateUrl: "views/achatUpdate.html", controller: "achatCtrlUpdate"})
+	.when("/achat/delete", {templateUrl: "views/achatDelete.html", controller: "achatCtrlDelete"})
 	
 	//****************************************************************************************************************
 	// Amandine: routage pour la visite
