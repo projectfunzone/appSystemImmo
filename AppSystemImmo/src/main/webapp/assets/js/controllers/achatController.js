@@ -75,12 +75,17 @@ monApp.controller("achatCtrlFindAll",
 //*****************************************************************************************************
 }).controller("achatCtrlAdd", function($scope, achatProvider, $location) {
 
+	$scope.habitation = true;
+	$scope.commercial = false;
+	$scope.terrain = false;
 	// initialiser l'objet dans le model du scope
 	$scope.achatForm = {
-			cp : "",
-			pays : "",
-			rue : "",
-			ville : "",
+			adresse : {
+				rue : "",
+				cp : "",
+				ville : "",
+				pays : ""
+			},
 			categorie : "",
 			dateDispo : "",
 			dateSoumis : "",
@@ -107,11 +112,42 @@ monApp.controller("achatCtrlFindAll",
 			}
 		})
 	}
+	// méthode pour permettre de changer la vue lors de la selection de la
+	// catégorie : n'affiche que les types de la catégorie concerné
+	$scope.RadioChange = function(s) {
+		$scope.CategorieSelected = s;
+
+		if (s == "Habitation") {
+			$scope.habitation = true;
+			$scope.commercial = false;
+			$scope.terrain = false;
+		}
+
+		if (s == "Commercial") {
+			$scope.habitation = false;
+			$scope.commercial = true;
+			$scope.terrain = false;
+		}
+
+		if (s == "Terrain") {
+			$scope.habitation = false;
+			$scope.commercial = false;
+			$scope.terrain = true;
+		}
+	};
+	
+	
+	
+	
+	
 })
 //**************************************************************************************************
 .controller("achatCtrlUpdate",
 		function($scope, achatProvider, $location, $rootScope) {
 
+	$scope.habitation = true;
+	$scope.commercial = false;
+	$scope.terrain = false;
 			// initialiser l'objet dans le model du scope s'il n'est pas dans le
 			// rootscope
 
@@ -119,10 +155,12 @@ monApp.controller("achatCtrlFindAll",
 
 				$scope.achatModif = {
 					id : undefined,
-					cp : "",
-					pays : "",
-					rue : "",
-					ville : "",
+					adresse : {
+						rue : "",
+						cp : "",
+						ville : "",
+						pays : ""
+					},
 					categorie : "",
 					dateDispo : "",
 					dateSoumis : "",
@@ -153,6 +191,31 @@ monApp.controller("achatCtrlFindAll",
 					}
 				})
 			}
+			
+			// méthode pour permettre de changer la vue lors de la selection de la
+			// catégorie : n'affiche que les types de la catégorie concerné
+			$scope.RadioChange = function(s) {
+				$scope.CategorieSelected = s;
+
+				if (s == "Habitation") {
+					$scope.habitation = true;
+					$scope.commercial = false;
+					$scope.terrain = false;
+				}
+
+				if (s == "Commercial") {
+					$scope.habitation = false;
+					$scope.commercial = true;
+					$scope.terrain = false;
+				}
+
+				if (s == "Terrain") {
+					$scope.habitation = false;
+					$scope.commercial = false;
+					$scope.terrain = true;
+				}
+			};
+
 //*****************************************************************************************************
 		}).controller("achatCtrlDelete",
 		function($scope, achatProvider, $location) {
