@@ -30,4 +30,12 @@ monApp.config(function($routeProvider) {
 	.when ("/visite/update", {templateUrl:"views/visiteUpdate.html", controller: "visiteCtrlUpdate"})
 	.when ("/visite/delete", {templateUrl:"views/visiteDelete.html", controller: "visiteCtrlDelete"})
 	
+	//****************************************************************************************************************
+	// Thibault: routage pour le client
+	$routeProvider.when("/client/liste", {templateUrl:"views/clientListe.html", controller: "clientCtrlFindAll"})
+	.when ("/client/add", {templateUrl:"views/clientAdd.html", controller: "clientCtrlAdd"})
+	.when ("/client/get", {templateUrl:"views/clientGet.html", controller: "clientCtrlGet"})
+	.when ("/client/update", {templateUrl:"views/clientUpdate.html", controller: "clientCtrlUpdate"})
+	.when ("/client/delete", {templateUrl:"views/clientDelete.html", controller: "clientCtrlDelete"})
+	
 });

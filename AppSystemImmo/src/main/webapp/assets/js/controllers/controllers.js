@@ -44,23 +44,23 @@ monApp.controller("findAllCtrl",
 			}
 
 		}).controller("getOneCtrl", function($scope, etudiantProvider) {
-	$scope.indice = false;
-	$scope.id = undefined;
-	$scope.msg = "";
-	$scope.rechercher = function() {
-		// appel de la fonction du etudiantProvider afin de récupérer l'etudiant
-		etudiantProvider.getById($scope.id, function(donnees) {
-
-			if (typeof donnees == 'object') {
-				$scope.etu = donnees;
-				$scope.indice = true;
-			} else {
-				$scope.indice = false;
-				$scope.msg = "l'étudiant recherché n'existe pas"
-			}
-			;
-
-		})
+		$scope.indice = false;
+		$scope.id = undefined;
+		$scope.msg = "";
+		$scope.rechercher = function() {
+			// appel de la fonction du etudiantProvider afin de récupérer l'etudiant
+			etudiantProvider.getById($scope.id, function(donnees) {
+	
+				if (typeof donnees == 'object') {
+					$scope.etu = donnees;
+					$scope.indice = true;
+				} else {
+					$scope.indice = false;
+					$scope.msg = "l'étudiant recherché n'existe pas"
+				}
+				;
+	
+			})
 	}
 }).controller("addCtrl", function($scope, etudiantProvider, $location) {
 

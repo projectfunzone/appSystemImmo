@@ -52,7 +52,9 @@ monApp
 								{
 									method : "POST",
 									url : "http://localhost:8080/05_a_MVC_REST_IoC_Hibernate/ws/add",
+									//format d'envoi
 									data : angular.toJson(eIn),
+									//format de reception
 									headers : {
 										'Content-Type' : 'application/json'
 									}
