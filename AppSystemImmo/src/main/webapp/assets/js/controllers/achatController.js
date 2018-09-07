@@ -53,7 +53,7 @@ monApp.controller("achatCtrlFindAll",
 				$location.path("update");
 			}
 //*****************************************************************************************************
-		}).controller("achatCtrlGetOne", function($scope, achatProvider) {
+		}).controller("achatCtrlGet", function($scope, achatProvider) {
 	$scope.indice = false;
 	$scope.id = undefined;
 	$scope.msg = "";
@@ -109,7 +109,7 @@ monApp.controller("achatCtrlFindAll",
 	}
 })
 //**************************************************************************************************
-.controller("achatCtrlupdate",
+.controller("achatCtrlUpdate",
 		function($scope, achatProvider, $location, $rootScope) {
 
 			// initialiser l'objet dans le model du scope s'il n'est pas dans le
@@ -154,12 +154,12 @@ monApp.controller("achatCtrlFindAll",
 				})
 			}
 //*****************************************************************************************************
-		}).controller("achatCtrldelete",
+		}).controller("achatCtrlDelete",
 		function($scope, achatProvider, $location) {
 			$scope.id = undefined;
 
 			// la fonction appeler à partir du bouton
-			$scope.supprimer = function() {
+			$scope.delet = function() {
 
 				// appel de la fonction service pour supprimer dans la bd
 				achatProvider.delet($scope.id, function(retour) {

@@ -82,8 +82,8 @@ monApp
 						});
 					}
 
-					// supprimer un etudiant
-					function suppr(id, callBack) {
+					// supprimer un ajout
+					function delets(id, callBack) {
 						$http(
 								{
 									method : "DELETE",
@@ -105,7 +105,7 @@ monApp
 						getById : rech,
 						add : ajout,
 						update : modif,
-						delet : suppr
+						delet : delets
 					}
 
 				});
