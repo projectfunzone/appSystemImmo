@@ -37,7 +37,7 @@ public class AchatRest {
 	public void modifierAchat(@RequestBody Achat ac){
 		aService.updateAchat(ac);
 	}
-	@RequestMapping(value="/delete/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
+	@RequestMapping(value="/delete/{pId}", method=RequestMethod.DELETE)
 	public void supprimerAchat(@PathVariable(value="pId") int id){
 		Achat aOut=new Achat();
 		aOut.setId(id);

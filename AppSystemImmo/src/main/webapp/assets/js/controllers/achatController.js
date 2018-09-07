@@ -101,7 +101,7 @@ monApp.controller("achatCtrlFindAll",
 			if (typeof donnees == 'object') {
 				$scope.msg = "";
 				// redirection vers l'accueil
-				$location.path("liste");
+				$location.path("achat/liste");
 			} else {
 				$scope.msg = "L'ajout d'achat a échoué ! ";
 			}
@@ -147,7 +147,7 @@ monApp.controller("achatCtrlFindAll",
 					if (typeof donnees == 'object') {
 						$scope.msg = "";
 						// redirection vers l'accueil
-						$location.path("liste");
+						$location.path("achat/liste");
 					} else {
 						$scope.msg = "La modification de l'ajout a échoué ! ";
 					}
@@ -158,7 +158,7 @@ monApp.controller("achatCtrlFindAll",
 		function($scope, achatProvider, $location) {
 			$scope.id = undefined;
 
-			// la fonction appeler à partir du bouton
+			/** la fonction appeler à partir du bouton*/
 			$scope.delet = function() {
 
 				// appel de la fonction service pour supprimer dans la bd
@@ -166,7 +166,7 @@ monApp.controller("achatCtrlFindAll",
 					if (retour == 'OK') {
 						$scope.msg = "";
 						// redirection vers l'accueil
-						$location.path("liste");
+						$location.path("achat/liste");
 					} else {
 						$scope.msg = "La suppression de l'achat a échoué ! ";
 					}
