@@ -3,7 +3,7 @@
  * Controllers pour la gestion des Clients
  */
 
-monApp.controller("findAllCtrl", function($scope) {
+monApp.controller("clientCtrlFindAll", function($scope) {
 	
 	// appel de la fonction Liste de 'clientProvider'
 	clientProvider.getListe(function(donnees) {
@@ -18,7 +18,7 @@ monApp.controller("findAllCtrl", function($scope) {
 	// appel de la fonction à partir du lien de la liste pour modifier un client
 	
 	
-}).controller("getCtrl", function($scope, clientProvider) {
+}).controller("clientCtrlGet", function($scope, clientProvider) {
 	
 	$scope.indice = false;
 	$scope.id = undefined;
@@ -39,7 +39,7 @@ monApp.controller("findAllCtrl", function($scope) {
 
 		})
 }
-}).controller("addCtrl", function($scope, clientProvider, $location) {
+}).controller("clientCtrlAdd", function($scope, clientProvider, $location) {
 
 	// initialiser l'objet dans le model du scope
 	$scope.clForm = {
@@ -68,7 +68,7 @@ monApp.controller("findAllCtrl", function($scope) {
 			}
 		})
 	}
-}).controller("updateCtrl",
+}).controller("clientCtrlUpdate",
 		function($scope, clientProvider, $location, $rootScope) {
 
 	// initialiser l'objet dans le model du scope s'il n'est pas dans le
@@ -107,7 +107,7 @@ monApp.controller("findAllCtrl", function($scope) {
 		})
 	}
 
-}).controller("deleteCtrl",
+}).controller("clientCtrlDelete",
 		function($scope, clientProvider, $location) {
 	$scope.id = undefined;
 
