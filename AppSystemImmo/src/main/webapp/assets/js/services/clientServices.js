@@ -6,7 +6,7 @@
 monApp.factory("clientProvider", function($http) {
 
 	// récupérer la liste
-	function getListe(callBack) {
+	function getListes(callBack) {
 		// récupérer la liste à partir du serveur
 		$http({
 			method : "GET",
@@ -21,9 +21,9 @@ monApp.factory("clientProvider", function($http) {
 		});
 
 	}
-	
+
 	// récupérer un client avec son id
-	function get(id, callBack) {
+	function gets(id, callBack) {
 
 		// récupérer la liste à partir du serveur
 		$http({
@@ -32,8 +32,7 @@ monApp.factory("clientProvider", function($http) {
 			params : {
 				pId : id
 			}
-		}).then(
-		function successCallback(response) {
+		}).then(function successCallback(response) {
 			// stocker les données dans la callBack, afin de les transferer
 			// au controller, d'une manière asynchrone
 			callBack(response.data);
@@ -42,21 +41,19 @@ monApp.factory("clientProvider", function($http) {
 		});
 
 	}
-	
-	
-	//ajouter un client
-	function add(clIn, callBack) {
-		$http(
-				{
-					method : "POST",
-					url : "http://localhost:8080/AppSystemImmo/client/add",
-					//format d'envoi
-					data : angular.toJson(clIn),
-					//format de reception
-					headers : {
-						'Content-Type' : 'application/json'
-					}
-				}).then(function successCallback(response) {
+
+	// ajouter un client
+	function adds(clIn, callBack) {
+		$http({
+			method : "POST",
+			url : "http://localhost:8080/AppSystemImmo/client/add",
+			// format d'envoi
+			data : angular.toJson(clIn),
+			// format de reception
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		}).then(function successCallback(response) {
 			// stocker les données dans la callBack, afin de les
 			// transferer au controller, d'une manière asynchrone
 			callBack(response.data);
@@ -64,18 +61,17 @@ monApp.factory("clientProvider", function($http) {
 
 		});
 	}
-	
+
 	// modifier un client dans la bd
-	function update(clIn, callBack) {
-		$http(
-				{
-					method : "PUT",
-					url : "http://localhost:8080/AppSystemImmo/client/update",
-					data : angular.toJson(clIn),
-					headers : {
-						'Content-Type' : 'application/json'
-					}
-				}).then(function successCallback(response) {
+	function updates(clIn, callBack) {
+		$http({
+			method : "PUT",
+			url : "http://localhost:8080/AppSystemImmo/client/update",
+			data : angular.toJson(clIn),
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		}).then(function successCallback(response) {
 			// stocker les données dans la callBack, afin de les
 			// transferer au
 			// controller, d'une manière asynchrone
@@ -84,15 +80,13 @@ monApp.factory("clientProvider", function($http) {
 			callback(response.data)
 		});
 	}
-	
+
 	// supprimer un client
-	function delet(id, callBack) {
-		$http(
-				{
-					method : "DELETE",
-					url : "http://localhost:8080/AppSystemImmo/client/delete/"
-							+ id,
-				}).then(function successCallback(response) {
+	function delets(id, callBack) {
+		$http({
+			method : "DELETE",
+			url : "http://localhost:8080/AppSystemImmo/client/delete/" + id,
+		}).then(function successCallback(response) {
 			// stocker les données dans la callBack, afin de les
 			// transferer au controller, d'une manière asynchrone
 			callBack(response.statusText);
@@ -101,8 +95,6 @@ monApp.factory("clientProvider", function($http) {
 		});
 	}
 
-
-	
 	// les retour de factory
 	return {
 		getListe : getListes,
@@ -111,5 +103,5 @@ monApp.factory("clientProvider", function($http) {
 		update : updates,
 		delet : delets
 	}
-	
+
 });
