@@ -32,7 +32,7 @@ monApp.config(function($routeProvider) {
 	
 	//****************************************************************************************************************
 	// Thibault: routage pour le client
-	$routeProvider.when("/client/liste", {templateUrl:"views/clientListe.html", controller: "clientCrltFindAll"})
+	$routeProvider.when("/client/liste", {templateUrl:"views/clientListe.html", controller: "clientCtrlFindAll"})
 	.when ("/client/add", {templateUrl:"views/clientAdd.html", controller: "clientCtrlAdd"})
 	.when ("/client/get", {templateUrl:"views/clientGet.html", controller: "clientCtrlGet"})
 	.when ("/client/update", {templateUrl:"views/clientUpdate.html", controller: "clientCtrlUpdate"})
