@@ -3,8 +3,6 @@ monApp.factory("locationProvider", function($http) {
 	//ajouter une location
 	function add(locIn, callBack) {
 		
-
-		
 		$http(
 				{
 					method: "POST",
