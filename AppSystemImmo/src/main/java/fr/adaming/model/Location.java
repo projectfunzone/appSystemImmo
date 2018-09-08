@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -47,6 +48,9 @@ public class Location extends BienImmo implements Serializable {
 	@JoinColumn(name = "classeStandard_id", referencedColumnName = "id", nullable = true)
 	private ClasseStandard classeStandard;
 
+//	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+//	private List<Photo> listeImages;
+	
 	/*
 	 * constructeur
 	 */
@@ -144,5 +148,13 @@ public class Location extends BienImmo implements Serializable {
 	public void setClasseStandard(ClasseStandard classeStandard) {
 		this.classeStandard = classeStandard;
 	}
+
+//	public List<Photo> getListeImages() {
+//		return listeImages;
+//	}
+//
+//	public void setListeImages(List<Photo> listeImages) {
+//		this.listeImages = listeImages;
+//	}
 
 }

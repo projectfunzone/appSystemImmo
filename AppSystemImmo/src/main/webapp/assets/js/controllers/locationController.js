@@ -20,7 +20,6 @@ monApp.controller("locationCtrlAdd", function($scope, locationProvider,
 		},
 		dateDispo : "",
 		revenueCadastre : "",
-		photo : "",
 		caution : "",
 		loyer : "",
 		charge : "",
@@ -73,6 +72,7 @@ monApp.controller("locationCtrlAdd", function($scope, locationProvider,
 	$scope.terrain = false;
 	// initialiser l'objet dans le model du scope
 	$scope.locIn = {
+		id:"",
 		categorie : "",
 		type : "",
 		surface : "",
@@ -87,7 +87,6 @@ monApp.controller("locationCtrlAdd", function($scope, locationProvider,
 		},
 		dateDispo : "",
 		revenueCadastre : "",
-		photo : "",
 		caution : "",
 		loyer : "",
 		charge : "",
@@ -95,15 +94,12 @@ monApp.controller("locationCtrlAdd", function($scope, locationProvider,
 		garniture : ""
 	}
 	
-	$scope.add = function() {
+	$scope.update = function() {
 		locationProvider.updates($scope.locIn, function(donnees) {
-			if (typeof donnees == 'object') {
+		
 				$scope.msg = "";
 				// redirection vers l'accueil
 				$location.path("accueil");
-			} else {
-				$scope.msg = "L'ajout a échoué ! ";
-			}
 		})
 	}
 
@@ -130,5 +126,14 @@ monApp.controller("locationCtrlAdd", function($scope, locationProvider,
 			$scope.terrain = true;
 		}
 	};
+
+}).controller("locationCtrlListe", 
+		function($scope, locationProvider){
+	locationProvider.getListes(function(donnees){
+		$scope.liste=donnees;
+	})
+	
+	
+	
 
 })
