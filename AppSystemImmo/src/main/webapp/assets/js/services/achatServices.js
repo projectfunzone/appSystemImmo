@@ -18,7 +18,7 @@ monApp.factory("achatProvider", function($http) {
 
 		});
 	}
-	//***************************************************************************************
+	// ***************************************************************************************
 	/** récupérer un ajout avec son id */
 	function rech(id, callBack) {
 
@@ -37,9 +37,17 @@ monApp.factory("achatProvider", function($http) {
 		});
 
 	}
-	//***************************************************************************************
+	// ***************************************************************************************
 	/** ajouter un achat dans la bd */
 	function ajout(achatIn, callBack) {
+		for ( var i in achatIn.photos) {
+			photo = {
+				image : achatIn.photos[i].base64
+			};
+			
+			achatIn.listeImages.push(photo);
+		}
+
 		$http({
 			method : "POST",
 			url : "http://localhost:8080/AppSystemImmo/achat/add",
@@ -56,8 +64,8 @@ monApp.factory("achatProvider", function($http) {
 
 		});
 	}
-	//***************************************************************************************
-	/**modifier un etudiant dans la bd*/
+	// ***************************************************************************************
+	/** modifier un etudiant dans la bd */
 	function modif(achatIn, callBack) {
 		$http({
 			method : "PUT",
@@ -67,32 +75,37 @@ monApp.factory("achatProvider", function($http) {
 				'Content-Type' : 'application/json'
 			}
 		}).then(function successCallback(response) {
-			/** stocker les données dans la callBack, afin de les
-			 transferer au
-			controller, d'une manière asynchrone*/
+			/**
+			 * stocker les données dans la callBack, afin de les transferer au
+			 * controller, d'une manière asynchrone
+			 */
 			callBack(response.data);
 		}, function errorCallback(response) {
 			callback(response.data)
 		});
 	}
-	//***************************************************************************************
-	/** supprimer un ajout*/
+	// ***************************************************************************************
+	/** supprimer un ajout */
 	function delets(id, callBack) {
 		$http({
 			method : "DELETE",
 			url : "http://localhost:8080/AppSystemImmo/achat/delete/" + id,
-		}).then(function successCallback(response) {
-			/** stocker les données dans la callBack, afin de les
-			 transferer au
-			 controller, d'une manière asynchrone*/
-			callBack(response.statusText);
-		}, function errorCallback(response) {
-			console.log("----------erreur dans supprimer un achat: "+response.statusText);
-			callback(response.statusText)
-		});
+		}).then(
+				function successCallback(response) {
+					/**
+					 * stocker les données dans la callBack, afin de les
+					 * transferer au controller, d'une manière asynchrone
+					 */
+					callBack(response.statusText);
+				},
+				function errorCallback(response) {
+					console.log("----------erreur dans supprimer un achat: "
+							+ response.statusText);
+					callback(response.statusText)
+				});
 	}
 
-	/** le retour de ma fonction factory*/
+	/** le retour de ma fonction factory */
 	return {
 		getListe : recupListe,
 		getById : rech,

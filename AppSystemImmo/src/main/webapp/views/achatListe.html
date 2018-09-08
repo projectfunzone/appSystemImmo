@@ -33,7 +33,7 @@
 		<td>{{achat.dateSoumis}}</td>
 
 		<td>{{achat.noChambre}}</td>
-		<td>{{achat.photo}}</td>
+		<td><img ng-repeat="p in achat.listeImages"  ng-src="data:image/JPEG;base64,{{p.image}}" style="height: 30px;width: 30px"></td>
 		<td>{{achat.revenueCadastre}}</td>
 		<td>{{achat.statut}}</td>
 

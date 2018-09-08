@@ -36,8 +36,7 @@ public class BienImmo implements Serializable {
 
 	private double revenueCadastre;
 
-	@Lob
-	private Byte[] photo;
+
 	// ************************************************************
 	/** Transformation de l'association UML en JAVA */
 
@@ -51,7 +50,7 @@ public class BienImmo implements Serializable {
 	}
 
 	public BienImmo(String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
-			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse) {
+			Date dateDispo, double revenueCadastre, Adresse adresse) {
 		super();
 		this.categorie = categorie;
 		this.type = type;
@@ -61,12 +60,12 @@ public class BienImmo implements Serializable {
 		this.dateSoumis = dateSoumis;
 		this.dateDispo = dateDispo;
 		this.revenueCadastre = revenueCadastre;
-		this.photo = photo;
+
 		this.adresse = adresse;
 	}
 
 	public BienImmo(int id, String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
-			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse) {
+			Date dateDispo, double revenueCadastre, Adresse adresse) {
 		super();
 		this.id = id;
 		this.categorie = categorie;
@@ -77,7 +76,6 @@ public class BienImmo implements Serializable {
 		this.dateSoumis = dateSoumis;
 		this.dateDispo = dateDispo;
 		this.revenueCadastre = revenueCadastre;
-		this.photo = photo;
 		this.adresse = adresse;
 	}
 
@@ -156,13 +154,6 @@ public class BienImmo implements Serializable {
 		this.revenueCadastre = revenueCadastre;
 	}
 
-	public Byte[] getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(Byte[] photo) {
-		this.photo = photo;
-	}
 
 	// ************************************************************
 	/** Getters et setters pour la transformation de l'asso UML en JAVA */

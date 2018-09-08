@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -27,6 +28,9 @@ public class Achat extends BienImmo implements Serializable {
 	/** Les attributs de BienImmo */
 	private double prixDemande;
 	private String etat;
+	
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private List<Photo> listeImages;
 
 	@Fetch(FetchMode.SELECT)
 	@OneToMany(mappedBy = "achat", fetch = FetchType.EAGER)
@@ -48,14 +52,14 @@ public class Achat extends BienImmo implements Serializable {
 
 	public Achat(String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
 			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double prixDemande, String etat) {
-		super(categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
+		super(categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, adresse);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
 
 	public Achat(int id, String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
 			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double prixDemande, String etat) {
-		super(id, categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
+		super(id, categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre,adresse);
 		this.prixDemande = prixDemande;
 		this.etat = etat;
 	}
@@ -103,5 +107,15 @@ public class Achat extends BienImmo implements Serializable {
 	public void setClasseStandard(ClasseStandard classeStandard) {
 		this.classeStandard = classeStandard;
 	}
+
+	public List<Photo> getListeImages() {
+		return listeImages;
+	}
+
+	public void setListeImages(List<Photo> listeImages) {
+		this.listeImages = listeImages;
+	}
+	
+	
 
 }

@@ -57,7 +57,7 @@ public class Location extends BienImmo implements Serializable {
 	public Location(String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
 			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double caution, double loyer,
 			double charge, String bail, String garniture) {
-		super(categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
+		super(categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, adresse);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
@@ -68,7 +68,7 @@ public class Location extends BienImmo implements Serializable {
 	public Location(int id, String categorie, String type, int surface, int noChambre, String statut, Date dateSoumis,
 			Date dateDispo, double revenueCadastre, Byte[] photo, Adresse adresse, double caution, double loyer,
 			double charge, String bail, String garniture) {
-		super(id, categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, photo, adresse);
+		super(id, categorie, type, surface, noChambre, statut, dateSoumis, dateDispo, revenueCadastre, adresse);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
