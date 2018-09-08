@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Dashboard Administrateur</title>
+<!-- ajouter la lib de bootstrap -->
+<link rel="stylesheet" href="assets/resources/css/bootstrap.css">
+<link rel="stylesheet" href="assets/resources/css/monCss.css" />
+
+<!-- ajouter les libs de angularJS -->
+<script type="text/javascript" src="assets/resources/js/angular.js"></script>
+<script type="text/javascript"
+	src="assets/resources/js/angular-route.js"></script>
+<script type="text/javascript"
+	src="assets/resources/js/angular-base64-upload.js"></script>
+
+
+<!-- ajouter mes scripts -->
+<!-- module -->
+<script type="text/javascript" src="assets/js/modules/app.js"></script>
+<!-- rooting -->
+<script type="text/javascript" src="assets/js/routing/routage.js"></script>
+<!-- controller -->
+<script type="text/javascript"
+	src="assets/js/controllers/achatController.js"></script>
+<script type="text/javascript"
+	src="assets/js/controllers/clientController.js"></script>
+<script type="text/javascript"
+	src="assets/js/controllers/locationController.js"></script>
+<script type="text/javascript"
+	src="assets/js/controllers/visiteController.js"></script>
+<script type="text/javascript"
+	src="assets/js/controllers/proprietaireController.js"></script>
+<!-- service -->
+<script type="text/javascript" src="assets/js/services/achatServices.js"></script>
+<script type="text/javascript"
+	src="assets/js/services/clientServices.js"></script>
+<script type="text/javascript"
+	src="assets/js/services/locationService.js"></script>
+<script type="text/javascript" src="assets/js/services/visiteService.js"></script>
+<script type="text/javascript"
+	src="assets/js/services/proprietaireServices.js"></script>
+
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+<script
+	src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+<link
+	href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css"
+	rel="stylesheet">
+
+<!-- Import pour le template -->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="assets/resources/css/ie10-viewport-bug-workaround.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="assets/templates/dashboard.css" rel="stylesheet">
+</head>
+
+<body ng-app="monApp">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">AppSystemImmo</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Dashboard</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active"><a href="#">Overview <span
+							class="sr-only">(current)</span></a></li>
+					<li><a href="#">Reports</a></li>
+					<li><a href="#">Analytics</a></li>
+					<li><a href="#">Export</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Client<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#!client/liste">Liste</a></li>
+							<li><a href="#!client/get">Recherche</a></li>
+							<li><a href="#!client/add">Ajouter</a></li>
+							<li><a href="#!client/update">Mise à jour</a></li>
+							<li><a href="#!client/delete">Supprimer</a></li>
+						</ul></li>
+					<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Propriétaire<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#!proprietaire/liste">Liste</a></li>
+							<li><a href="#!proprietaire/get">Recherche</a></li>
+							<li><a href="#!proprietaire/add">Ajouter</a></li>
+							<li><a href="#!proprietaire/update">Mise à jour</a></li>
+							<li><a href="#!proprietaire/delete">Supprimer</a></li>
+						</ul></li>
+					<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Bien
+							à la vente<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#!achat/liste">Liste</a></li>
+							<li><a href="#!achat/get">Recherche</a></li>
+							<li><a href="#!achat/add">Ajouter</a></li>
+							<li><a href="#!achat/update">Mise à jour</a></li>
+							<li><a href="#!achat/delete">Supprimer</a></li>
+						</ul></li>
+					<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Bien
+							à louer<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#!location/liste">Liste</a></li>
+							<li><a href="#!location/get">Recherche</a></li>
+							<li><a href="#!location/add">Ajouter</a></li>
+							<li><a href="#!location/update">Mise à jour</a></li>
+							<li><a href="#!location/delete">Supprimer</a></li>
+						</ul></li>
+					<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Visite<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#!visite/liste">Liste</a></li>
+							<li><a href="#!visite/get">Recherche</a></li>
+							<li><a href="#!visite/add">Ajouter</a></li>
+							<li><a href="#!visite/update">Mise à jour</a></li>
+							<li><a href="#!visite/delete">Supprimer</a></li>
+						</ul></li>
+
+
+
+
+
+				</ul>
+
+				<ul class="nav nav-sidebar">
+					<li><a href="">Nav item again</a></li>
+					<li><a href="">One more nav</a></li>
+					<li><a href="">Another nav item</a></li>
+				</ul>
+			</div>
+			<div class="container">
+				<div ng-view></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="../assets/resources/js/jquery-3.3.1.js"><\/script>')
+	</script>
+	<script src="assets/resources/js/bootstrap.js"></script>
+	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+	<script src="assets/resources/js/vendor/holder.min.js"></script>
+</body>
+</html>
