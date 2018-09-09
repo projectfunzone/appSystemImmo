@@ -57,15 +57,17 @@ monApp.factory(
 			$http(
 					{
 						method : "DELETE",
-						url : "http://localhost:8080/AppSystemImmo/visite/delete"
+						url : "http://localhost:8080/AppSystemImmo/visite/delete/"
 								+ id,
 					}).then(function successCallback(response) {
 				// stocker les données dans la callBack, afin de les
 				// transferer au
 				// controller, d'une manière asynchrone
-				callBack(response.statusText);
+						callBack(response.statusText);
 			}, function errorCallback(response) {
-				callback(response.statusText)
+				
+				callback(response.statusText);
+				
 			});
 		}
 		

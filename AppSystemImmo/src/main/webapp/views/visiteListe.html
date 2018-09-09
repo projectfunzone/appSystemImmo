@@ -1,19 +1,22 @@
 <h1 style="text-align: center">Liste des visites</h1>
 <table class="table table-bordered">
 	<tr>
-		<th>id</th>
+		<th>R&eacute;ference visite</th>
 		<th>Date</th>
-		<th>rue</th>
-		<th>ville</th>
-		<th>Pays</th>
+		<th>Information client</th>
+		<th>Nom du conseiller</th>
+		<th>Adresse du bien a visiter</th>
+		<th>Op&eacute;rations</th>
 	
 	</tr>
 	<tr ng-repeat="v in liste">
 		<td>{{v.id}}</td>
 		<td>{{v.date | date: "dd/MM/yyyy hh:mm:ss"}}</td>
-		<td>{{v.adresse.rue}}</td>
-		<td>{{v.adresse.ville}}</td>
-		<td>{{v.adresse.pays}}</td>
+		<td>{{v.client.nom}}<br/>{{v.client.prenom}}<br/>{{v.client.telPrive}}</td>
+		<td>{{v.conseiller.nom}}</td>
+		<td>{{v.achat.categorie}}<br/>{{v.achat.type}}<br/>{{v.achat.adresse.rue}}<br/>{{v.achat.adresse.cp}} {{v.achat.adresse.ville}}</td>
+		<!-- Voir pour mettre achat || location -->
+	<td><a ng-click="deleteLien(v)">Supprimer</a> | <a ng-click="updateLien(v)">Modifier</a></td>
 	</tr>
 
 

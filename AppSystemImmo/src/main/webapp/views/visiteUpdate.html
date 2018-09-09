@@ -1,0 +1,12 @@
+<!-- Formilaire Modifier de visite (sélection date et heure) -->
+<h1>Ajouter une date et une heure de visite</h1>
+
+
+<div class="form-group">
+    <label for="idId" class="col-sm-2 control-label">Id</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="idId" placeholder="Id" ng-model="visiteForm.id" required>
+    </div>
+  </div>
+<input type="datetime-local" ng-model="vModif.date" placeholder="Selectionner un rendez-vous">
+<button class="btn btn-default" ng-click="updates()">Modifier</button>

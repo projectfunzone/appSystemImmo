@@ -1,4 +1,38 @@
 <!-- Formilaire Ajout de visite (sélection date et heure) -->
-<h1>Ajouter une date et une heure de visite</h1>
+<h1>Ajouter une visite</h1>
+<form class="form-horizontal" >
 
-<input type="datetime-local" ng-model="visiteCtrlAdd" placeholder="Selectionner un rendez-vous">
+<div class="form-group">
+<label for="idNom" class="col-sm-2 control-label">Date et heure de la visite</label>
+    <div class="col-sm-5">
+<input type="datetime-local" ng-model="visiteForm.date" placeholder="Selectionner un rendez-vous">
+ </div>
+ </div>
+ 
+
+
+ 
+ 
+ <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+<button class="btn btn-default" ng-click="adds()">Reserver</button>
+    </div>
+  </div>
+</form>
+
+
+ <table class="table table-bordered">
+	<tr>
+		<th>R&eacute;ference client</th>
+		<th>Nom</th>
+		<th>Prenom</th>
+		<th>T&eacute;l&eacute;phone (priv&eacute;)</th>
+
+	</tr>
+	<tr ng-repeat="v in liste">
+		<td>{{v.id}}</td>
+		<td>{{cl.nom}}</td>
+		<td>{{cl.prenom}}</td>
+		<td>{{cl.telPrive}}</td>
+	</tr>
+</table>
