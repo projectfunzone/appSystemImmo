@@ -1,0 +1,80 @@
+<h1>Formulaire de modification d'un nouveau propri&eacute;taire</h1>
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idId" class="col-sm-2 control-label">ID</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idId" placeholder="ID"
+				ng-model="proprioModif.id">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idNom" class="col-sm-2 control-label">Nom</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="idNom" placeholder="Nom"
+				ng-model="proprioModif.nom">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idPrenom" class="col-sm-2 control-label">Pr&eacute;nom</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="idPrenom"
+				placeholder="Pr&eacute;nom" ng-model="proprioModif.prenom">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idRue" class="col-sm-2 control-label">Rue</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="idRue"
+				placeholder="Le nom de votre rue"
+				ng-model="proprioModif.adresse.rue">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idCodeP" class="col-sm-2 control-label">Code
+			Postal</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="idCodeP"
+				placeholder="Code Postal" ng-model="proprioModif.adresse.cp">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idVille" class="col-sm-2 control-label">Ville</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="idVille"
+				placeholder="Ville" ng-model="proprioModif.adresse.ville">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idPays" class="col-sm-2 control-label">Pays</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="idPays"
+				placeholder="Pays" ng-model="proprioModif.adresse.pays">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idTelPrive" class="col-sm-2 control-label">T&eacute;l&eacute;phone
+			Privé</label>
+		<div class="col-sm-5">
+			<input type="tel" class="form-control" id="idTelPrive"
+				placeholder="Tel Priv&eacute;" ng-model="proprioModif.telPrive">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idTelPro" class="col-sm-2 control-label">T&eacute;l&eacute;phone
+			Professionnel</label>
+		<div class="col-sm-5">
+			<input type="tel" class="form-control" id="idTelPro"
+				placeholder="T&eacute;l&eacute;phone pro"
+				ng-model="proprioModif.telPro">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="update()">Valider
+				les modifications</button>
+		</div>
+	</div>
+</form>
+
+<h1 style="color: red; text-align: center">{{msg}}</h1>
