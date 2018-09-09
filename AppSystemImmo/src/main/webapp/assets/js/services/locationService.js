@@ -50,10 +50,28 @@ monApp.factory("locationProvider", function($http) {
 		});
 	}
 	
+	
+	function del (id, callBack) {
+		$http({
+			method : "DELETE",
+			url : "http://localhost:8080/AppSystemImmo/location/delete/"+id
+		}).then(function successCallback(response) {
+			// stocker les données dans la callBack, afin de les transferer au
+			// controller, d'une manière asynchrone
+			console.log("------success")
+			callBack(response.statusText);
+		}, function errorCallback(response) {
+			console.log("------erreur")
+			callBack(response.statusText);
+		});
+	}
+	
 	return {
 		adds:add,
 		updates:update,
-		getListes:getListe
+		getListes:getListe,
+		dels: del
+		
 	}
 	
 	

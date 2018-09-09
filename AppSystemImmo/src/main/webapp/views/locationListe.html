@@ -1,4 +1,4 @@
-<h1 style="text-align: center">Liste des visites</h1>
+<h1 style="text-align: center">Liste des locations</h1>
 
 	<div ng-repeat="l in liste"  class="container">
 		<div class="col-md-4" style="border: black; ">
@@ -19,7 +19,10 @@
 		<br/>Type de bail : {{l.bail}}
 		<br/>Garniture du bien: {{l.garniture}}
 		<br/>
+		<br/><a ng-click="deleteLien(l.id)">Supprimer</a> | <a ng-click="updateLien(l)">Modifier</a> 
 		<br/>
+		<br/>
+		
 		
 		
 		</div>
