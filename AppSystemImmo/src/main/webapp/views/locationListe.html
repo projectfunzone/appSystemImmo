@@ -1,41 +1,74 @@
 <h1 style="text-align: center">Liste des locations</h1>
 
-	<div class="container">
-		<div ng-repeat="l in liste" class="col-md-10"
-			style="text-align: center; padding: 5px; margin: 5px">
-			<div class="row featurette"
-		style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
-		<div class="col-md-7">
-			<h2 class="featurette-heading">Location n&#176;{{l.id}}</h2>
-			<div style="margin: 5px; text-align: left;">
-			<div><h3>{{l.type}}</h3></div>
-			<div><em class="detailbien">{{l.surface}}m&#178;</em><em class="detailbien">{{l.noChambre}} chambre(s)</em><em class="detailbien">{{l.statut}}</em><em class="detailbien">{{l.garniture}}</em></div>
-			<br/>
-			<div>{{l.adresse.rue}} {{l.adresse.cp}}<br/>
-			{{l.adresse.ville}} {{l.adresse.pays}}</div>
-			<br>
-			<div><h4>D&#233;tails location</h4>
-			Caution : {{l.caution}}&#233; <br />Loyer :
-			{{l.loyer}}&#233;<br />Charge : {{l.charge}}&#233;<br/>
-			Disponible au: {{l.dateDispo | date:
-			"dd/MM/yyyy"}}
+<div class="container">
+	<div ng-repeat="l in liste" class="col-md-10"
+		style="text-align: center; padding: 5px; margin: 5px">
+		<div class="row featurette"
+			style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">Location n&#176;{{l.id}}</h2>
+				<div style="margin: 5px; text-align: left;">
+					<div>
+						<h3>{{l.type}}</h3>
+					</div>
+					<div>
+						<em class="detailbien">{{l.surface}}m&#178;</em><em
+							class="detailbien">{{l.noChambre}} chambre(s)</em><em
+							class="detailbien">{{l.statut}}</em><em class="detailbien">{{l.garniture}}</em>
+					</div>
+					<br />
+					<div>
+						{{l.adresse.rue}} {{l.adresse.cp}}<br /> {{l.adresse.ville}}
+						{{l.adresse.pays}}
+					</div>
+					<br>
+					<div>
+						<h4>D&#233;tails location</h4>
+						Caution : {{l.caution}}&#233; <br />Loyer : {{l.loyer}}&#233;<br />Charge
+						: {{l.charge}}&#233;<br /> Disponible au: {{l.dateDispo | date:
+						"dd/MM/yyyy"}}
+					</div>
+					</br>
+					<div>
+						<h4>D&#233;tails Gestion</h4>
+					</div>
+					Soumission: {{l.dateSoumis | date: "dd/MM/yyyy"}} <br />Revenu
+					cadastral : {{l.revenueCadastre}} <br />Type de bail : {{l.bail}}
+				</div>
+				<br /> <a ng-click="deleteLien(l.id)" class="btn btn-danger">Supprimer</a>
+				<a ng-click="updateLien(l)" class="btn btn-info">Modifier</a> <br />
+				<br />
 			</div>
-			</br>
-			<div><h4>D&#233;tails Gestion</h4></div>
-			Soumission: {{l.dateSoumis | date: "dd/MM/yyyy"}}
-			 <br />Revenu cadastral :
-			{{l.revenueCadastre}}  <br />Type de bail :
-			{{l.bail}}</div>
-			 <br />
-				<a ng-click="deleteLien(l.id)" class="btn btn-danger">Supprimer</a>  <a
-					ng-click="updateLien(l)" class="btn btn-info">Modifier</a> <br /> <br />
+			<div class="col-md-5">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel"
+					style="width: 250px; height: 250px; border: 1px solid black; margin: none; padding: none">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" ng-repeat="p in l.listeImages"
+							ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div ng-class="{item: true, active: ($index === 0)}"
+							ng-repeat="p in l.listeImages">
+
+							<img class="d-block w-100"
+								ng-src="data:image/JPEG;base64,{{p.image}}"
+								alt="Slide number {{$index}}">
+						</div>
+					</div>
+
+					<span class="left carousel-control" data-target="#myCarousel"
+						data-slide="prev"> <span
+						class="glyphicon glyphicon-chevron-left"></span>
+					</span> <span class="right carousel-control" data-target="#myCarousel"
+						data-slide="next"> <span
+						class="glyphicon glyphicon-chevron-right"></span>
+					</span>
+				</div>
+			</div>
+			<hr class="featurette-divider">
 		</div>
-		<div class="col-md-5">
-		<img class="featurette-image img-responsive center-block" ng-repeat="p in l.listeImages"  ng-src="data:image/JPEG;base64,{{p.image}}" alt="Generic placeholder image" style="width: 250px; height: 250px; border: 1px solid black; margin: none; padding: none">
-		</div>
-		<hr class="featurette-divider">
 	</div>
-</div>
 </div>
 
 
