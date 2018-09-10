@@ -62,7 +62,7 @@ monApp
 						$rootScope.achatUpdate = achatIn;
 
 						// aller dans la vue modif
-						$location.path("update");
+						$location.path("achatUpdate");
 					}
 					// *****************************************************************************************************
 				})
