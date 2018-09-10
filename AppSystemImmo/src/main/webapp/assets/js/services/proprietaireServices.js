@@ -75,7 +75,7 @@ monApp
 						});
 					}
 
-					// supprimer un étudiant de la bd
+					// supprimer un propriétaire de la bd
 					function delet(id, callBack) {
 						$http(
 								{

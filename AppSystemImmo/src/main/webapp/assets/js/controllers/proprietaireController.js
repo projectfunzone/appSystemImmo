@@ -16,7 +16,8 @@ monApp
 							pays : ""
 						},
 						telPrive : "",
-						telPro : ""
+						telPro : "",
+						mail:""
 					}
 
 					// appel de la fonction ajouter lorsque l'on clique sur le
@@ -105,7 +106,8 @@ monApp
 							pays : ""
 						},
 						telPrive : "",
-						telPro : ""
+						telPro : "",
+						mail:""
 					};
 
 					// fonction appelée à partir du lien modifier de la liste
@@ -135,7 +137,8 @@ monApp
 								pays : ""
 							},
 							telPrive : "",
-							telPro : ""
+							telPro : "",
+							mail:""
 						}
 					} else {
 

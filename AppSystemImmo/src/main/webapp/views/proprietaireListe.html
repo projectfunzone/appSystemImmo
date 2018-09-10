@@ -12,6 +12,7 @@
 		<th>Pays</th>
 		<th>T&eacute;l&eacute;phone Priv&eacute;</th>
 		<th>T&eacute;l&eacute;phone Professionnel</th>
+		<th>Mail</th>
 		<th>Op&eacute;rations rapides</th>
 	</tr>
 	<tr ng-repeat="proprio in liste">
@@ -24,6 +25,7 @@
 		<td>{{proprio.adresse.pays}}</td>
 		<td>{{proprio.telPrive}}</td>
 		<td>{{proprio.telPro}}</td>
+		<td>{{proprio.mail}}</td>
 		<td><a ng-click="deleteLien(proprio)">Supprimer</a> | <a
 			ng-click="updateLien(proprio)">Modifier</a></td>
 	</tr>
