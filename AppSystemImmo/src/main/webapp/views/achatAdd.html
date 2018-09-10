@@ -1,5 +1,6 @@
 <h1>Formulaire Ajout d'achat</h1>
 
+Propri&eacute;taire : {{achatForm.proprietaire.nom}} {{achatForm.proprietaire.prenom}}
 <form class="form-horizontal">
 
 <!-- //********************************************************************************* -->
@@ -63,7 +64,7 @@
 	
 	<div class="form-group" ng-if="habitation">
 		<label for="idType" class="col-sm-2 control-label">Type de
-			bien Immobilier</label>
+			bien</label>
 		<div class="col-sm-5">
 			<select id="idType" class=form-control ng-model="achatForm.type">
 				<option value="Studio">Studio</option>
@@ -87,7 +88,7 @@
 
 	<div class="form-group" ng-if="terrain">
 		<label for="idType" class="col-sm-2 control-label">Type de
-			bien Immobilier</label>
+			bien</label>
 		<div class="col-sm-5">
 			<select id="idType" class=form-control ng-model="achatForm.type">
 				<option value="Constructible">Constructible</option>
@@ -148,27 +149,12 @@
 		<div class="col-sm-5">
 			<select id="idStatut" class=form-control ng-model="achatForm.statut">
 				<option value="disponible">Disponible</option>
-				<option value="loue">Lou&eacute;</option>
+				<option value="vendu">Vendu</option>
 				<option value="indisponible">Indisponible</option>
 			</select>
 		</div>
 	</div>
 
-<!-- 	<div class="form-group"> -->
-<!-- 		<label for="idStatut" class="col-sm-2 control-label">Statut</label> -->
-<!-- 		<div class="col-sm-5"> -->
-<!-- 			<input type="number" class="form-control" id="idStatut" -->
-<!-- 				placeholder="Statut" ng-model="achatForm.statut"> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-
-<!-- 	<div class="form-group"> -->
-<!-- 		<label for="idType" class="col-sm-2 control-label">Type</label> -->
-<!-- 		<div class="col-sm-5"> -->
-<!-- 			<input type="number" class="form-control" id="idType" -->
-<!-- 				placeholder="Type" ng-model="achatForm.type"> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 
 	<div class="form-group">
 		<label for="idEtat" class="col-sm-2 control-label">Etat</label>
@@ -182,13 +168,7 @@
 		</div>
 	</div>
 
-<!-- 	<div class="form-group"> -->
-<!-- 		<label for="idEtat" class="col-sm-2 control-label">Etat</label> -->
-<!-- 		<div class="col-sm-5"> -->
-<!-- 			<input type="text" class="form-control" id="idEtat" -->
-<!-- 				placeholder="Etat" ng-model="achatForm.etat"> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+
 
 	<div class="form-group">
 		<label for="idPrixDemande" class="col-sm-2 control-label">Prix
@@ -204,6 +184,15 @@
 		<div class="col-sm-5">
 			<input type="number" class="form-control" id="idSurface"
 				placeholder="Surface" ng-model="achatForm.surface">
+		</div>
+	</div>
+	
+	
+		<div class="form-group" style="display: none">
+		<label for="idProprio" class="col-sm-2 control-label">Proprietaire</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="idProprio"
+				placeholder="Propri&eacute;taire du bien" ng-model="achatForm.proprietaire.id">
 		</div>
 	</div>
 

@@ -121,6 +121,7 @@ monApp
 					}
 
 					
+					//méthode qui permet de récupérer les information du propriétaire lors de la cr"ation d'un bien à louer
 					$rootScope.locAdd = {
 						proprietaire : {
 							id : undefined,
@@ -146,6 +147,37 @@ monApp
 						$rootScope.locAdd.proprietaire = proprioIn;
 						// aller dans la vue modifier
 						$location.path("location/add");
+
+					}
+					
+					
+					
+					//méthode qui permet de récupérer les information du propriétaire lors de la cr"ation d'un bien à vendre
+					$rootScope.achatAdd = {
+							proprietaire : {
+								id : undefined,
+								nom : "",
+								prenom : "",
+								adresse : {
+									rue : "",
+									cp : "",
+									ville : "",
+									pays : ""
+								},
+								telPrive : "",
+								telPro : "",
+								mail : ""
+							}
+						};
+					
+					// fonction appelée pour créer un bien à vendre associé au
+					// propriétaire
+					$scope.addAchatLien = function(proprioIn) {
+						// ici, utilise proprioUpdate pour ne pas avoir à
+						// redéfinir un objet
+						$rootScope.achatAdd.proprietaire = proprioIn;
+						// aller dans la vue modifier
+						$location.path("achat/add");
 
 					}
 
