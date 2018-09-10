@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Location;
+import fr.adaming.model.Proprietaire;
 import fr.adaming.service.ILocationService;
 
 @RestController
@@ -57,6 +58,15 @@ public class LocationRest {
 		loc.setId(id);
 
 		locService.deleteLocation(loc);
+	}
+	
+	
+	@RequestMapping(value = "/listeByProprio/{pId}", method = RequestMethod.GET, produces = "application/json")
+	List<Location> getAllLocationByProprio(@PathVariable("pId") int id) {
+		Proprietaire proprio=new Proprietaire();
+		proprio.setId(id);
+		
+		return locService.getLocationByProprio(proprio);
 	}
 
 }

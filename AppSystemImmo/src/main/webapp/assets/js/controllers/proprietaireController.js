@@ -48,10 +48,25 @@ monApp
 
 		.controller(
 				"proprietaireCtrlGet",
-				function($scope, proprietaireProvider) {
+				function($scope, proprietaireProvider, $rootScope, $location) {
 					$scope.indice = false;
 					$scope.id = undefined;
 					$scope.msg = "";
+
+					$rootScope.proprio = {
+						nom : "",
+						prenom : "",
+						adresse : {
+							rue : "",
+							cp : "",
+							ville : "",
+							pays : ""
+						},
+						telPrive : "",
+						telPro : "",
+						mail : ""
+					}
+
 					$scope.get = function() {
 						// appel de la fonction du proprietaireProvider afin de
 						// récupérer le propriétaire
@@ -60,14 +75,36 @@ monApp
 										$scope.id,
 										function(donnees) {
 											if (typeof donnees == 'object') {
-												$scope.proprio = donnees;
+												$rootScope.proprio = donnees;
 												$scope.indice = true;
+
+												$location
+														.path("proprietaire/fiche");
 											} else {
 												$scope.indice = false;
 												$scope.msg = "Le propriétaire que vous recherchez n'est pas répertorié dans nos fichiers"
 											}
 										})
 					}
+				})
+				
+		.controller("proprietaireCtrlFiche",
+				function($scope, proprietaireProvider, $location, $rootScope) {
+					$rootScope.proprio;
+					console.log($rootScope.proprio.id)
+
+					proprietaireProvider.getListeByProprioS($rootScope.proprio.id, function(donnees) {
+
+						// stocker les informations récupérées par
+						// l'intermédiaire du proprietaireService
+						$scope.listeLoc = donnees;
+
+					});
+					
+					
+					
+					
+					
 				})
 
 		.controller(
@@ -114,14 +151,14 @@ monApp
 					// fonction appelée à partir du lien modifier de la liste
 					$scope.updateLien = function(proprioIn) {
 						$rootScope.proprioUpdate = proprioIn;
-						
+
 						// aller dans la vue modifier
 						$location.path("proprietaire/update");
 
 					}
 
-					
-					//méthode qui permet de récupérer les information du propriétaire lors de la cr"ation d'un bien à louer
+					// méthode qui permet de récupérer les information du
+					// propriétaire lors de la cr"ation d'un bien à louer
 					$rootScope.locAdd = {
 						proprietaire : {
 							id : undefined,
@@ -142,39 +179,34 @@ monApp
 					// fonction appelée pour créer une location associé au
 					// propriétaire
 					$scope.addLocationLien = function(proprioIn) {
-						// ici, utilise proprioUpdate pour ne pas avoir à
-						// redéfinir un objet
 						$rootScope.locAdd.proprietaire = proprioIn;
 						// aller dans la vue modifier
 						$location.path("location/add");
 
 					}
-					
-					
-					
-					//méthode qui permet de récupérer les information du propriétaire lors de la cr"ation d'un bien à vendre
+
+					// méthode qui permet de récupérer les information du
+					// propriétaire lors de la cr"ation d'un bien à vendre
 					$rootScope.achatAdd = {
-							proprietaire : {
-								id : undefined,
-								nom : "",
-								prenom : "",
-								adresse : {
-									rue : "",
-									cp : "",
-									ville : "",
-									pays : ""
-								},
-								telPrive : "",
-								telPro : "",
-								mail : ""
-							}
-						};
-					
+						proprietaire : {
+							id : undefined,
+							nom : "",
+							prenom : "",
+							adresse : {
+								rue : "",
+								cp : "",
+								ville : "",
+								pays : ""
+							},
+							telPrive : "",
+							telPro : "",
+							mail : ""
+						}
+					};
+
 					// fonction appelée pour créer un bien à vendre associé au
 					// propriétaire
 					$scope.addAchatLien = function(proprioIn) {
-						// ici, utilise proprioUpdate pour ne pas avoir à
-						// redéfinir un objet
 						$rootScope.achatAdd.proprietaire = proprioIn;
 						// aller dans la vue modifier
 						$location.path("achat/add");

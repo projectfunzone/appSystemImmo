@@ -89,13 +89,32 @@ monApp
 						});
 					}
 
+					// récupérer la liste des propriétaires de la bd
+					function getListeByProprio(id, callBack) {
+
+						// récupérer la liste à partir du serveur
+						$http(
+								{
+									method : "GET",
+									url : "http://localhost:8080/AppSystemImmo/location/listeByProprio/"
+											+ id
+								}).then(function successCallBack(reponse) {
+							callBack(reponse.data);
+						}, function errorCallBack(reponse) {
+
+						});
+
+					}
+
 					// les différents retours de la fonction factory
 					return {
 						addS : add,
 						getListeS : getListe,
 						getS : get,
 						updateS : update,
-						deletS : delet
+						deletS : delet,
+						getListeByProprioS : getListeByProprio
+
 					}
 
 				});

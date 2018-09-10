@@ -3,6 +3,7 @@ package fr.adaming.service;
 import java.util.List;
 
 import fr.adaming.model.Location;
+import fr.adaming.model.Proprietaire;
 
 
 public interface ILocationService {
@@ -26,5 +27,8 @@ public interface ILocationService {
 
 	/** Remove an object from persistent storage in the database */
 	public void deleteLocation(Location loc);
+	
+	/**Méthode pour récupérer la liste des location par l'id du propriétaire*/
+	public List<Location> getLocationByProprio (Proprietaire proprio);
 
 }

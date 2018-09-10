@@ -45,5 +45,6 @@ monApp.config(function($routeProvider) {
 	.when ("/proprietaire/get", {templateUrl:"views/proprietaireGet.html", controller: "proprietaireCtrlGet"})
 	.when ("/proprietaire/update", {templateUrl:"views/proprietaireUpdate.html", controller: "proprietaireCtrlUpdate"})
 	.when ("/proprietaire/delete", {templateUrl:"views/proprietaireDelete.html", controller: "proprietaireCtrlDelete"})
+	.when ("/proprietaire/fiche", {templateUrl:"views/proprietaireFiche.html", controller: "proprietaireCtrlFiche"})
 
 });

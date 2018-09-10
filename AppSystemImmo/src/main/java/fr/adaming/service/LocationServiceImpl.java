@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.ILocationDao;
 import fr.adaming.model.Location;
+import fr.adaming.model.Proprietaire;
 
 @Service
 @Transactional
@@ -46,6 +47,11 @@ public class LocationServiceImpl implements ILocationService{
 	public void deleteLocation(Location loc) {
 		// TODO Auto-generated method stub
 		locDao.delete(loc.getId());
+	}
+	@Override
+	public List<Location> getLocationByProprio(Proprietaire proprio) {
+		
+		return locDao.getLocationByProprio(proprio);
 	}
 
 }
