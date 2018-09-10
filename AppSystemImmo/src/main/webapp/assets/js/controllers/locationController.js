@@ -67,47 +67,64 @@ monApp.controller("locationCtrlAdd",
 		}).controller("locationCtrlUpdate",
 		function($scope, locationProvider, $location, $rootScope) {
 
-			$scope.habitation = true;
-			$scope.commercial = false;
-			$scope.terrain = false;
 			// initialiser l'objet dans le model du scope
+			if ($rootScope.locUpdate.id == undefined) {
+				$scope.locIn = {
+					id : undefined,
+					categorie : "",
+					type : "",
+					surface : "",
+					noChambre : "",
+					statut : "",
+					dateSoumis : "",
+					adresse : {
+						rue : "",
+						cp : "",
+						ville : "",
+						pays : ""
+					},
+					dateDispo : "",
+					revenueCadastre : "",
+					caution : "",
+					loyer : "",
+					charge : "",
+					bail : "",
+					garniture : ""
+				}
+
+				$scope.habitation = true;
+				$scope.commercial = false;
+				$scope.terrain = false;
+
+			} else {
+				$scope.locIn = $rootScope.locUpdate;
+
+				if ($rootScope.locUpdate.categorie == "Habitation") {
+					$scope.habitation = true;
+					$scope.commercial = false;
+					$scope.terrain = false;
+				}
+
+				if ($rootScope.locUpdate.categorie == "Commercial") {
+					$scope.habitation = false;
+					$scope.commercial = true;
+					$scope.terrain = false;
+				}
+
+				if ($rootScope.locUpdate.categorie == "Terrain") {
+					$scope.habitation = false;
+					$scope.commercial = false;
+					$scope.terrain = true;
+				}
+			}
 
 			$scope.update = function() {
-
-				// initialiser l'objet dans le model du scope
-				if ($rootScope.locUpdate.id == undefined) {
-					$scope.locIn = {
-						id : undefined,
-						categorie : "",
-						type : "",
-						surface : "",
-						noChambre : "",
-						statut : "",
-						dateSoumis : "",
-						adresse : {
-							rue : "",
-							cp : "",
-							ville : "",
-							pays : ""
-						},
-						dateDispo : "",
-						revenueCadastre : "",
-						caution : "",
-						loyer : "",
-						charge : "",
-						bail : "",
-						garniture : ""
-
-					}
-				} else {
-					$scope.locIn = $rootScope.locUpdate;
-				}
 
 				locationProvider.updates($scope.locIn, function(donnees) {
 
 					$scope.msg = "";
 					// redirection vers l'accueil
-					$location.path("accueil");
+					$location.path("location/liste");
 				})
 			}
 
@@ -173,12 +190,12 @@ monApp.controller("locationCtrlAdd",
 				charge : "",
 				bail : "",
 				garniture : ""
-
-			}
+			};
 
 			$scope.updateLien = function(lIn) {
 				$rootScope.locUpdate = lIn;
-
+				console.log("----" + lIn.id);
+				console.log("-----" + $rootScope.locUpdate.id);
 				$location.path("location/update");
 			}
 
