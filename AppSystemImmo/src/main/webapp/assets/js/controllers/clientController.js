@@ -134,7 +134,7 @@ monApp.controller("clientCtrlFindAll", function($scope, clientProvider, $rootSco
 					if (typeof donnees == 'object') {
 						$scope.msg = "";
 						// redirection vers l'accueil
-						$location.path("client/liste");
+						$location.path("liste");
 					} else {
 						$scope.msg = "La modification a échoué ! ";
 					}
