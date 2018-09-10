@@ -2,16 +2,13 @@
  * Controllers pour la gestion des Clients
  */
 
-monApp.controller("clientCtrlFindAll", function($scope, clientProvider, $rootScope) {
+monApp.controller("clientCtrlFindAll", function($scope, clientProvider, $rootScope, $location) {
 
 	// appel de la fonction Liste de 'clientProvider'
 	clientProvider.getListe(function(donnees) {
 		// stocker les données récupéré de service
 		$scope.liste = donnees;
 	})
-
-	// appel de la fonction à partir du lien de la liste pour supprimer un
-	// client
 
 	// initialiser le client de rootScope
 	$rootScope.clUpdate = {
@@ -27,8 +24,28 @@ monApp.controller("clientCtrlFindAll", function($scope, clientProvider, $rootSco
 			pays : ""
 		}
 	};
-
+	
 	// appel de la fonction à partir du lien de la liste pour modifier un client
+	$scope.updateLien = function(clIn) {
+		$rootScope.clUpdate = clIn;
+
+		// aller dans la vue modif
+		$location.path("client/update");
+	}
+	
+	// appel de la fonction à partir du lien de la liste pour supprimer un
+	// client
+	$scope.deleteLien = function(clIn) {
+				clientProvider.delet(clIn.id, function(retour) {
+
+					// mettre à jour la liste de la page d'accueil
+					clientProvider.getListe(function(donnees) {
+						// stocker les données récupéré de service
+						$scope.liste = donnees;
+					})
+				});
+
+			}
 
 }).controller("clientCtrlGet", function($scope, clientProvider) {
 
@@ -117,7 +134,7 @@ monApp.controller("clientCtrlFindAll", function($scope, clientProvider, $rootSco
 					if (typeof donnees == 'object') {
 						$scope.msg = "";
 						// redirection vers l'accueil
-						$location.path("liste");
+						$location.path("client/liste");
 					} else {
 						$scope.msg = "La modification a échoué ! ";
 					}

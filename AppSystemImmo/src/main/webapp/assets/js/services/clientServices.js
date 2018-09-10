@@ -73,8 +73,7 @@ monApp.factory("clientProvider", function($http) {
 			}
 		}).then(function successCallback(response) {
 			// stocker les données dans la callBack, afin de les
-			// transferer au
-			// controller, d'une manière asynchrone
+			// transferer au controller, d'une manière asynchrone
 			callBack(response.data);
 		}, function errorCallback(response) {
 			callback(response.data)
