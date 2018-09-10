@@ -16,9 +16,9 @@
 	<div class="form-group">
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner un client existant: </label>
-		<div class="col-sm-5">
-			<select id="id" class=form-control ng-model="visiteForm.client_id">
-				<option value="{{v.client_id}}">{{v.client_id}}</option>
+		<div class="col-sm-5" >
+			<select id="id" class=form-control ng-model="visiteForm.client_id" >
+				<option value="{{v.client.id}}" ng-repeat="v in liste">{{v.client.id}} - {{v.client.nom}} {{v.client.prenom}}</option>
 			</select> <a
 				href="http://localhost:8080/AppSystemImmo/index.html#!/client/add">Ou
 				ajouter un nouveau client</a>
@@ -32,11 +32,10 @@
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner le bien &agrave; visiter </label>
 		<div class="col-sm-5">
-			<select id="id" class=form-control ng-model="visiteForm.client_id">
-				<div ng-repeat="v in liste">
-					<option value="{{v.id}}">--{{v.id}}</option>
-				</div>
+			<select id="id" class=form-control ng-model="visiteForm.achat_id">	
+					<option value="{{v.achat_id}}" ng-repeat="v in liste">{{v.achat.categorie}} {{v.achat.adresse.cp}} {{v.achat.adresse.ville}}</option>	
 			</select>
+
 		</div>
 	</div>
 
@@ -44,10 +43,8 @@
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner le conseiller qui effectura la visite: </label>
 		<div class="col-sm-5">
-			<select id="id" class=form-control>
-				<div ng-repeat="v in liste">
-					<option value="{{v.client_id}}">{{v.client_id}}</option>
-				</div>
+				<select id="id" class=form-control ng-model="visiteForm.conseiller_id">	
+					<option value="{{v.conseiller_id}}" ng-repeat="v in liste">{{v.conseiller.nom}}</option>
 			</select>
 		</div>
 	</div>

@@ -12,8 +12,8 @@ monApp.controller("visiteCrltGetAll",
 	
 	
 	// Faire le lien supprimer et modifier
-	$scope.deletelien=function(vIn){
-		visiteProvider.deletes(eIn.id, function(retour){
+	$scope.deletelien=function(id){
+		visiteProvider.deletes(id, function(retour){
 			// mettre à jour la liste
 			visiteProvider.getListes(function(donnees){
 				// stocker les données recup de service (collback)
@@ -50,10 +50,15 @@ monApp.controller("visiteCrltGetAll",
 		})
 	
 	
+		
 	
 	
 	$scope.visiteForm={
-				date:""
+				date:"",
+				client_id:"", 
+				achat_id:"",
+				conseiller_id:""
+				
 		};
 		
 		// foctionnaliter du bouton ajouter de la vue
@@ -102,7 +107,7 @@ monApp.controller("visiteCrltGetAll",
 	
 }).controller("visiteCtrlDelete",
 		function($scope, visiteProvider, $location) {
-	$scope.id = "";
+	$scope.id = undefined;
 
 	// la fonction appeler à partir du bouton
 	$scope.delet = function() {
