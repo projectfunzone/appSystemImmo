@@ -29,7 +29,14 @@
 		<td>{{proprio.mail}}</td>
 		<td><a ng-click="deleteLien(proprio)">Supprimer</a> | <a
 			ng-click="updateLien(proprio)">Modifier</a></td>
-		<td><label><input type="radio" name="Categorie"
+		<td><a
+			ng-click="addLocationLien(proprio)">Créer une location</a>
+		
+		
+		
+		
+		
+		<label><input type="radio" name="Categorie"
 				ng-change="RadioChange('Location')" ng-model="locIn.categorie"
 				value="Louer" /> Louer </label> <label><input
 				type="radio" name="Categorie" ng-change="RadioChange('Achat')"

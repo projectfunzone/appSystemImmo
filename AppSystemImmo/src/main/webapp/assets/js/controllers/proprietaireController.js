@@ -17,7 +17,7 @@ monApp
 						},
 						telPrive : "",
 						telPro : "",
-						mail:""
+						mail : ""
 					}
 
 					// appel de la fonction ajouter lorsque l'on clique sur le
@@ -36,7 +36,8 @@ monApp
 
 												// redirection vers la page
 												// d'accueil
-												$location.path("proprietaire/liste");
+												$location
+														.path("proprietaire/liste");
 
 											} else {
 												$scope.msg = "L'ajout du propriétaire a échoué, veuillez essayer de nouveau";
@@ -107,17 +108,47 @@ monApp
 						},
 						telPrive : "",
 						telPro : "",
-						mail:""
+						mail : ""
 					};
 
 					// fonction appelée à partir du lien modifier de la liste
 					$scope.updateLien = function(proprioIn) {
 						$rootScope.proprioUpdate = proprioIn;
-
+						
 						// aller dans la vue modifier
 						$location.path("proprietaire/update");
 
 					}
+
+					
+					$rootScope.locAdd = {
+						proprietaire : {
+							id : undefined,
+							nom : "",
+							prenom : "",
+							adresse : {
+								rue : "",
+								cp : "",
+								ville : "",
+								pays : ""
+							},
+							telPrive : "",
+							telPro : "",
+							mail : ""
+						}
+					};
+
+					// fonction appelée pour créer une location associé au
+					// propriétaire
+					$scope.addLocationLien = function(proprioIn) {
+						// ici, utilise proprioUpdate pour ne pas avoir à
+						// redéfinir un objet
+						$rootScope.locAdd.proprietaire = proprioIn;
+						// aller dans la vue modifier
+						$location.path("location/add");
+
+					}
+
 				})
 
 		.controller(
@@ -138,7 +169,7 @@ monApp
 							},
 							telPrive : "",
 							telPro : "",
-							mail:""
+							mail : ""
 						}
 					} else {
 
@@ -158,7 +189,8 @@ monApp
 											$scope.msg = "";
 											if (typeof donnees == 'object') {
 												// rediriger vers accueil
-												$location.path("proprietaire/liste");
+												$location
+														.path("proprietaire/liste");
 											} else {
 												$scope.msg = "Les informations n'ont pas pu être modifiées";
 											}

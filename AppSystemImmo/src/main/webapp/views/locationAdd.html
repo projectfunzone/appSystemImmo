@@ -1,4 +1,7 @@
 <h1>Cr&eacute;ation d'une fiche "location"</h1>
+
+
+Propri&eacute;taire : {{locIn.proprietaire.nom}} {{locIn.proprietaire.prenom}}
 <form class="form-horizontal">
 	<div class="form-group">
 		<label for="idCategorie" class="col-sm-2 control-label">Cat&eacute;gorie
@@ -7,18 +10,16 @@
 			<div>
 				<label><input type="radio" name="Categorie"
 					ng-change="RadioChange('Habitation')" ng-model="locIn.categorie"
-					value="Habitation"/> Habitation </label>
-				 <label><input
+					value="Habitation" /> Habitation </label> <label><input
 					type="radio" name="Categorie" ng-change="RadioChange('Commercial')"
-					ng-model="locIn.categorie" value="Commercial" /> Commercial </label>
-					 <label><input
+					ng-model="locIn.categorie" value="Commercial" /> Commercial </label> <label><input
 					type="radio" name="Categorie" ng-change="RadioChange('Terrain')"
 					ng-model="locIn.categorie" value="Terrain" /> Terrain </label>
 			</div>
 		</div>
 	</div>
 
-<div class="form-group" ng-if="habitation">
+	<div class="form-group" ng-if="habitation">
 		<label for="idType" class="col-sm-2 control-label">Type de
 			bien</label>
 		<div class="col-sm-5">
@@ -188,10 +189,20 @@
 	</div>
 
 	<div class="form-group">
-		<label for="idPhoto" class="col-sm-2 control-label">Photo du logement</label>
+		<label for="idPhoto" class="col-sm-2 control-label">Photo du
+			logement</label>
 		<div class="col-sm-5">
 			<input type="file" name="file" class="form-control" id="idPhoto"
-				placeholder="Photo" ng-model="locIn.photos" accept="image/*" base-sixty-four-input multiple>
+				placeholder="Photo" ng-model="locIn.photos" accept="image/*"
+				base-sixty-four-input multiple>
+		</div>
+	</div>
+
+	<div class="form-group" style="display: none">
+		<label for="idProprio" class="col-sm-2 control-label">Proprietaire</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="idProprio"
+				placeholder="Propri&eacute;taire du bien" ng-model="locIn.proprietaire.id">
 		</div>
 	</div>
 

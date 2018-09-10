@@ -1,31 +1,81 @@
 monApp.controller("locationCtrlAdd",
-		function($scope, locationProvider, $location) {
+		function($scope, locationProvider, $location, $rootScope) {
 
 			$scope.habitation = true;
 			$scope.commercial = false;
 			$scope.terrain = false;
+
 			// initialiser l'objet dans le model du scope
-			$scope.locIn = {
-				categorie : "",
-				type : "",
-				surface : "",
-				noChambre : "",
-				statut : "",
-				dateSoumis : "",
-				adresse : {
-					rue : "",
-					cp : "",
-					ville : "",
-					pays : ""
-				},
-				dateDispo : "",
-				revenueCadastre : "",
-				caution : "",
-				loyer : "",
-				charge : "",
-				bail : "",
-				garniture : ""
+			if ($rootScope.locAdd.proprietaire.id == undefined) {
+				$scope.locIn = {
+					id : undefined,
+					categorie : "",
+					type : "",
+					surface : "",
+					noChambre : "",
+					statut : "",
+					dateSoumis : "",
+					adresse : {
+						rue : "",
+						cp : "",
+						ville : "",
+						pays : ""
+					},
+					dateDispo : "",
+					revenueCadastre : "",
+					caution : "",
+					loyer : "",
+					charge : "",
+					bail : "",
+					garniture : "",
+					proprietaire : {
+						id : undefined
+					}
+				}
+				console.log("test if")
+			} else {
+				$scope.locIn = {
+						id : undefined,
+						categorie : "",
+						type : "",
+						surface : "",
+						noChambre : "",
+						statut : "",
+						dateSoumis : "",
+						adresse : {
+							rue : "",
+							cp : "",
+							ville : "",
+							pays : ""
+						},
+						dateDispo : "",
+						revenueCadastre : "",
+						caution : "",
+						loyer : "",
+						charge : "",
+						bail : "",
+						garniture : "",
+						proprietaire : {
+							id : undefined,
+							nom : "",
+							prenom : "",
+							adresse : {
+								rue : "",
+								cp : "",
+								ville : "",
+								pays : ""
+							},
+							telPrive : "",
+							telPro : "",
+							mail : ""
+						}
+					}
+						
+				$scope.locIn.proprietaire = $rootScope.locAdd.proprietaire;
+				console.log("test else")
 			}
+
+			
 
 			$scope.add = function() {
 				locationProvider.adds($scope.locIn, function(donnees) {
