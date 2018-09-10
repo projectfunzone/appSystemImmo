@@ -48,8 +48,7 @@ public class Location extends BienImmo implements Serializable {
 	@JoinColumn(name = "classeStandard_id", referencedColumnName = "id", nullable = true)
 	private ClasseStandard classeStandard;
 
-//	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-//	private List<Photo> listeImages;
+	//
 	
 	/*
 	 * constructeur

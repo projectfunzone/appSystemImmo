@@ -15,7 +15,8 @@ monApp.factory("achatProvider", function($http) {
 			 */
 			callBack(response.data);
 		}, function errorCallback(response) {
-
+			 console.log("----------erreur dans la liste des achats: "+response.statusText);
+			  
 		});
 	}
 	// ***************************************************************************************
@@ -33,7 +34,7 @@ monApp.factory("achatProvider", function($http) {
 			 */
 			callBack(response.data);
 		}, function errorCallback(response) {
-
+			console.log("----------erreur dans recup d'un achat by id: "+response.statusText);
 		});
 
 	}
@@ -61,7 +62,7 @@ monApp.factory("achatProvider", function($http) {
 			// controller, d'une manière asynchrone
 			callBack(response.data);
 		}, function errorCallback(response) {
-
+			 console.log("----------erreur dans ajout d'un etudiant: "+response.statusText);
 		});
 	}
 	// ***************************************************************************************
@@ -81,6 +82,7 @@ monApp.factory("achatProvider", function($http) {
 			 */
 			callBack(response.data);
 		}, function errorCallback(response) {
+			console.log("----------erreur dans modifier un achat: "+response.statusText);
 			callback(response.data)
 		});
 	}
