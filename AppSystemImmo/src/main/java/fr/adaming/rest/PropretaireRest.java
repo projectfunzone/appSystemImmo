@@ -50,7 +50,7 @@ public class PropretaireRest {
 	}
 	
 	@RequestMapping(value="/delete/{pId}",  method=RequestMethod.DELETE)
-	public void deleteCarg (@PathVariable("pId") int id) {
+	public void delete (@PathVariable("pId") int id) {
 		Proprietaire proprio=new Proprietaire();
 		proprio.setId(id);
 		
