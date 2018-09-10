@@ -19,7 +19,7 @@
 
 <h1 style="color: red; text-align: center">{{msg}}</h1>
 
-
+<!-- le carrousel des photos -->
 
 <div style="width: 500px; height: 500px" class="center-block">
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -50,26 +50,19 @@
 
 <!-- **************************************************** -->
 
-<div class="row">
-	<div class="col-md-12" style="text-align: center">À quelques
-		minutes à pieds des écoles et commerces, dans la résidence calme et
-		recherchée du parc Montaigne, découvrez ce beau studio en
-		rez-de-jardin en excellent état, composé d'une entrée avec de nombreux
-		rangements, une pièce à vivre très lumineuse donnant sur un jardin
-		sans vis-à-vis, une cuisine aménagée, une salle de douche avec WC. A
-		visiter rapidement, en exclusivité chez Stéphane Plaza Immobilier
-		Saint Cyr l'école Copropriété de 3130 lots (). Charges annuelles: 1092
-		euros.</div>
-</div>
+
 <div ng-show="indice">
-	<br /> id: {{achat.id}} <br /> Code Postal: {{achat.cp}} <br />
-	Pays: {{achat.pays}} <br /> Rue: {{achat.rue}} <br /> Ville:
-	{{achat.ville}} <br /> Categorie: {{achat.categorie}} <br /> Dat
-	Disponibilié: {{achat.dateDispo}} <br /> Date soumission:
-	{{achat.dateSoumis}} <br /> Nombre de chambre: {{achat.noChambre}} <br />
-	Revenue Cadastre: {{achat.revenueCadastre }} <br /> Statut:
-	{{achat.statut}} <br /> Type: {{achat.type}} <br /> Etat:
-	{{achat.etat}} <br /> Prix Demandé: {{achat.prixDemande}}
+	<br /> id: {{achat.id}} 
+	<br/>Adresse : {{achat.adresse.rue}} {{achat.adresse.cp}} {{achat.adresse.ville}} {{achat.adresse.pays}}
+	<br /> Categorie: {{achat.categorie}} 
+	<br /> Dat	Disponibilié: {{achat.dateDispo}} 
+	<br /> Date soumission:		{{achat.dateSoumis}} 
+	<br /> Nombre de chambre: {{achat.noChambre}} 
+	<br />	Revenue Cadastre: {{achat.revenueCadastre }} 
+	<br /> Statut:	{{achat.statut}} 
+	<br /> Type: {{achat.type}} 
+	<br /> Etat:	{{achat.etat}} 
+	<br /> Prix Demandé: {{achat.prixDemande}}
 
 
 </div>
