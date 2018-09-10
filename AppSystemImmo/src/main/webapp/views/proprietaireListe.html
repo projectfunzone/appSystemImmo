@@ -14,6 +14,7 @@
 		<th>T&eacute;l&eacute;phone Professionnel</th>
 		<th>Mail</th>
 		<th>Op&eacute;rations rapides</th>
+		<th>Gestion Immobili&eacute;re</th>
 	</tr>
 	<tr ng-repeat="proprio in liste">
 		<td>{{proprio.id}}</td>
@@ -28,6 +29,12 @@
 		<td>{{proprio.mail}}</td>
 		<td><a ng-click="deleteLien(proprio)">Supprimer</a> | <a
 			ng-click="updateLien(proprio)">Modifier</a></td>
+		<td><label><input type="radio" name="Categorie"
+				ng-change="RadioChange('Location')" ng-model="locIn.categorie"
+				value="Louer" /> Louer </label> <label><input
+				type="radio" name="Categorie" ng-change="RadioChange('Achat')"
+				ng-model="locIn.categorie" value="Achat" /> Vendre </label>
+				<button class="btn btn-default" ng-click="add()">D&eacute;poser une offre</button></td>
 	</tr>
 
 </table>
