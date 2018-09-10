@@ -41,7 +41,7 @@ public class VisiteRest {
 		public void modifierVisite(@RequestBody Visite ac){
 			vService.updateVisite(ac);
 		}
-		@RequestMapping(value="/delete/{pId}", method=RequestMethod.DELETE, produces="application/json", consumes="application/json")
+		@RequestMapping(value="/delete/{pId}", method=RequestMethod.DELETE)
 		public void supprimerVisite(@PathVariable(value="pId") int id){
 			Visite sOut= new Visite();
 			sOut.setId(id);

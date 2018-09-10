@@ -65,53 +65,44 @@ monApp.controller("locationCtrlAdd",
 			};
 
 		}).controller("locationCtrlUpdate",
-		function($scope, locationProvider, $location) {
+		function($scope, locationProvider, $location, $rootScope) {
 
 			$scope.habitation = true;
 			$scope.commercial = false;
 			$scope.terrain = false;
 			// initialiser l'objet dans le model du scope
-			$scope.locIn = {
-				id : undefined,
-				categorie : "",
-				type : "",
-				surface : "",
-				noChambre : "",
-				statut : "",
-				dateSoumis : "",
-				adresse : {
-					rue : "",
-					cp : "",
-					ville : "",
-					pays : ""
-				},
-				dateDispo : "",
-				revenueCadastre : "",
-				caution : "",
-				loyer : "",
-				charge : "",
-				bail : "",
-				garniture : ""
-			}
 
 			$scope.update = function() {
-				
+
 				// initialiser l'objet dans le model du scope
 				if ($rootScope.locUpdate.id == undefined) {
 					$scope.locIn = {
 						id : undefined,
-						nom : "",
-						prenom : "",
-						age : ""
+						categorie : "",
+						type : "",
+						surface : "",
+						noChambre : "",
+						statut : "",
+						dateSoumis : "",
+						adresse : {
+							rue : "",
+							cp : "",
+							ville : "",
+							pays : ""
+						},
+						dateDispo : "",
+						revenueCadastre : "",
+						caution : "",
+						loyer : "",
+						charge : "",
+						bail : "",
+						garniture : ""
+
 					}
 				} else {
-					$scope.locIn=$rootScope.locUpdate;
+					$scope.locIn = $rootScope.locUpdate;
 				}
-				
-				
-				
-				
-				
+
 				locationProvider.updates($scope.locIn, function(donnees) {
 
 					$scope.msg = "";
@@ -145,49 +136,50 @@ monApp.controller("locationCtrlAdd",
 				}
 			};
 
-		}).controller("locationCtrlListe", function($scope, locationProvider, $rootScope, $location) {
-	locationProvider.getListes(function(donnees) {
-		$scope.liste = donnees;
-	})
-
-	$scope.deleteLien = function(id) {
-		locationProvider.dels(id, function(retour) {
-			// mettre à jour la liste
+		}).controller("locationCtrlListe",
+		function($scope, $rootScope, locationProvider, $location) {
 			locationProvider.getListes(function(donnees) {
-				// stocker les données récupéré de service
 				$scope.liste = donnees;
 			})
+
+			$scope.deleteLien = function(id) {
+				locationProvider.dels(id, function(retour) {
+					// mettre à jour la liste
+					locationProvider.getListes(function(donnees) {
+						// stocker les données récupéré de service
+						$scope.liste = donnees;
+					})
+				})
+			}
+
+			$rootScope.locUpdate = {
+				id : undefined,
+				categorie : "",
+				type : "",
+				surface : "",
+				noChambre : "",
+				statut : "",
+				dateSoumis : "",
+				adresse : {
+					rue : "",
+					cp : "",
+					ville : "",
+					pays : ""
+				},
+				dateDispo : "",
+				revenueCadastre : "",
+				caution : "",
+				loyer : "",
+				charge : "",
+				bail : "",
+				garniture : ""
+
+			}
+
+			$scope.updateLien = function(lIn) {
+				$rootScope.locUpdate = lIn;
+
+				$location.path("location/update");
+			}
+
 		})
-	}
-
-	$rootScope.locUpdate = {
-		id : undefined,
-		categorie : "",
-		type : "",
-		surface : "",
-		noChambre : "",
-		statut : "",
-		dateSoumis : "",
-		adresse : {
-			rue : "",
-			cp : "",
-			ville : "",
-			pays : ""
-		},
-		dateDispo : "",
-		revenueCadastre : "",
-		caution : "",
-		loyer : "",
-		charge : "",
-		bail : "",
-		garniture : ""
-
-	}
-
-	$scope.updateLien = function(lIn) {
-		$rootScope.locUpdate = lIn;
-
-		$location.path("location/update");
-	}
-
-})
