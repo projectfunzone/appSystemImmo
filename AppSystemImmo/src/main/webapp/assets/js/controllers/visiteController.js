@@ -44,6 +44,49 @@ monApp.controller("visiteCrltGetAll",
 				console.log("-------liste")
 			})
 
+			// méthode qui permet de récupérer les information du conseiller
+			// lors de la cr"ation d'une visite
+			$rootScope.conseillerVisite = {
+				conseiller : {
+					id : undefined,
+					nom : ""
+				}
+			};
+
+			// méthode qui permet de récupérer les information du client
+			// lors de la cr"ation d'une visite
+			$rootScope.clientVisite = {
+				client : {
+					id : undefined,
+					nom : "",
+					prenom : ""
+				}
+			};
+
+			// méthode qui permet de récupérer les information d'une location
+			// lors de la cr"ation d'une visite
+			$rootScope.locationVisite = {
+				location : {
+					id : undefined,
+					categorie : "",
+					dateDispo : "",
+					loyer : "",
+					surface : ""
+				}
+			};
+
+			// méthode qui permet de récupérer les information d'une vente
+			// lors de la cr"ation d'une visite
+			$rootScope.achatVisite = {
+				achat : {
+					id : undefined,
+					categorie : "",
+					dateDispo : "",
+					prixDemande : "",
+					surface : ""
+				}
+			};
+
 			$scope.visiteForm = {
 				date : "",
 				client : {
@@ -52,10 +95,18 @@ monApp.controller("visiteCrltGetAll",
 				achat : {
 					id : undefined
 				},
+				location : {
+					id : undefined
+				},
 				conseiller : {
 					id : undefined
 				}
 			};
+
+			$scope.visiteForm.client = $rootScope.clientVisite;
+			$scope.visiteForm.conseiller = $rootScope.conseillerVisite;
+			$scope.visiteForm.achat = $rootScope.achatVisite;
+			$scope.visiteForm.location = $rootScope.locationVisite;
 
 			// foctionnaliter du bouton ajouter de la vue
 			$scope.adds = function() {
@@ -78,8 +129,16 @@ monApp.controller("visiteCrltGetAll",
 			if ($rootScope.vUpdate.id == undefined) {
 
 				$scope.vModif = {
-					date : ""
-
+					date : "",
+					client : {
+						id : undefined
+					},
+					achat : {
+						id : undefined
+					},
+					conseiller : {
+						id : undefined
+					}
 				}
 			} else {
 				$scope.vModif = $rootScope.vUpdate;
