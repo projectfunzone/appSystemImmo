@@ -2,35 +2,55 @@
  * Controllers pour la gestion des Clients
  */
 
-monApp.controller("clientCtrlFindAll", function($scope, clientProvider, $rootScope) {
+monApp.controller("clientCtrlFindAll",
+		function($scope, clientProvider, $rootScope, $location) {
 
-	// appel de la fonction Liste de 'clientProvider'
-	clientProvider.getListe(function(donnees) {
-		// stocker les données récupéré de service
-		$scope.liste = donnees;
-	})
+			// appel de la fonction Liste de 'clientProvider'
+			clientProvider.getListe(function(donnees) {
+				// stocker les données récupéré de service
+				$scope.liste = donnees;
+			})
 
-	// appel de la fonction à partir du lien de la liste pour supprimer un
-	// client
+			// initialiser le client de rootScope
+			$rootScope.clUpdate = {
+				id : undefined,
+				num : "",
+				nom : "",
+				prenom : "",
+				telPrive : "",
+				adresse : {
+					rue : "",
+					cp : "",
+					ville : "",
+					pays : ""
+				}
+			};
 
-	// initialiser le client de rootScope
-	$rootScope.clUpdate = {
-		id : undefined,
-		num : "",
-		nom : "",
-		prenom : "",
-		telPrive : "",
-		adresse : {
-			rue : "",
-			cp : "",
-			ville : "",
-			pays : ""
-		}
-	};
+			// appel de la fonction à partir du lien de la liste pour modifier
+			// un client
+			$scope.updateLien = function(clIn) {
+				$rootScope.clUpdate = clIn;
 
-	// appel de la fonction à partir du lien de la liste pour modifier un client
+				// aller dans la vue modif
+				$location.path("client/update");
+			}
 
-}).controller("clientCtrlGet", function($scope, clientProvider) {
+			// appel de la fonction à partir du lien de la liste pour supprimer
+			// un
+			// client
+			$scope.deleteLien = function(clIn) {
+				clientProvider.delet(clIn.id, function(retour) {
+
+					// mettre à jour la liste de la page d'accueil
+					clientProvider.getListe(function(donnees) {
+						// stocker les données récupéré de service
+						$scope.liste = donnees;
+					})
+				});
+
+			}
+
+		}).controller("clientCtrlGet", function($scope, clientProvider) {
 
 	$scope.indice = false;
 	$scope.id = undefined;
@@ -113,14 +133,10 @@ monApp.controller("clientCtrlFindAll", function($scope, clientProvider, $rootSco
 			$scope.update = function() {
 
 				// appel de la fonction service pour modifier dans la bd
-				clientProvider.update($scope.clModif, function(donnees) {
-					if (typeof donnees == 'object') {
-						$scope.msg = "";
-						// redirection vers l'accueil
-						$location.path("liste");
-					} else {
-						$scope.msg = "La modification a échoué ! ";
-					}
+				clientProvider.update($scope.clModif, function(retour) {
+					$scope.msg = "";
+					// redirection vers l'accueil
+					$location.path("liste");
 				})
 			}
 

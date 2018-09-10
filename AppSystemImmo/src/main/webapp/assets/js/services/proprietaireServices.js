@@ -75,12 +75,12 @@ monApp
 						});
 					}
 
-					// supprimer un étudiant de la bd
+					// supprimer un propriétaire de la bd
 					function delet(id, callBack) {
 						$http(
 								{
 									method : "DELETE",
-									url : "http://localhost:8080/AppSystemImmo/proprietaire/delete"
+									url : "http://localhost:8080/AppSystemImmo/proprietaire/delete/"
 											+ id
 								}).then(function successCallback(response) {
 							callBack(response.statusText);

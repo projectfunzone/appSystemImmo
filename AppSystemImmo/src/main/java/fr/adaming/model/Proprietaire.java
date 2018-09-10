@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Proprietaire extends Personne implements Serializable {
 
 	private String telPro;
+	private String mail;
 	
 	@Fetch(FetchMode.SELECT)
 	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER)
@@ -40,6 +41,24 @@ public class Proprietaire extends Personne implements Serializable {
 	public Proprietaire(int id, String nom, String prenom, String telPrive, Adresse adresse, String telPro) {
 		super(id, nom, prenom, telPrive, adresse);
 		this.telPro = telPro;
+	}
+
+	public Proprietaire(int id, String nom, String prenom, String telPrive, Adresse adresse, String telPro, String mail,
+			List<Location> listeBienLocation, List<Achat> listeBienAchat) {
+		super(id, nom, prenom, telPrive, adresse);
+		this.telPro = telPro;
+		this.mail = mail;
+		this.listeBienLocation = listeBienLocation;
+		this.listeBienAchat = listeBienAchat;
+	}
+
+	public Proprietaire(String nom, String prenom, String telPrive, Adresse adresse, String telPro, String mail,
+			List<Location> listeBienLocation, List<Achat> listeBienAchat) {
+		super(nom, prenom, telPrive, adresse);
+		this.telPro = telPro;
+		this.mail = mail;
+		this.listeBienLocation = listeBienLocation;
+		this.listeBienAchat = listeBienAchat;
 	}
 
 	public String getTelPro() {
@@ -66,6 +85,14 @@ public class Proprietaire extends Personne implements Serializable {
 
 	public void setListeBienAchat(List<Achat> listeBienAchat) {
 		this.listeBienAchat = listeBienAchat;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 

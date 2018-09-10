@@ -16,7 +16,8 @@ monApp
 							pays : ""
 						},
 						telPrive : "",
-						telPro : ""
+						telPro : "",
+						mail : ""
 					}
 
 					// appel de la fonction ajouter lorsque l'on clique sur le
@@ -35,7 +36,8 @@ monApp
 
 												// redirection vers la page
 												// d'accueil
-												$location.path("accueil");
+												$location
+														.path("proprietaire/liste");
 
 											} else {
 												$scope.msg = "L'ajout du propriétaire a échoué, veuillez essayer de nouveau";
@@ -70,7 +72,7 @@ monApp
 
 		.controller(
 				"proprietaireCtrlFindAll",
-				function($scope, proprietaireProvider, $location) {
+				function($scope, proprietaireProvider, $location, $rootScope) {
 					// appel de la fonction de proprietaireProvider qui permet
 					// de récupérer la liste
 					proprietaireProvider.getListeS(function(donnees) {
@@ -105,17 +107,80 @@ monApp
 							pays : ""
 						},
 						telPrive : "",
-						telPro : ""
+						telPro : "",
+						mail : ""
 					};
 
 					// fonction appelée à partir du lien modifier de la liste
 					$scope.updateLien = function(proprioIn) {
 						$rootScope.proprioUpdate = proprioIn;
-
+						
 						// aller dans la vue modifier
-						$location.path("update");
+						$location.path("proprietaire/update");
 
 					}
+
+					
+					//méthode qui permet de récupérer les information du propriétaire lors de la cr"ation d'un bien à louer
+					$rootScope.locAdd = {
+						proprietaire : {
+							id : undefined,
+							nom : "",
+							prenom : "",
+							adresse : {
+								rue : "",
+								cp : "",
+								ville : "",
+								pays : ""
+							},
+							telPrive : "",
+							telPro : "",
+							mail : ""
+						}
+					};
+
+					// fonction appelée pour créer une location associé au
+					// propriétaire
+					$scope.addLocationLien = function(proprioIn) {
+						// ici, utilise proprioUpdate pour ne pas avoir à
+						// redéfinir un objet
+						$rootScope.locAdd.proprietaire = proprioIn;
+						// aller dans la vue modifier
+						$location.path("location/add");
+
+					}
+					
+					
+					
+					//méthode qui permet de récupérer les information du propriétaire lors de la cr"ation d'un bien à vendre
+					$rootScope.achatAdd = {
+							proprietaire : {
+								id : undefined,
+								nom : "",
+								prenom : "",
+								adresse : {
+									rue : "",
+									cp : "",
+									ville : "",
+									pays : ""
+								},
+								telPrive : "",
+								telPro : "",
+								mail : ""
+							}
+						};
+					
+					// fonction appelée pour créer un bien à vendre associé au
+					// propriétaire
+					$scope.addAchatLien = function(proprioIn) {
+						// ici, utilise proprioUpdate pour ne pas avoir à
+						// redéfinir un objet
+						$rootScope.achatAdd.proprietaire = proprioIn;
+						// aller dans la vue modifier
+						$location.path("achat/add");
+
+					}
+
 				})
 
 		.controller(
@@ -135,7 +200,8 @@ monApp
 								pays : ""
 							},
 							telPrive : "",
-							telPro : ""
+							telPro : "",
+							mail : ""
 						}
 					} else {
 
@@ -155,7 +221,8 @@ monApp
 											$scope.msg = "";
 											if (typeof donnees == 'object') {
 												// rediriger vers accueil
-												$location.path("accueil");
+												$location
+														.path("proprietaire/liste");
 											} else {
 												$scope.msg = "Les informations n'ont pas pu être modifiées";
 											}
@@ -180,7 +247,7 @@ monApp
 								function(retour) {
 									if (retour == 'OK') {
 										// rediriger vers accueil
-										$location.path("accueil");
+										$location.path("proprietaire/liste");
 									} else {
 										$scope.msg = "La suppression a échoué";
 									}

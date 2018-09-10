@@ -10,6 +10,7 @@
 		<th>Code Postal</th>
 		<th>Ville</th>
 		<th>Pays</th>
+		<th>Gestion</th>
 	</tr>
 	<tr ng-repeat="cl in liste">
 		<td>{{cl.id}}</td>
@@ -21,6 +22,8 @@
 		<td>{{cl.adresse.cp}}</td>
 		<td>{{cl.adresse.ville}}</td>
 		<td>{{cl.adresse.pays}}</td>
+		<td><a ng-click="deleteLien(cl)">Supprimer</a> | <a ng-click="updateLien(cl)">Modifier</a></td>
 	</tr>
 </table>
+
 
