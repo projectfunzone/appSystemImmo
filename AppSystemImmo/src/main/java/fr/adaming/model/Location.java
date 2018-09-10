@@ -34,7 +34,11 @@ public class Location extends BienImmo implements Serializable {
 	private double charge;
 	private String bail;
 	private String garniture;
-
+	
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private List<Photo> listeImages;
+	
 	@Fetch(FetchMode.SELECT)
 
 	@OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
@@ -130,6 +134,7 @@ public class Location extends BienImmo implements Serializable {
 	public void setListeVisiteLocation(List<Visite> listeVisiteLocation) {
 		this.listeVisiteLocation = listeVisiteLocation;
 	}
+	
 
 	@JsonIgnoreProperties("listeBienLocation")
 	public Proprietaire getProprietaire() {
@@ -148,12 +153,14 @@ public class Location extends BienImmo implements Serializable {
 		this.classeStandard = classeStandard;
 	}
 
-//	public List<Photo> getListeImages() {
-//		return listeImages;
-//	}
-//
-//	public void setListeImages(List<Photo> listeImages) {
-//		this.listeImages = listeImages;
-//	}
+	public List<Photo> getListeImages() {
+		return listeImages;
+	}
+
+	public void setListeImages(List<Photo> listeImages) {
+		this.listeImages = listeImages;
+	}
+
+
 
 }

@@ -49,6 +49,7 @@ monApp.factory("achatProvider", function($http) {
 			achatIn.listeImages.push(photo);
 		}
 
+
 		$http({
 			method : "POST",
 			url : "http://localhost:8080/AppSystemImmo/achat/add",

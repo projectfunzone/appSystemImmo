@@ -13,6 +13,8 @@ monApp.controller("locationCtrlAdd",
 					type : "",
 					surface : "",
 					noChambre : "",
+					photos : [],
+					listeImages:[],
 					statut : "",
 					dateSoumis : "",
 					adresse : {
@@ -40,6 +42,8 @@ monApp.controller("locationCtrlAdd",
 						type : "",
 						surface : "",
 						noChambre : "",
+						photos : [],
+						listeImages:[],
 						statut : "",
 						dateSoumis : "",
 						adresse : {
@@ -82,7 +86,7 @@ monApp.controller("locationCtrlAdd",
 					if (typeof donnees == 'object') {
 						$scope.msg = "";
 						// redirection vers l'accueil
-						$location.path("accueil");
+						$location.path("/location/liste");
 					} else {
 						$scope.msg = "L'ajout a échoué ! ";
 					}
@@ -125,6 +129,8 @@ monApp.controller("locationCtrlAdd",
 					type : "",
 					surface : "",
 					noChambre : "",
+					photos : [],
+					listeImages:[],
 					statut : "",
 					dateSoumis : "",
 					adresse : {
@@ -225,6 +231,8 @@ monApp.controller("locationCtrlAdd",
 				type : "",
 				surface : "",
 				noChambre : "",
+				photos : [],
+				listeImages:[],
 				statut : "",
 				dateSoumis : "",
 				adresse : {

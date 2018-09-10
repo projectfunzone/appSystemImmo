@@ -29,6 +29,7 @@ public class Achat extends BienImmo implements Serializable {
 	private double prixDemande;
 	private String etat;
 	
+	@Fetch(FetchMode.SELECT)
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Photo> listeImages;
 

@@ -2,6 +2,13 @@ monApp.factory("locationProvider", function($http) {
 	
 	//ajouter une location
 	function add(locIn, callBack) {
+		for ( var i in locIn.photos) {
+			photo = {
+				image : locIn.photos[i].base64
+			};
+			
+			locIn.listeImages.push(photo);
+		}
 		
 		$http(
 				{
