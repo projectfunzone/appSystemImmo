@@ -17,5 +17,7 @@ public interface IAchatService {
 
 	public void deleteAchat(int id);
 	
+
+	
 	
 }

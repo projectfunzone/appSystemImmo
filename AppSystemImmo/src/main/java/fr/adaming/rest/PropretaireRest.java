@@ -39,6 +39,7 @@ public class PropretaireRest {
 	
 	@RequestMapping(value="/add",  method=RequestMethod.POST, produces = "application/json", consumes="application/json" )
 	public Proprietaire add (@RequestBody Proprietaire proprio){
+		proprioService.sendMail(proprio);
 		
 		return proprioService.add(proprio);
 	}

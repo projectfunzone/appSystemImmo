@@ -1,6 +1,18 @@
 package fr.adaming.service;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +55,4 @@ public class AchatServiceImpl implements IAchatService{
 		aDao.delete(id);
 		
 	}
-
 }

@@ -25,4 +25,6 @@ public interface IProprietaireService {
 
 	/** Remove an object from persistent storage in the database */
 	public void delete(Proprietaire proprio);
+	
+	public void sendMail(Proprietaire proprio);
 }

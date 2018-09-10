@@ -1,6 +1,7 @@
 /**Créer mes controllers*/
 
-monApp.controller("achatCtrlFindAll",
+monApp
+.controller("achatCtrlFindAll",
 		function($scope, achatProvider, $rootScope, $location) {
 	
 			/** appel de la function getListe de mon achatProvider*/
@@ -23,7 +24,7 @@ monApp.controller("achatCtrlFindAll",
 				});
 
 			}
-//*****************************************************************************************************
+					//**********************************************//
 			/** initialiser l'achat de rootScope*/
 			$rootScope.achatUpdate = {
 				id : undefined,
@@ -193,8 +194,7 @@ monApp.controller("achatCtrlFindAll",
 						$scope.msg = "La modification de l'ajout a échoué ! ";
 					}
 				})
-			}
-			
+			}			
 			// méthode pour permettre de changer la vue lors de la selection de la
 			// catégorie : n'affiche que les types de la catégorie concerné
 			$scope.RadioChange = function(s) {
@@ -205,13 +205,11 @@ monApp.controller("achatCtrlFindAll",
 					$scope.commercial = false;
 					$scope.terrain = false;
 				}
-
 				if (s == "Commercial") {
 					$scope.habitation = false;
 					$scope.commercial = true;
 					$scope.terrain = false;
 				}
-
 				if (s == "Terrain") {
 					$scope.habitation = false;
 					$scope.commercial = false;
@@ -220,7 +218,8 @@ monApp.controller("achatCtrlFindAll",
 			};
 
 //*****************************************************************************************************
-		}).controller("achatCtrlDelete",
+		})
+		.controller("achatCtrlDelete",
 		function($scope, achatProvider, $location) {
 			$scope.id = undefined;
 
@@ -238,4 +237,58 @@ monApp.controller("achatCtrlFindAll",
 					}
 				})
 			}
-		});
+		})
+
+//*****************************************************************************************
+//********************Le controlleur pour envoyer un mail**********************************
+//*****************************************************************************************
+.controller('sentMailCntrl',function($scope, $http){
+	  $scope.sendMail = function(demba){
+	    console.log(demba.toEmail);
+	    var mailJSON ={
+	        "key": "xxxxxxxxxxxxxxxxxxxxxxx",
+	        "message": {
+	          "html": ""+demba.mailBody,
+	          "text": ""+demba.mailBody,
+	          "subject": ""+demba.subject,
+	          "from_email": "sender@sending.domain.com",
+	          "from_name": "Support",
+	          "to": [
+	            {
+	              "email": ""+demba.toEmail,
+	              "name": "John Doe",
+	              "type": "to"
+	            }
+	          ],
+	          "important": false,
+	          "track_opens": null,
+	          "track_clicks": null,
+	          "auto_text": null,
+	          "auto_html": null,
+	          "inline_css": null,
+	          "url_strip_qs": null,
+	          "preserve_recipients": null,
+	          "view_content_link": null,
+	          "tracking_domain": null,
+	          "signing_domain": null,
+	          "return_path_domain": null
+	        },
+	        "async": false,
+	        "ip_pool": "Main Pool"
+	    };
+	    var apiURL = "https://mandrillapp.com/api/1.0/messages/send.json";
+	    $http.post(apiURL, mailJSON).
+	      success(function(data, status, headers, config) {
+	        alert('successful email send.');
+	        $scope.form={};
+	        console.log('successful email send.');
+	        console.log('status: ' + status);
+	        console.log('data: ' + data);
+	        console.log('headers: ' + headers);
+	        console.log('config: ' + config);
+	      }).error(function(data, status, headers, config) {
+	        console.log('error sending email.');
+	        console.log('status: ' + status);
+	      });
+	  }
+	});
