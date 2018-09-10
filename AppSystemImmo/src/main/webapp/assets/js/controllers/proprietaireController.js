@@ -85,10 +85,10 @@ monApp
 
 					// fonction appelée à partir du lien supprimer de la liste
 					$scope.deleteLien = function(proprioIn) {
-						proprietaireProvider.delet(proprioIn.id, function(
+						proprietaireProvider.deletS(proprioIn.id, function(
 								retour) {
 							// mettre à jour la liste
-							proprietaireProvider.getListe(function(donnees) {
+							proprietaireProvider.getListeS(function(donnees) {
 								// stocker les données récupéré de service
 								$scope.liste = donnees;
 							})
