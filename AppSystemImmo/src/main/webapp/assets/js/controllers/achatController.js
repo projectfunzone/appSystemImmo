@@ -44,7 +44,8 @@ monApp
 				statut : "",
 				type : "",
 				etat : "",
-				prixDemande : ""
+				prixDemande : "",
+				surface:""
 			};
 
 			/** appel de la fonction à partir du lien de la liste pour modifier un achat*/
@@ -98,7 +99,8 @@ monApp
 			statut : "",
 			type : "",
 			etat : "",
-			prixDemande : ""
+			prixDemande : "",
+			surface:""
 	}
 
 	// la fonction ajouter à partir du bouton d'appel "ajouter"
@@ -174,7 +176,8 @@ monApp
 					statut : "",
 					type : "",
 					etat : "",
-					prixDemande : ""
+					prixDemande : "",
+					surface:""
 				};
 			} else {
 				// si le rootScope est utilisé, alors on initialise achatModif avec
