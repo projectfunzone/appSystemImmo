@@ -1,44 +1,63 @@
-	<br /> id: {{achat.id}} 
-	<br/>Adresse : {{achat.adresse.rue}} {{achat.adresse.cp}} {{achat.adresse.ville}} {{achat.adresse.pays}}
-	<br /> Categorie: {{achat.categorie}} 
-	<br /> Dat	Disponibilié: {{achat.dateDispo}} 
-	<br /> Date soumission:		{{achat.dateSoumis}} 
-	<br /> Nombre de chambre: {{achat.noChambre}} 
-	<br />	Revenue Cadastre: {{achat.revenueCadastre }} 
-	<br /> Statut:	{{achat.statut}} 
-	<br /> Type: {{achat.type}} 
-	<br /> Etat:	{{achat.etat}} 
-	<br /> Prix Demandé: {{achat.prixDemande}}
-	
-	
-	
-	<a ng-click="addVisiteLien(achat)">Créer une visite</a> 
-	
-	
-				<div class="col-md-5">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel"
-					style="width: 250px; height: 250px; border: 1px solid black; margin: 50px; padding: none">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" ng-repeat="p in achat.listeImages"
-							ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
-					</ol>
-					<div class="carousel-inner">
-						<div ng-class="{item: true, active: ($index === 0)}"
-							ng-repeat="p in achat.listeImages">
 
-							<img class="d-block w-100"
-								ng-src="data:image/JPEG;base64,{{p.image}}"
-								alt="Slide number {{$index}}">
-						</div>
-					</div>
+<div class="col-md-11 col-md-offset-1" style="border: solid 1px; margin: 50px">
+	<div class="col-md-5">
+		<h2 class="featurette-heading">A Vendre n&#176;{{achat.id}}</h2>
+		<div style="margin: 5px; text-align: left;">
+			<div>
+				<h3>{{achat.type}}</h3>
+			</div>
+			<div>
+				<em class="detailbien">{{achat.surface}}m&#178;</em><em
+					class="detailbien">{{achat.noChambre}} chambre(s)</em><em
+					class="detailbien">{{achat.statut}}</em>
+			</div>
+			<br />
+			<div>Adresse: {{achat.adresse.rue}} {{achat.adresse.cp}}
+				{{achat.adresse.ville}} {{achat.adresse.pays}}</div>
+			<br>
+			<div>
+				<h4>D&#233;tails achat</h4>
+				Prix: {{achat.prixDemande}}&euro;<br /> Disponible au:
+				{{achat.dateDispo | date: "dd/MM/yyyy"}} <br /> Etat:
+				{{achat.etat}}
+			</div>
+			</br>
+			<div>
+				<h4>D&#233;tails Gestion</h4>
+			</div>
+			Soumission: {{achat.dateSoumis | date: "dd/MM/yyyy"}} <br />Revenu
+			cadastral : {{achat.revenueCadastre}}&euro;
+		</div>
+		<br /> <a ng-click="deleteLien(achat)" class="btn btn-info">Supprimer</a>
+		<a ng-click="updateLien(achat)" class="btn btn-info">Modifier</a> <a
+			ng-click="addVisiteLien(achat)" class="btn btn-info">Cr&#233;er
+			une visite</a> <br /> <br />
+	</div>
+	<div class="col-md-7">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel"
+			style="width: 350px; height: 350px; border: 1px solid black; margin: 50px; margin-left: 150px; padding: none">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" ng-repeat="p in achat.listeImages"
+					ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div ng-class="{item: true, active: ($index === 0)}"
+					ng-repeat="p in achat.listeImages">
 
-					<span class="left carousel-control" data-target="#myCarousel"
-						data-slide="prev"> <span
-						class="glyphicon glyphicon-chevron-left"></span>
-					</span> <span class="right carousel-control" data-target="#myCarousel"
-						data-slide="next"> <span
-						class="glyphicon glyphicon-chevron-right"></span>
-					</span>
+					<img class="d-block w-100"
+						ng-src="data:image/JPEG;base64,{{p.image}}"
+						alt="Slide number {{$index}}">
 				</div>
 			</div>
+
+			<span class="left carousel-control" data-target="#myCarousel"
+				data-slide="prev"> <span
+				class="glyphicon glyphicon-chevron-left"></span>
+			</span> <span class="right carousel-control" data-target="#myCarousel"
+				data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right"></span>
+			</span>
+		</div>
+	</div>
+</div>

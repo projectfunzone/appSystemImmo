@@ -1,16 +1,64 @@
-	<br /> id: {{location.id}} 
-	<br/>Adresse : {{location.adresse.rue}} {{location.adresse.cp}} {{location.adresse.ville}} {{location.adresse.pays}}
-	<br /> Categorie: {{location.categorie}} 
-	<br /> Date	Disponibilié: {{location.dateDispo}} 
-	<br /> Date soumission:		{{location.dateSoumis}} 
-	<br /> Nombre de chambre: {{location.noChambre}} 
-	<br />	Revenue Cadastre: {{location.revenueCadastre }} 
-	<br /> Statut:	{{location.statut}} 
-	<br /> Type: {{location.type}} 
-	<br /> Loyer: {{location.loyer}}
-	<br /> Caution: {{location.caution}}
-	<br /> Charge: {{location.charge}}
-	<br /> Bail: {{location.bail}}
-	
-	
-	<a ng-click="addVisiteLien(location)">Créer une visite</a> 
+
+<div class="col-md-11 col-md-offset-1"
+	style="border: solid 1px; margin: 50px">
+	<div class="col-md-5">
+		<h2 class="featurette-heading">Location n&#176;{{location.id}}</h2>
+		<div style="margin: 5px; text-align: left;">
+			<div>
+				<h3>{{location.type}}</h3>
+			</div>
+			<div>
+				<em class="detailbien">{{location.surface}}m&#178;</em><em
+					class="detailbien">{{location.noChambre}} chambre(s)</em><em
+					class="detailbien">{{location.statut}}</em>
+			</div>
+			<br />
+			<div>Adresse: {{location.adresse.rue}} {{location.adresse.cp}}
+				{{location.adresse.ville}} {{location.adresse.pays}}</div>
+			<br>
+			<div>
+				<h4>D&#233;tails location</h4>
+				Caution : {{location.caution}}&euro; <br />Loyer : {{location.loyer}}&euro;<br />Charge
+				: {{location.charge}}&euro;<br /> Disponible au: {{location.dateDispo | date:
+				"dd/MM/yyyy"}}
+			</div>
+			</br>
+			<div>
+				<h4>D&#233;tails Gestion</h4>
+			</div>
+			Soumission: {{location.dateSoumis | date: "dd/MM/yyyy"}} <br />Revenu
+			cadastral : {{location.revenueCadastre}}&euro;
+		</div>
+		<br /> <a ng-click="deleteLien(location)" class="btn btn-info">Supprimer</a>
+		<a ng-click="updateLien(location)" class="btn btn-info">Modifier</a> <a
+			ng-click="addVisiteLien(location)" class="btn btn-info">Cr&#233;er
+			une visite</a> <br /> <br />
+	</div>
+	<div class="col-md-7">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel"
+			style="width: 350px; height: 350px; border: 1px solid black; margin: 50px; margin-left: 150px; padding: none">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" ng-repeat="p in location.listeImages"
+					ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div ng-class="{item: true, active: ($index === 0)}"
+					ng-repeat="p in location.listeImages">
+
+					<img class="d-block w-100"
+						ng-src="data:image/JPEG;base64,{{p.image}}"
+						alt="Slide number {{$index}}">
+				</div>
+			</div>
+
+			<span class="left carousel-control" data-target="#myCarousel"
+				data-slide="prev"> <span
+				class="glyphicon glyphicon-chevron-left"></span>
+			</span> <span class="right carousel-control" data-target="#myCarousel"
+				data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right"></span>
+			</span>
+		</div>
+	</div>
+</div>

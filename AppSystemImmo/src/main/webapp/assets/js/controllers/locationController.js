@@ -151,14 +151,14 @@ monApp.controller("locationCtrlAdd",
 			};
 
 			$scope.rechercher = function() {
-				// appel de la fonction du achatProvider afin de récupérer
+				// appel de la fonction du locationProvider afin de récupérer
 				// la location
 				locationProvider.getById($scope.id, function(donnees) {
 
 					if (typeof donnees == 'object') {
 						$rootScope.location = donnees;
 						$scope.indice = true;
-
+						console.log("est ce que je suis dans le c");
 						$location.path("location/fiche");
 
 					} else {
@@ -172,7 +172,7 @@ monApp.controller("locationCtrlAdd",
 
 		}).controller("locationCtrlFiche",
 		function($scope, locationProvider, $location, $rootScope) {
-
+			
 			if ($rootScope.location.id == undefined) {
 				$rootScope.location = {
 					id : undefined,
