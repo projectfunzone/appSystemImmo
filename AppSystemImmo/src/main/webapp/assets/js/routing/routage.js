@@ -31,6 +31,7 @@ monApp.config(function($routeProvider) {
 	.when ("/visite/get", {templateUrl:"views/visiteGet.html", controller: "visiteCtrlGet"})
 	.when ("/visite/update", {templateUrl:"views/visiteUpdate.html", controller: "visiteCtrlUpdate"})
 	.when ("/visite/delete", {templateUrl:"views/visiteDelete.html", controller: "visiteCtrlDelete"})
+	.when ("/visite/calendar", {templateUrl:"views/visiteCalendar.html", controller: "myNgController"})
 	
 	//****************************************************************************************************************
 	// Thibault: routage pour le client

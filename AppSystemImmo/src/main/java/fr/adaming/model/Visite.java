@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /*
@@ -40,22 +41,23 @@ public class Visite {
 	/*
 	 * association
 	 */
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="acquisition_id", referencedColumnName="id")
 	private Acquisition acquisition;
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="conseiller_id", referencedColumnName="id")
 	private Conseiller conseiller;
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="client_id", referencedColumnName="id")
 	private Client client;
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="location_id", referencedColumnName="id")
 	private Location location;
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="achat_id", referencedColumnName="id")
 	private Achat achat;
