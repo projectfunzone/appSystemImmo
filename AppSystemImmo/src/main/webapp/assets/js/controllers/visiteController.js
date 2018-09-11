@@ -55,6 +55,8 @@ monApp
 					// vente
 					// lors de la cr"ation d'une visite
 					$rootScope.achat;
+					$rootScope.location;
+					$scope.bien;
 
 					$scope.visiteForm = {
 						date : "",
@@ -72,11 +74,19 @@ monApp
 						}
 					};
 
-					$scope.visiteForm.client = $rootScope.clientVisite;
-					$scope.visiteForm.conseiller = $rootScope.conseillerVisite;
 					$scope.visiteForm.achat = $rootScope.achat;
-					$scope.visiteForm.location = null;
+					$scope.visiteForm.location = $rootScope.location;
 
+					
+					//permet d'assigner les informations dans bien sur l'affichage de la page visiteAdd.html
+					if ($rootScope.location != null ) {
+						$scope.bien=$rootScope.location
+					} else if ($rootScope.achat != null) {
+						$scope.bien=$rootScope.achat
+					}
+					
+					
+					console.log($rootScope.location)
 					// foctionnaliter du bouton ajouter de la vue
 					$scope.adds = function() {
 
