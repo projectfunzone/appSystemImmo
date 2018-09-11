@@ -41,21 +41,21 @@
 			</div>
 			<div class="col-md-5">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel"
-					style="width: 250px; height: 250px; border: 1px solid black; margin: none; padding: none">
+					style="width: 250px; height: 250px; border: 1px solid black; margin: 50px; padding: none">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" ng-repeat="p in l.listeImages"
 							ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
 					</ol>
-					<div class="carousel-inner">
-						<div ng-class="{item: true, active: ($index === 0)}"
-							ng-repeat="p in l.listeImages">
+		<div class="carousel-inner">
+			<div ng-class="{item: true, active: ($index === 0)}"
+				ng-repeat="p in l.listeImages">
 
-							<img class="d-block w-100"
-								ng-src="data:image/JPEG;base64,{{p.image}}"
-								alt="Slide number {{$index}}">
-						</div>
-					</div>
+				<img class="d-block w-100"
+					ng-src="data:image/JPEG;base64,{{p.image}}"
+					alt="Slide number {{$index}}">
+			</div>
+		</div>
 
 					<span class="left carousel-control" data-target="#myCarousel"
 						data-slide="prev"> <span

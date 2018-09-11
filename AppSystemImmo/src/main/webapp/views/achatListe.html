@@ -1,40 +1,73 @@
 <h1 style="text-align: center">Liste des achats</h1>
-	<div class="container">
-		<div ng-repeat="achat in liste" class="col-md-10"
-			style="text-align: center; padding: 5px; margin: 5px">
-			<div class="row featurette"
-		style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
-		<div class="col-md-7">
-			<h2 class="featurette-heading">A Vendre n&#176;{{achat.id}}</h2>
-			<div style="margin: 5px; text-align: left;">
-			<div><h3>{{achat.type}}</h3></div>
-			<div><em class="detailbien">{{achat.surface}}m&#178;</em><em class="detailbien">{{achat.noChambre}} chambre(s)</em><em class="detailbien">{{achat.statut}}</em></div>
-			<br/>
-			<div>{{achat.adresse.rue}} {{achat.adresse.cp}}<br/>
-			{{achat.adresse.ville}} {{achat.adresse.pays}}</div>
-			<br>
-			<div><h4>D&#233;tails achat</h4>
-			Prix: {{achat.prixDemande}}&#233;<br/>
-			Disponible au: {{achat.dateDispo | date:
-			"dd/MM/yyyy"}}
-			<br/>
-			Etat: {{achat.etat}}
+<div class="container">
+	<div ng-repeat="achat in liste" class="col-md-10"
+		style="text-align: center; padding: 5px; margin: 5px">
+		<div class="row featurette"
+			style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">A Vendre n&#176;{{achat.id}}</h2>
+				<div style="margin: 5px; text-align: left;">
+					<div>
+						<h3>{{achat.type}}</h3>
+					</div>
+					<div>
+						<em class="detailbien">{{achat.surface}}m&#178;</em><em
+							class="detailbien">{{achat.noChambre}} chambre(s)</em><em
+							class="detailbien">{{achat.statut}}</em>
+					</div>
+					<br />
+					<div>
+						{{achat.adresse.rue}} {{achat.adresse.cp}}<br />
+						{{achat.adresse.ville}} {{achat.adresse.pays}}
+					</div>
+					<br>
+					<div>
+						<h4>D&#233;tails achat</h4>
+						Prix: {{achat.prixDemande}}&#233;<br /> Disponible au:
+						{{achat.dateDispo | date: "dd/MM/yyyy"}} <br /> Etat:
+						{{achat.etat}}
+					</div>
+					</br>
+					<div>
+						<h4>D&#233;tails Gestion</h4>
+					</div>
+					Soumission: {{achat.dateSoumis | date: "dd/MM/yyyy"}} <br />Revenu
+					cadastral : {{achat.revenueCadastre}}
+				</div>
+				<br /> <a ng-click="deleteLien(achat)" class="btn btn-danger">Supprimer</a>
+				<a ng-click="updateLien(achat)" class="btn btn-info">Modifier</a> <br />
+				<br />
 			</div>
-			</br>
-			<div><h4>D&#233;tails Gestion</h4></div>
-			Soumission: {{achat.dateSoumis | date: "dd/MM/yyyy"}}
-			 <br />Revenu cadastral :
-			{{achat.revenueCadastre}}</div>
-			 <br />
-				<a ng-click="deleteLien(achat)" class="btn btn-danger">Supprimer</a>  <a
-					ng-click="updateLien(achat)" class="btn btn-info">Modifier</a> <br /> <br />
+			<div class="col-md-5">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel"
+					style="width: 250px; height: 250px; border: 1px solid black; margin: 50px; padding: none">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" ng-repeat="p in achat.listeImages"
+							ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div ng-class="{item: true, active: ($index === 0)}"
+							ng-repeat="p in achat.listeImages">
+
+							<img class="d-block w-100"
+								ng-src="data:image/JPEG;base64,{{p.image}}"
+								alt="Slide number {{$index}}">
+						</div>
+					</div>
+
+					<span class="left carousel-control" data-target="#myCarousel"
+						data-slide="prev"> <span
+						class="glyphicon glyphicon-chevron-left"></span>
+					</span> <span class="right carousel-control" data-target="#myCarousel"
+						data-slide="next"> <span
+						class="glyphicon glyphicon-chevron-right"></span>
+					</span>
+				</div>
+			</div>
+			<hr class="featurette-divider">
 		</div>
-		<div class="col-md-5">
-		<img class="featurette-image img-responsive center-block" ng-repeat="p in achat.listeImages" ng-src="data:image/JPEG;base64,{{p.image}}" alt="Generic placeholder image" style="width: 250px; height: 250px; border: 1px solid black; margin: none; padding: none">
-		</div>
-		<hr class="featurette-divider">
 	</div>
-</div>
 </div>
 
 

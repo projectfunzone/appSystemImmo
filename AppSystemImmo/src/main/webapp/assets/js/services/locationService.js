@@ -57,6 +57,25 @@ monApp.factory("locationProvider", function($http) {
 		});
 	}
 	
+	// ***************************************************************************************
+	/** récupérer une location avec son id */
+	function rech(id, callBack) {
+
+		$http.get("http://localhost:8080/AppSystemImmo/location/get", {
+			params : {
+				pId : id
+			}
+		}).then(function successCallback(response) {
+			/**
+			 * stocker les données dans la callBack, afin de les transferer au
+			 * controller, d'une manière asynchrone
+			 */
+			callBack(response.data);
+		}, function errorCallback(response) {
+			console.log("----------erreur dans recup d'une location by id: "+response.statusText);
+		});
+
+	}
 	
 	function del (id, callBack) {
 		$http({
