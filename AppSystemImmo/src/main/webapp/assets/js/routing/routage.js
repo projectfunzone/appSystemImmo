@@ -1,6 +1,6 @@
 //Configuration de la table de routage
 monApp.config(function($routeProvider) {
-	$routeProvider.otherwise({redirectTo: "/accueil"});
+	$routeProvider.when("/accueil", {templateUrl: "views/tableauDeBord.html", controller: "accueilCtrl"}).otherwise({redirectTo: "/accueil"});
 });
 
 
