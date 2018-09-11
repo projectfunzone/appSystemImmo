@@ -21,6 +21,7 @@ monApp.config(function($routeProvider) {
 	.when("/achat/add", {templateUrl: "views/achatAdd.html", controller: "achatCtrlAdd"})
 	.when("/achat/update", {templateUrl: "views/achatUpdate.html", controller: "achatCtrlUpdate"})
 	.when("/achat/delete", {templateUrl: "views/achatDelete.html", controller: "achatCtrlDelete"})
+	.when ("/achat/fiche", {templateUrl:"views/achatFiche.html", controller: "achatCtrlFiche"})
 	
 	//****************************************************************************************************************
 	// Amandine: routage pour la visite

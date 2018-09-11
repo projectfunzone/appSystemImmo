@@ -66,28 +66,67 @@ monApp
 					}
 					// *****************************************************************************************************
 				})
-		.controller("achatCtrlGet", function($scope, achatProvider) {
+		.controller("achatCtrlGet", function($scope, achatProvider, $rootScope, $location) {
 			$scope.indice = false;
 			$scope.id = undefined;
 			$scope.msg = "";
+			
+			
+			$rootScope.achat = {
+					id : undefined,
+					adresse : {
+						cp : "",
+						pays : "",
+						rue : "",
+						ville : "",
+					},
+					categorie : "",
+					dateDispo : "",
+					dateSoumis : "",
+					noChambre : "",
+					photos : [],
+					listeImages : [],
+					revenueCadastre : "",
+					statut : "",
+					type : "",
+					etat : "",
+					prixDemande : "",
+					surface : ""
+				};
+			
+			
 			$scope.rechercher = function() {
 				// appel de la fonction du achatProvider afin de récupérer
 				// l'achat
 				achatProvider.getById($scope.id, function(donnees) {
 
 					if (typeof donnees == 'object') {
-						$scope.achat = donnees;
+						$rootScope.achat = donnees;
 						$scope.indice = true;
+						
+						
+						$location
+						.path("achat/fiche");
+						console.log("test")
+			
 					} else {
 						$scope.indice = false;
 						$scope.msg = "l'achat recherché n'existe pas"
-					}
-					;
+					}					;
 
 				})
 			}
 			// *****************************************************************************************************
 		})
+		.controller("achatCtrlFiche",
+				function($scope, achatProvider, $location, $rootScope) {
+					$rootScope.achat;
+					
+					
+					
+					
+					
+				})
 		.controller("achatCtrlAdd",
 				function($scope, achatProvider, $location, $rootScope) {
 
