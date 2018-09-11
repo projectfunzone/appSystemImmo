@@ -1,31 +1,37 @@
 <h1 style="text-align: center">Les Clients</h1>
+<h4>
+	Rechercher un client dans la liste : <input type="text"
+		ng-model="recherche"
+		style="color: blue; background-image: url(assets/resources/img/search.png); background-repeat: no-repeat; background-position: 1px 1px; padding-left: 25px">
+</h4>
 <div class="col-md-11"
 	style="text-align: center; padding: 5px; margin: 5px">
-<table class="table table-bordered">
-	<tr>
-		<th>id</th>
-		<th>Numero de client</th>
-		<th>Nom</th>
-		<th>Prenom</th>
-		<th>T&eacute;l&eacute;phone (priv&eacute;)</th>
-		<th>Rue</th>
-		<th>Code Postal</th>
-		<th>Ville</th>
-		<th>Pays</th>
-		<th>Gestion</th>
-	</tr>
-	<tr ng-repeat="cl in liste">
-		<td>{{cl.id}}</td>
-		<td>{{cl.num}}</td>
-		<td>{{cl.nom}}</td>
-		<td>{{cl.prenom}}</td>
-		<td>{{cl.telPrive}}</td>
-		<td>{{cl.adresse.rue}}</td>
-		<td>{{cl.adresse.cp}}</td>
-		<td>{{cl.adresse.ville}}</td>
-		<td>{{cl.adresse.pays}}</td>
-		<td><a ng-click="deleteLien(cl)">Supprimer</a> | <a ng-click="updateLien(cl)">Modifier</a></td>
-	</tr>
-</table>
+	<table class="table table-bordered">
+		<tr>
+			<th>id</th>
+			<th>Numero de client</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>T&eacute;l&eacute;phone (priv&eacute;)</th>
+			<th>Rue</th>
+			<th>Code Postal</th>
+			<th>Ville</th>
+			<th>Pays</th>
+			<th>Gestion</th>
+		</tr>
+		<tr ng-repeat="cl in liste|filter:recherche">
+			<td>{{cl.id}}</td>
+			<td>{{cl.num}}</td>
+			<td>{{cl.nom}}</td>
+			<td>{{cl.prenom}}</td>
+			<td>{{cl.telPrive}}</td>
+			<td>{{cl.adresse.rue}}</td>
+			<td>{{cl.adresse.cp}}</td>
+			<td>{{cl.adresse.ville}}</td>
+			<td>{{cl.adresse.pays}}</td>
+			<td><a ng-click="deleteLien(cl)">Supprimer</a> | <a
+				ng-click="updateLien(cl)">Modifier</a></td>
+		</tr>
+	</table>
 </div>
 

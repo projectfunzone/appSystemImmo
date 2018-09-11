@@ -1,7 +1,12 @@
 <h1 style="text-align: center">Liste des locations</h1>
+<h4>
+	Rechercher un bien dans la liste : <input type="text"
+		ng-model="recherche"
+		style="color: blue; background-image: url(assets/resources/img/search.png); background-repeat: no-repeat; background-position: 1px 1px; padding-left: 25px">
+</h4>
 
 <div class="container">
-	<div ng-repeat="l in liste" class="col-md-10"
+	<div ng-repeat="l in liste|filter:recherche" class="col-md-10"
 		style="text-align: center; padding: 5px; margin: 5px">
 		<div class="row featurette"
 			style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
@@ -42,28 +47,16 @@
 			<div class="col-md-5">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel"
 					style="width: 250px; height: 250px; border: 1px solid black; margin: 50px; padding: none">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" ng-repeat="p in l.listeImages"
-							ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
-					</ol>
-		<div class="carousel-inner">
-			<div ng-class="{item: true, active: ($index === 0)}"
-				ng-repeat="p in l.listeImages">
+					<div class="carousel-inner">
+						<div ng-class="{item: true, active: ($index === 0)}"
+							ng-repeat="p in l.listeImages">
 
-				<img class="d-block w-100"
-					ng-src="data:image/JPEG;base64,{{p.image}}"
-					alt="Slide number {{$index}}">
-			</div>
-		</div>
-
-					<span class="left carousel-control" data-target="#myCarousel"
-						data-slide="prev"> <span
-						class="glyphicon glyphicon-chevron-left"></span>
-					</span> <span class="right carousel-control" data-target="#myCarousel"
-						data-slide="next"> <span
-						class="glyphicon glyphicon-chevron-right"></span>
-					</span>
+							<img class="d-block w-100"
+								ng-src="data:image/JPEG;base64,{{p.image}}"
+								alt="Slide number {{$index}}"
+								style="width: 250px; height: 250px">
+						</div>
+					</div>
 				</div>
 			</div>
 			<hr class="featurette-divider">
