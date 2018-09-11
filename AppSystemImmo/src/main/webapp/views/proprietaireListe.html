@@ -18,7 +18,7 @@
 	</tr>
 	<tr ng-repeat="proprio in liste">
 		<td>{{proprio.id}}</td>
-		<td>{{proprio.nom}}</td>
+		<td><a ng-click="get(proprio.id)">{{proprio.nom}}</a></td>
 		<td>{{proprio.prenom}}</td>
 		<td>{{proprio.adresse.rue}}</td>
 		<td>{{proprio.adresse.cp}}</td>
@@ -31,18 +31,7 @@
 			ng-click="updateLien(proprio)">Modifier</a></td>
 		<td><a
 			ng-click="addLocationLien(proprio)">Créer un bien a la location</a> | <a
-			ng-click="addAchatLien(proprio)">Créer un bien a vendre</a>
-		
-		
-		
-		
-		
-		<label><input type="radio" name="Categorie"
-				ng-change="RadioChange('Location')" ng-model="locIn.categorie"
-				value="Louer" /> Louer </label> <label><input
-				type="radio" name="Categorie" ng-change="RadioChange('Achat')"
-				ng-model="locIn.categorie" value="Achat" /> Vendre </label>
-				<button class="btn btn-default" ng-click="add()">D&eacute;poser une offre</button></td>
+			ng-click="addAchatLien(proprio)">Créer un bien a vendre</a> </td>
 	</tr>
 
 </table>
