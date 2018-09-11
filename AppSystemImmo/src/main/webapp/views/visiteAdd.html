@@ -1,8 +1,13 @@
 <!-- Formilaire Ajout de visite (sélection date et heure) -->
 <h1>Ajouter une visite</h1>
 <br />
-<br /> id: {{achat.id}} 
-	<br/>Adresse : {{achat.adresse.rue}} {{achat.adresse.cp}} {{achat.adresse.ville}} {{achat.adresse.pays}}
+<br />
+Adresse : {{achat.adresse.rue}} {{achat.adresse.cp}}
+{{achat.adresse.ville}} {{achat.adresse.pays}}
+<br />
+Categorie: {{achat.categorie}}
+<br />
+Type: {{achat.type}}
 <form class="form-horizontal">
 
 	<div class="form-group">
@@ -18,10 +23,12 @@
 	<div class="form-group">
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner un client existant: </label>
-		<div class="col-sm-5" >
-			<input type="text" ng-model="visiteForm.client.id"
-				placeholder="id du client"> <a
-				href="http://localhost:8080/AppSystemImmo/index.html#!/client/add">Ou
+		<div class="col-sm-5">
+			<select id="id" class=form-control ng-model="visiteForm.client.id">
+				<option value="{{cl.id}}" ng-repeat="cl in listeClient">{{cl.id}}
+					- {{cl.nom}} {{cl.prenom}}</option>
+			</select> <a
+				href="http://localhost:8080/AppSystemImmo/dashboardAdmin.html#!/client/add">Ou
 				ajouter un nouveau client</a>
 		</div>
 	</div>
@@ -29,12 +36,11 @@
 
 
 
-	<div class="form-group">
+	<div class="form-group" style="display: none">
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner le bien &agrave; visiter </label>
 		<div class="col-sm-5">
-			<input type="text" ng-model="visiteForm.achat.id"
-				placeholder="id du achat">
+			<input type="text" ng-model="visiteForm.achat.id" placeholder="achat">
 
 		</div>
 	</div>
@@ -43,8 +49,8 @@
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner le conseiller qui effectura la visite: </label>
 		<div class="col-sm-5">
-		<input type="text" ng-model="visiteForm.conseiller.id"
-				placeholder="id du conseiller">
+			<input type="text" ng-model="visiteForm.conseiller.id" placeholder="conseiller">
+
 		</div>
 	</div>
 
