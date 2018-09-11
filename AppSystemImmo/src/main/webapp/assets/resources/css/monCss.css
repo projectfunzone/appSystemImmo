@@ -11,9 +11,9 @@ label {
 }
 
 .titleprghp {
-	background: red;
+	background: #1E7FCB;
 	height: 46px;
-	color: #000;
+	color: white;
 	font-size: 23px;
 	height: 46px;
 	line-height: 40px;
@@ -22,7 +22,7 @@ label {
 }
 
 .detailbien {
-	background-color: #efeff5;
+	background-color: aqua;
 	margin: 15px;
 	margin-left: none;
 	padding: 1px;

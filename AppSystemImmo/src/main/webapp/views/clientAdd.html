@@ -1,14 +1,3 @@
-<!-- Head de la page -->
-<div class="row">
-	<div class="col-lg-10 col-md-9-offset-2">
-		<div class="col-lg-1">
-			<img src="../assets/resources/img/nouveau_client.png"
-				alt="Nouveau Client">
-		</div>
-	</div>
-</div>
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
@@ -17,6 +6,8 @@
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3">
 							<h2>Nouveau client</h2>
+							<img src="assets/resources/img/nouveau_client.png"
+								alt="Nouveau Client" style="width: 50px; height: 50px">
 							<p>Enregistrement de vos informations</p>
 						</div>
 					</div>
@@ -28,7 +19,8 @@
 					<div class="row col-lg-10-offset-2">
 						<div class="col-lg-10-offset-2">
 							<div class="titleprghp">
-								<div class="prg" style="margin-right: 50px">Information contact</div>
+								<div class="prg" style="margin-right: 50px">Information
+									contact</div>
 							</div>
 						</div>
 					</div>
@@ -78,137 +70,54 @@
 									id="idRue" ng-model="clForm.adresse.rue"
 									style="background-image: url(assets/resources/img/check.png); background-repeat: no-repeat; background-position: right center">
 							</div>
+						</div>
+						<br />
+						<div class="form-group has-success has-feedback">
+							<label for="idCp" class="col-sm-2 control-label"
+								style="margin-top: 5px">Code Postal</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="cp" id="idCp"
+									ng-model="clForm.adresse.cp"
+									style="background-image: url(assets/resources/img/check.png); background-repeat: no-repeat; background-position: right center">
+							</div>
+						</div>
+						<div class="form-group has-success has-feedback">
+							<label for="idVille" class="col-sm-2 control-label">Ville</label>
+							<div class="col-sm-8">
+								<input type="text" name="ville" class="form-control"
+									id="idVille" ng-model="clForm.adresse.ville"
+									style="background-image: url(assets/resources/img/check.png); background-repeat: no-repeat; background-position: right center">
+							</div>
+						</div>
+						<div class="form-group has-success has-feedback">
+							<label for="idPays" class="col-sm-2 control-label">Pays</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="pays" id="idPays"
+									ng-model="clForm.adresse.pays"
+									style="background-image: url(assets/resources/img/check.png); background-repeat: no-repeat; background-position: right center">
+							</div>
+						</div>
+					</div>
 
-							<div class="form-group has-success has-feedback">
-								<label for="idCp" class="col-sm-2 control-label" style="margin-top: 5px">Code
-									Postal</label>
-								<div class="col-sm-8">
-									<input type="text" class="form-control" name="cp" id="idCp"
-										ng-model="clForm.adresse.cp"
-										style="background-image: url(assets/resources/img/check.png); background-repeat: no-repeat; background-position: right center">
+					<div class="row" class="col-lg-12">
+						<div>
+							<div class="boutton">
+								<div class="col-lg-1">
+									<button name="submit" id="cancel" type="reset" value="reset"
+										class="btn btn-default">
+										Cancel<span class="glyphicon glyphicon-remove"></span>
+									</button>
 								</div>
-							</div>
-							<div class="form-group has-success has-feedback">
-								<label for="idVille" class="col-sm-2 control-label">Ville</label>
-								<div class="col-sm-8">
-									<input type="text" name="ville" class="form-control"
-										id="idVille" ng-model="clForm.adresse.ville"
-										style="background-image: url(assets/resources/img/check.png); background-repeat: no-repeat; background-position: right center">
-								</div>
-							</div>
-							<div class="form-group has-success has-feedback">
-								<label for="idPays" class="col-sm-2 control-label">Pays</label>
-								<div class="col-sm-8">
-									<input type="text" class="form-control" name="pays" id="idPays"
-										ng-model="clForm.adresse.pays"
-										style="background-image: url(assets/resources/img/check.png); background-repeat: no-repeat; background-position: right center">
+								<div class="col-lg-4 col-lg-offset-3">
+									<button name="submit" id="submit" class="btn btn-default"
+										ng-click="add()">
+										<span class="glyphicon glyphicon-floppy-disk"></span>Enregistrer
+										la fiche<span class="glyphicon glyphicon-chevron-right"></span>
+									</button>
 								</div>
 							</div>
 						</div>
-
-						<!-- 					<div class="col-lg-6"> -->
-						<!-- 						<div class="col-lg-12"> -->
-						<!-- 							<div class="titleprghp"> -->
-						<!-- 								<span class="prg">Recherche Immobilière</span> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-						<!-- 						<div class="col-lg-12"> -->
-
-						<!-- 							<form class="form-horizontal" role="form"> -->
-						<!-- 								<label for="typologie" class="col-sm-2 col-xs-12 control-label">Typologie</label> -->
-						<!-- 								<label class="checkbox inline no_indent"> <input -->
-						<!-- 									type="checkbox" id="inlineCheckbox3" value="option1"> -->
-						<!-- 									Studio -->
-						<!-- 								</label> <label class="checkbox inline no_indent"> <input -->
-						<!-- 									type="checkbox" id="inlineCheckbox4" value="option2"> 2 -->
-						<!-- 									pièces -->
-						<!-- 								</label> <label class="checkbox inline no_indent"> <input -->
-						<!-- 									type="checkbox" id="inlineCheckbox5" value="option3"> 3 -->
-						<!-- 									pièces -->
-						<!-- 								</label> <br class="hides"> <label for="" -->
-						<!-- 									class="col-sm-2 col-xs-12 control-label" id="hides1"></label> <label -->
-						<!-- 									class="checkbox inline no_indent"> <input -->
-						<!-- 									type="checkbox" id="inlineCheckbox6" value="option6"> 4 -->
-						<!-- 									pièces -->
-						<!-- 								</label> <label for="" class="col-sm-2 col-xs-12 control-label" -->
-						<!-- 									id="hides2"></label> <label class="checkbox inline no_indent"> -->
-						<!-- 									<input type="checkbox" id="inlineCheckbox9" value="option5"> -->
-						<!-- 									Maison -->
-						<!-- 								</label> -->
-						<!-- 							</form> -->
-						<!-- 						</div> -->
-
-						<!-- 					</div> -->
-						<!-- 					<div class="col-lg-12 col-xs-12"> -->
-						<!-- 						<form class="form-horizontal" role="form"> -->
-
-						<!-- 							<label for="objectif" class="col-sm-2 col-xs-12 control-label">Objectifs</label> -->
-
-						<!-- 							<label class="checkbox inline no_indent"> <input -->
-						<!-- 								type="checkbox" id="inlineCheckbox10" value="option9"> -->
-						<!-- 								Habiter -->
-						<!-- 							</label> <label class="checkbox inline no_indent"> <input -->
-						<!-- 								type="checkbox" id="inlineCheckbox11" value="option10">Investir -->
-						<!-- 							</label> <label class="checkbox inline no_indent"> <input -->
-						<!-- 								type="checkbox" id="inlineCheckbox12" value="option11"> -->
-						<!-- 								R&eacute;sidence secondaire -->
-						<!-- 							</label> -->
-						<!-- 						</form> -->
-						<!-- 					</div> -->
-
-						<!-- 					<div class="col-lg-12 col-xs-12"> -->
-						<!-- 						<form class="form-horizontal" role="form"> -->
-
-						<!-- 							<div class="form-group"> -->
-						<!-- 								<label for="budget" class="col-sm-2 control-label">Budget -->
-						<!-- 									(&euro;.):</label> -->
-						<!-- 								<div class="col-sm-8"> -->
-						<!-- 									<input type="text" class="form-control" name="budget" -->
-						<!-- 										id="budget"> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 							<div class="form-group"> -->
-						<!-- 								<label for="cp" class="col-sm-2 control-label">Code -->
-						<!-- 									Postal<br> de recherche -->
-						<!-- 								</label> -->
-						<!-- 								<div class="col-sm-8"> -->
-						<!-- 									<input type="text" class="form-control" name="cp" id="cp"> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 							<div class="form-group"> -->
-						<!-- 								<label for="secteur" class="col-sm-2 control-label">Secteur</label> -->
-						<!-- 								<div class="col-sm-8"> -->
-						<!-- 									<input type="text" name="secteur" class="form-control" -->
-						<!-- 										id="secteur"> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 						</form> -->
-						<!-- 					</div> -->
-						<!-- 			</div> -->
-						<!-- 		</div> -->
-
-
-
-						<div class="row" class="col-lg-12">
-							<div >
-								<div class="boutton">
-									<div class="col-lg-1">
-										<button name="submit" id="cancel" type="reset" value="reset"
-											class="btn btn-default">
-											Cancel<span class="glyphicon glyphicon-remove"></span>
-										</button>
-									</div>
-									<div
-										class="col-lg-4 col-lg-offset-3">
-										<button name="submit" id="submit" class="btn btn-default"
-											ng-click="add()">
-											<span class="glyphicon glyphicon-floppy-disk"></span>Enregistrer
-											la fiche<span class="glyphicon glyphicon-chevron-right"></span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
+					</div>
 				</form>
 			</div>
 		</div>
