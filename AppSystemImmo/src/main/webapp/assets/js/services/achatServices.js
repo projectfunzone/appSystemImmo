@@ -102,9 +102,8 @@ monApp.factory("achatProvider", function($http) {
 					callBack(response.statusText);
 				},
 				function errorCallback(response) {
-					console.log("----------erreur dans supprimer un achat: "
-							+ response.statusText);
-					callback(response.statusText)
+//					console.log("----------erreur dans supprimer un achat: "+ response.statusText);
+					callBack(response.statusText)
 				});
 	}
 
