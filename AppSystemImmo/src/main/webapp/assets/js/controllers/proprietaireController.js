@@ -87,31 +87,31 @@ monApp
 										})
 					}
 				})
-				
-		.controller("proprietaireCtrlFiche",
+
+		.controller(
+				"proprietaireCtrlFiche",
 				function($scope, proprietaireProvider, $location, $rootScope) {
 					$rootScope.proprio;
 					console.log($rootScope.proprio.id)
 
-					proprietaireProvider.getListeLocByProprioS($rootScope.proprio.id, function(donnees) {
+					proprietaireProvider.getListeLocByProprioS(
+							$rootScope.proprio.id, function(donnees) {
 
-						// stocker les informations récupérées par
-						// l'intermédiaire du proprietaireService
-						$scope.listeLoc = donnees;
+								// stocker les informations récupérées par
+								// l'intermédiaire du proprietaireService
+								$scope.listeLoc = donnees;
 
-					});
-					
-					proprietaireProvider.getListeAchatByProprioS($rootScope.proprio.id, function(donnees) {
+							});
 
-						// stocker les informations récupérées par
-						// l'intermédiaire du proprietaireService
-						$scope.listeAchat = donnees;
+					proprietaireProvider.getListeAchatByProprioS(
+							$rootScope.proprio.id, function(donnees) {
 
-					});
-					
-					
-					
-					
+								// stocker les informations récupérées par
+								// l'intermédiaire du proprietaireService
+								$scope.listeAchat = donnees;
+
+							});
+
 				})
 
 		.controller(
@@ -256,9 +256,9 @@ monApp
 						proprietaireProvider
 								.updateS(
 										$scope.proprioModif,
-										function(donnees) {
+										function(retour) {
 											$scope.msg = "";
-											if (typeof donnees == 'object') {
+											if (retour == 'OK') {
 												// rediriger vers accueil
 												$location
 														.path("proprietaire/liste");
