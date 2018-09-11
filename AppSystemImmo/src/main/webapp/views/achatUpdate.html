@@ -19,11 +19,11 @@
 			bien Immobilier</label>
 
 		<div class="col-sm-1">
-			<input type="number" class="form-control" id="idRue"
+			<input type="text" class="form-control" id="idRue"
 				placeholder="Rue" ng-model="achatModif.adresse.rue">
 		</div>
 		<div class="col-sm-2">
-			<input type="number" class="form-control" id="idCp"
+			<input type="text" class="form-control" id="idCp"
 				placeholder="code postal" ng-model="achatModif.adresse.cp">
 		</div>
 		<div class="col-sm-2">
@@ -111,7 +111,7 @@
 			Disponibilit&eacute;</label>
 		<div class="col-sm-5">
 			<input type="date" class="form-control" id="idDateDispo"
-				placeholder="DateDispo" ng-model="achatModif.dateDispo">
+				placeholder="Date de disponibilit&eacute; du bien" ng-model="achatModif.dateDispo">
 		</div>
 	</div>
 
@@ -120,7 +120,7 @@
 			Soumission</label>
 		<div class="col-sm-5">
 			<input type="date" class="form-control" id="idDateSoumis"
-				placeholder="DateSoumis" ng-model="achatModif.dateSoumis">
+				placeholder="Date de soumission du bien" ng-model="achatModif.dateSoumis">
 		</div>
 	</div>
 
@@ -137,7 +137,7 @@
 		<label for="idPhoto" class="col-sm-2 control-label">Photo</label>
 		<div class="col-sm-5">
 			<input type="file" name="file" form-control" id="idPhoto"
-				placeholder="Photo" ng-model="achatModif.photo">
+				placeholder="Photo" ng-model="achatModif.photos" accept="image/*"  base-sixty-four-input multiple>
 		</div>
 	</div>
 
