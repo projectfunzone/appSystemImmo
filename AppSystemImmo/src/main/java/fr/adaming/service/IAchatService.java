@@ -3,6 +3,7 @@ package fr.adaming.service;
 import java.util.List;
 
 import fr.adaming.model.Achat;
+import fr.adaming.model.Proprietaire;
 
 
 public interface IAchatService {
@@ -17,7 +18,7 @@ public interface IAchatService {
 
 	public void deleteAchat(int id);
 	
-
+	public List<Achat> getAchatByProprio(Proprietaire proprio);
 	
 	
 }

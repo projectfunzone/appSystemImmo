@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Achat;
+import fr.adaming.model.Proprietaire;
 import fr.adaming.service.IAchatService;
 
 @RestController
@@ -44,6 +45,12 @@ public class AchatRest {
 		aService.deleteAchat(id);
 	}
 	
-	
+	@RequestMapping(value = "/listeByProprio/{pId}", method = RequestMethod.GET, produces = "application/json")
+	List<Achat> getAllLocationByProprio(@PathVariable("pId") int id) {
+		Proprietaire proprio=new Proprietaire();
+		proprio.setId(id);
+		
+		return aService.getAchatByProprio(proprio);
+	}
 	
 }

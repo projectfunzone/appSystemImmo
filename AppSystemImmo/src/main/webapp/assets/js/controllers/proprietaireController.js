@@ -93,7 +93,7 @@ monApp
 					$rootScope.proprio;
 					console.log($rootScope.proprio.id)
 
-					proprietaireProvider.getListeByProprioS($rootScope.proprio.id, function(donnees) {
+					proprietaireProvider.getListeLocByProprioS($rootScope.proprio.id, function(donnees) {
 
 						// stocker les informations récupérées par
 						// l'intermédiaire du proprietaireService
@@ -101,6 +101,13 @@ monApp
 
 					});
 					
+					proprietaireProvider.getListeAchatByProprioS($rootScope.proprio.id, function(donnees) {
+
+						// stocker les informations récupérées par
+						// l'intermédiaire du proprietaireService
+						$scope.listeAchat = donnees;
+
+					});
 					
 					
 					

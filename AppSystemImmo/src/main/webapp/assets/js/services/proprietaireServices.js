@@ -89,14 +89,31 @@ monApp
 						});
 					}
 
-					// récupérer la liste des propriétaires de la bd
-					function getListeByProprio(id, callBack) {
+					// récupérer la liste des locaition par proprietaire propriétaires de la bd
+					function getListeLocByProprio(id, callBack) {
 
 						// récupérer la liste à partir du serveur
 						$http(
 								{
 									method : "GET",
 									url : "http://localhost:8080/AppSystemImmo/location/listeByProprio/"
+											+ id
+								}).then(function successCallBack(reponse) {
+							callBack(reponse.data);
+						}, function errorCallBack(reponse) {
+
+						});
+
+					}
+					
+					// récupérer la liste des locaition par proprietaire propriétaires de la bd
+					function getListeAchatByProprio(id, callBack) {
+
+						// récupérer la liste à partir du serveur
+						$http(
+								{
+									method : "GET",
+									url : "http://localhost:8080/AppSystemImmo/achat/listeByProprio/"
 											+ id
 								}).then(function successCallBack(reponse) {
 							callBack(reponse.data);
@@ -113,7 +130,8 @@ monApp
 						getS : get,
 						updateS : update,
 						deletS : delet,
-						getListeByProprioS : getListeByProprio
+						getListeLocByProprioS : getListeLocByProprio,
+						getListeAchatByProprioS : getListeAchatByProprio
 
 					}
 

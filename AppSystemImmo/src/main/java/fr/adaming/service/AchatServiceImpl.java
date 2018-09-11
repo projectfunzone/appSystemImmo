@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IAchatDao;
 import fr.adaming.model.Achat;
+import fr.adaming.model.Proprietaire;
 
 @Service
 @Transactional
@@ -54,5 +55,11 @@ public class AchatServiceImpl implements IAchatService{
 	public void deleteAchat(int id) {
 		aDao.delete(id);
 		
+	}
+
+	@Override
+	public List<Achat> getAchatByProprio(Proprietaire proprio) {
+		// TODO Auto-generated method stub
+		return aDao.getAchatByProprio(proprio);
 	}
 }
