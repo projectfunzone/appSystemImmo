@@ -90,7 +90,7 @@ monApp
 
 		.controller(
 				"proprietaireCtrlFiche",
-				function($scope, proprietaireProvider, $location, $rootScope) {
+				function($scope, proprietaireProvider, achatProvider, locationProvider, $location, $rootScope) {
 					$rootScope.proprio;
 
 					proprietaireProvider.getListeLocByProprioS(
@@ -111,6 +111,33 @@ monApp
 
 							});
 
+					
+					$scope.rechercherLoc = function(id) {
+						// appel de la fonction du achatProvider afin de récupérer
+						// la location
+						locationProvider.getById(id, function(donnees) {
+
+								$rootScope.location = donnees;
+								$location.path("location/fiche");
+						})
+					}
+					
+					
+					
+					$scope.rechercherAchat = function(id) {
+						// appel de la fonction du achatProvider afin de
+						// récupérer
+						// l'achat
+						achatProvider.getById(id, function(donnees) {
+
+								$rootScope.achat = donnees;
+								$location.path("achat/fiche");
+						})
+					}
+					
+					
+					
+					
 				})
 
 		.controller(
@@ -219,6 +246,29 @@ monApp
 
 					}
 
+					// méthode pour arriver sur la fiche de proprietaire de la
+					// liste
+					// des proprietaire
+					$rootScope.proprio;
+
+					$scope.get = function(id) {
+						// appel de la fonction du proprietaireProvider afin de
+						// récupérer le propriétaire
+						proprietaireProvider
+								.getS(
+										id,
+										function(donnees) {
+											if (typeof donnees == 'object') {
+												$rootScope.proprio = donnees;
+
+												$location
+														.path("proprietaire/fiche");
+											} else {
+												$scope.indice = false;
+												$scope.msg = "Le propriétaire que vous recherchez n'est pas répertorié dans nos fichiers"
+											}
+										})
+					}
 				})
 
 		.controller(
