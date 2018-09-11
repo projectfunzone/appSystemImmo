@@ -49,7 +49,7 @@ monApp.config(function($routeProvider) {
 	.when ("/proprietaire/fiche", {templateUrl:"views/proprietaireFiche.html", controller: "proprietaireCtrlFiche"})
 	
 	//****************************************************************************************************************
-	// Ewen : routage pour le propriétaire
+	// Ewen : routage pour le conseiller
 	$routeProvider.when("/conseiller/liste", {templateUrl:"views/conseillerListe.html", controller: "conseillerCtrlFindAll"})
 	.when ("/conseiller/add", {templateUrl:"views/conseillerAdd.html", controller: "conseillerCtrlAdd"})
 	.when ("/conseiller/get", {templateUrl:"views/conseillerGet.html", controller: "conseillerCtrlGet"})
