@@ -47,5 +47,14 @@ monApp.config(function($routeProvider) {
 	.when ("/proprietaire/update", {templateUrl:"views/proprietaireUpdate.html", controller: "proprietaireCtrlUpdate"})
 	.when ("/proprietaire/delete", {templateUrl:"views/proprietaireDelete.html", controller: "proprietaireCtrlDelete"})
 	.when ("/proprietaire/fiche", {templateUrl:"views/proprietaireFiche.html", controller: "proprietaireCtrlFiche"})
+	
+	//****************************************************************************************************************
+	// Ewen : routage pour le propriétaire
+	$routeProvider.when("/conseiller/liste", {templateUrl:"views/conseillerListe.html", controller: "conseillerCtrlFindAll"})
+	.when ("/conseiller/add", {templateUrl:"views/conseillerAdd.html", controller: "conseillerCtrlAdd"})
+	.when ("/conseiller/get", {templateUrl:"views/conseillerGet.html", controller: "conseillerCtrlGet"})
+	.when ("/conseiller/update", {templateUrl:"views/conseillerUpdate.html", controller: "conseillerCtrlUpdate"})
+	.when ("/conseiller/delete", {templateUrl:"views/conseillerDelete.html", controller: "conseillerCtrlDelete"})
+	.when ("/conseiller/fiche", {templateUrl:"views/conseillerFiche.html", controller: "conseillerCtrlFiche"})
 
 });
