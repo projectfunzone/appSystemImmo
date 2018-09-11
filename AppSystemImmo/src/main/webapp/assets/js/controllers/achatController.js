@@ -65,6 +65,35 @@ monApp
 						$location.path("achatUpdate");
 					}
 					// *****************************************************************************************************
+
+					$rootScope.achat = {
+						id : undefined,
+						adresse : {
+							cp : "",
+							pays : "",
+							rue : "",
+							ville : "",
+						},
+						categorie : "",
+						dateDispo : "",
+						dateSoumis : "",
+						noChambre : "",
+						photos : [],
+						listeImages : [],
+						revenueCadastre : "",
+						statut : "",
+						type : "",
+						etat : "",
+						prixDemande : "",
+						surface : ""
+					};
+
+					$scope.addVisiteLien = function(achatIn) {
+						$rootScope.achat = achatIn;
+						$location.path("visite/add");
+
+					}
+
 				})
 		.controller("achatCtrlGet",
 				function($scope, achatProvider, $rootScope, $location) {
