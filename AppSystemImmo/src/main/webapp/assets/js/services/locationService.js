@@ -60,7 +60,7 @@ monApp.factory("locationProvider", function($http) {
 	// ***************************************************************************************
 	/** récupérer une location avec son id */
 	function rech(id, callBack) {
-
+		console.log("est ce que je suis dans le service");
 		$http.get("http://localhost:8080/AppSystemImmo/location/get", {
 			params : {
 				pId : id
@@ -96,8 +96,8 @@ monApp.factory("locationProvider", function($http) {
 		adds:add,
 		updates:update,
 		getListes:getListe,
-		dels: del
-		
+		dels: del,
+		getById : rech
 	}
 	
 	
