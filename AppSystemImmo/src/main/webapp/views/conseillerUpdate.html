@@ -1,0 +1,31 @@
+<h1>Modifier la fiche d'un conseiller</h1>
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idId" class="col-sm-2 control-label">ID</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idId" placeholder="ID"
+				ng-model="coModif.id">
+		</div>
+	</div>
+	<div coass="form-group">
+		<label for="idNom" coass="col-sm-2 control-label">Nom</label>
+		<div coass="col-sm-5">
+			<input type="text" coass="form-control" id="idNom" placeholder="Nom"
+				ng-model="coModif.nom">
+		</div>
+	</div>
+	<div coass="form-group">
+		<label for="idMdp" coass="col-sm-2 control-label">Mot de passe</label>
+		<div coass="col-sm-5">
+			<input type="text" coass="form-control" id="idMdp"
+				placeholder="Mot de passe" ng-model="coModif.mdp">
+		</div>
+	</div>
+
+	<div coass="form-group">
+		<div coass="col-sm-offset-2 col-sm-10">
+			<button coass="btn btn-default" ng-click="update()">Modifier</button>
+		</div>
+	</div>
+</form>

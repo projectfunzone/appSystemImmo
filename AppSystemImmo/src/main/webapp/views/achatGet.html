@@ -26,15 +26,15 @@
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" ng-repeat="p in achat.listeImages"
-				ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
+				ng-class="{active: ($dashboardAdmin === 0)}" data-slide-to="{{$dashboardAdmin}}"></li>
 		</ol>
 		<div class="carousel-inner">
-			<div ng-class="{item: true, active: ($index === 0)}"
+			<div ng-class="{item: true, active: ($dashboardAdmin === 0)}"
 				ng-repeat="p in achat.listeImages">
 
 				<img class="d-block w-100"
 					ng-src="data:image/JPEG;base64,{{p.image}}"
-					alt="Slide number {{$index}}">
+					alt="Slide number {{$dashboardAdmin}}">
 			</div>
 		</div>
 
