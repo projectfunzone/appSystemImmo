@@ -97,7 +97,7 @@ monApp
 											if (typeof donnees == 'object') {
 												$scope.msg = "";
 												// rediriger vers la page liste
-												$location.path("visite/liste");
+												$location.path("visite/calendar");
 											} else {
 												$scope.msg = "L'ajout de votre visite a échoué!"
 											}

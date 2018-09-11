@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,9 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /*
@@ -23,9 +23,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Classe modele Visite 
  */
 
-
 @Entity
-@Table(name="visites")
+@Table(name = "visites")
 public class Visite {
 
 	/*
@@ -37,31 +36,34 @@ public class Visite {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
-	
 	/*
 	 * association
 	 */
-	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name="acquisition_id", referencedColumnName="id")
+	@Fetch(FetchMode.SELECT)
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "acquisition_id", referencedColumnName = "id")
 	private Acquisition acquisition;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id")
+
+	@Fetch(FetchMode.SELECT)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "conseiller_id", referencedColumnName = "id")
 	private Conseiller conseiller;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="client_id", referencedColumnName="id")
+
+	@Fetch(FetchMode.SELECT)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "client_id", referencedColumnName = "id")
 	private Client client;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="location_id", referencedColumnName="id")
+
+	@Fetch(FetchMode.SELECT)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "location_id", referencedColumnName = "id")
 	private Location location;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="achat_id", referencedColumnName="id")
+
+	@Fetch(FetchMode.SELECT)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "achat_id", referencedColumnName = "id")
 	private Achat achat;
-	
+
 	/*
 	 * constructeur
 	 */
@@ -80,12 +82,10 @@ public class Visite {
 		this.date = date;
 	}
 
-	
-	
 	/*
 	 * getters et setters
 	 */
-	
+
 	public int getId() {
 		return id;
 	}
@@ -102,6 +102,7 @@ public class Visite {
 		this.date = date;
 	}
 
+	@JsonIgnoreProperties("visiteAcqui")
 	public Acquisition getAcquisition() {
 		return acquisition;
 	}
@@ -119,6 +120,7 @@ public class Visite {
 		this.conseiller = conseiller;
 	}
 
+	@JsonIgnoreProperties("listeVisiteCl")
 	public Client getClient() {
 		return client;
 	}
@@ -126,6 +128,7 @@ public class Visite {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
 	@JsonIgnoreProperties("listeVisiteLocation")
 	public Location getLocation() {
 		return location;
@@ -134,6 +137,7 @@ public class Visite {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
+
 	@JsonIgnoreProperties("listeVisiteAchat")
 	public Achat getAchat() {
 		return achat;
@@ -143,8 +147,4 @@ public class Visite {
 		this.achat = achat;
 	}
 
-
-
-	
-	
 }
