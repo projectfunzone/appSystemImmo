@@ -23,13 +23,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "clients")
 public class Client extends Personne implements Serializable {
-
-	// numéro de référence, correspondant à la date d'enregistrement auprès d'un
-	// conseiller
+	
+	//**********************************************************************************
+	//************Les attributs du clients**********************************************
+	//**********************************************************************************
+	/** numéro de référence, correspondant à la date d'enregistrement auprès d'un
+	conseiller*/
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date num;
+	private String mail;
 
-	// transformation des associations UML en java
+	//**********************************************************************************
+	//***********transformation des associations UML en java****************************
+	//**********************************************************************************
 	@Fetch(FetchMode.SELECT)
 	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
 	private List<Visite> listeVisiteCl;
@@ -39,22 +45,29 @@ public class Client extends Personne implements Serializable {
 	@JoinTable(name = "client_classeStandard", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "id"))
 	private List<ClasseStandard> listeClasseStandard;
 
-	// constructeur
+	//**********************************************************************************
+	//*********** Les constructeurs*****************************************************
+	//**********************************************************************************
+	
 	public Client() {
 		super();
 	}
 
-	public Client(String nom, String prenom, String telPrive, Adresse adresse, Date num) {
+
+	public Client(String nom, String prenom, String telPrive, Adresse adresse, Date num, String mail) {
 		super(nom, prenom, telPrive, adresse);
 		this.num = num;
+		this.mail = mail;
 	}
-
-	public Client(int id, String nom, String prenom, String telPrive, Adresse adresse, Date num) {
+	public Client(int id, String nom, String prenom, String telPrive, Adresse adresse, Date num, String mail) {
 		super(id, nom, prenom, telPrive, adresse);
 		this.num = num;
+		this.mail = mail;
 	}
-
-	// getter et setter
+	//**********************************************************************************
+	//***********Les Getters et setters*************************************************
+	//**********************************************************************************
+	
 	public Date getNum() {
 		return num;
 	}
@@ -62,6 +75,18 @@ public class Client extends Personne implements Serializable {
 	public void setNum(Date num) {
 		this.num = num;
 	}
+	
+	
+	public String getMail() {
+		return mail;
+	}
+
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+
 	@JsonIgnoreProperties("client")
 	public List<Visite> getListeVisiteCl() {
 		return listeVisiteCl;
@@ -78,5 +103,6 @@ public class Client extends Personne implements Serializable {
 	public void setListeClasseStandard(List<ClasseStandard> listeClasseStandard) {
 		this.listeClasseStandard = listeClasseStandard;
 	}
+	
 
 }

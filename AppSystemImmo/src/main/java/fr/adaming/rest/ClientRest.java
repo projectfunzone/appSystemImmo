@@ -50,6 +50,7 @@ public class ClientRest {
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public Client addClient(@RequestBody Client cl) {
+		clientService.sendMail(cl);
 		return clientService.addClient(cl);
 	}
 

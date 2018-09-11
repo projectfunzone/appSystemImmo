@@ -21,4 +21,6 @@ public interface IClientService {
 
 	// methode metier
 	public Client getClientbyDateNum(Date num);
+	
+	public void sendMail(Client cl);
 }

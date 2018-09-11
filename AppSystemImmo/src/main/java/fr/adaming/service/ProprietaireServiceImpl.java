@@ -92,7 +92,7 @@ public class ProprietaireServiceImpl implements IProprietaireService {
 			
 			//Partie 1: Le text
 			MimeBodyPart mbp1=new MimeBodyPart();
-			mbp1.setText("Cher(e) Client(e), " +" M.(me) " + proprio.getNom() + proprio.getPrenom() + "\n\n Merci de votre confiance!"
+			mbp1.setText("Cher(e) Propritaire, " +" M.(me) " + proprio.getNom() + proprio.getPrenom() + "\n\n Merci de votre confiance!"
 					+ "\n Votre inscription  s'est bien effectuée sur notre site AppSystemImmo"
 					+ "\n Votre identifiant est: "+ proprio.getMail()
 					+ "\n Votre Tel privé est: "+ proprio.getTelPrive()
