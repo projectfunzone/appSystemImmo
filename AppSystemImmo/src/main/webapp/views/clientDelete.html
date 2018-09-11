@@ -2,9 +2,9 @@
 
 <form class="form-horizontal col-md-10" style="text-align: center; padding: 5px; margin: 5px">
 	<div class="form-group">
-		<label for="idId" class="col-sm-2 control-label">ID</label>
+		<label for="idId" class="col-sm-2 control-label">R&eacute;f&eacute;rence du client</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="idId" placeholder="ID"
+			<input type="number" class="form-control" id="idId" placeholder="n° de r&eacute;f&eacute;rence du client"
 				ng-model="id">
 		</div>
 	</div>
@@ -17,7 +17,7 @@
 </form>
 <h1 style="color: red; text-align: center">{{msg}}</h1>
 <div ng-show="indice">
-	<br /> id: {{cl.id}} 
+	<br /> R&eacute;f&eacute;rence du client: {{cl.id}} 
 	<br /> Date d'inscription: {{cl.num}} 
 	<br /> Nom: {{cl.nom}} 
 	<br /> Prenom: {{cl.prenom}} 
