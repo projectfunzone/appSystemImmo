@@ -1,16 +1,37 @@
 <h1>Formulaire Ajout d'achat</h1>
 
-Propri&eacute;taire : {{achatForm.proprietaire.nom}} {{achatForm.proprietaire.prenom}}
+Propri&eacute;taire : {{achatForm.proprietaire.nom}}
+{{achatForm.proprietaire.prenom}}
 <form class="form-horizontal">
 
-<!-- //********************************************************************************* -->
-	
-	
+	<!-- //********************************************************************************* -->
+
+
 	<div class="form-group">
-	
+		<div class="form-group">
+
+			<label for="idCategorie" class="col-sm-2 control-label">Cat&eacute;gorie
+				Bien Immobilier</label>
+
+			<div class="col-sm-5">
+				<div>
+					<label><input type="radio" name="Categorie"
+						ng-change="RadioChange('Habitation')"
+						ng-model="achatForm.categorie" value="Habitation" /> Habitation </label>
+
+					<label><input type="radio" name="Categorie"
+						ng-change="RadioChange('Commercial')"
+						ng-model="achatForm.categorie" value="Commercial" /> Commercial </label>
+
+					<label><input type="radio" name="Categorie"
+						ng-change="RadioChange('Terrain')" ng-model="achatForm.categorie"
+						value="Terrain" /> Terrain </label>
+				</div>
+			</div>
+		</div>
 		<label for="idRue" class="col-sm-2 control-label">Adresse du
 			bien Immobilier</label>
-			
+
 		<div class="col-sm-1">
 			<input type="text" class="form-control" id="idRue" placeholder="Rue"
 				ng-model="achatForm.adresse.rue">
@@ -29,39 +50,19 @@ Propri&eacute;taire : {{achatForm.proprietaire.nom}} {{achatForm.proprietaire.pr
 	<div class="form-group">
 		<label for="idPays" class="col-sm-2 control-label">Pays</label>
 		<div class="col-sm-5">
-			<select id="idPays" class=form-control ng-model="achatForm.adresse.pays">
+			<select id="idPays" class=form-control
+				ng-model="achatForm.adresse.pays">
 				<option value="FR">FR-France</option>
 				<option value="USA">USA</option>
 			</select>
 		</div>
 	</div>
-	
+
 	<!-- //********************************************************************************* -->
 
-	
-	<div class="form-group">
-	
-		<label for="idCategorie" class="col-sm-2 control-label">Cat&eacute;gorie
-			Bien Immobilier</label>
-			
-		<div class="col-sm-5">
-			<div>
-				<label><input 
-					type="radio" name="Categorie"
-					ng-change="RadioChange('Habitation')" ng-model="achatForm.categorie"
-					value="Habitation" /> Habitation </label>
-					
-					<label><input
-					type="radio" name="Categorie" ng-change="RadioChange('Commercial')"
-					ng-model="achatForm.categorie" value="Commercial" /> Commercial </label>
-					
-					<label><input
-					type="radio" name="Categorie" ng-change="RadioChange('Terrain')"
-					ng-model="achatForm.categorie" value="Terrain" /> Terrain </label>
-			</div>
-		</div>
-	</div>
-	
+
+
+
 	<div class="form-group" ng-if="habitation">
 		<label for="idType" class="col-sm-2 control-label">Type de
 			bien</label>
@@ -96,15 +97,31 @@ Propri&eacute;taire : {{achatForm.proprietaire.nom}} {{achatForm.proprietaire.pr
 			</select>
 		</div>
 	</div>
-<!-- //********************************************************************************* -->
-	
+	<!-- //********************************************************************************* -->
+	<div class="form-group">
+		<label for="idSurface" class="col-sm-2 control-label">Surface</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="idSurface"
+				placeholder="Surface" ng-model="achatForm.surface">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idNoChambre" class="col-sm-2 control-label">Nombre
+			de Chambre</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="idNoChambre"
+				placeholder="NoChambre" ng-model="achatForm.noChambre">
+		</div>
+	</div>
 
 	<div class="form-group">
-		<label for="idDateDispo" class="col-sm-2 control-label">Date
-			Disponibilit&eacute;</label>
+		<label for="idStatut" class="col-sm-2 control-label">Statut</label>
 		<div class="col-sm-5">
-			<input type="date" class="form-control" id="idDateDispo"
-				placeholder="Date de Disponibilite" ng-model="achatForm.dateDispo">
+			<select id="idStatut" class=form-control ng-model="achatForm.statut">
+				<option value="disponible">Disponible</option>
+				<option value="vendu">Vendu</option>
+				<option value="indisponible">Indisponible</option>
+			</select>
 		</div>
 	</div>
 
@@ -118,23 +135,19 @@ Propri&eacute;taire : {{achatForm.proprietaire.nom}} {{achatForm.proprietaire.pr
 	</div>
 
 	<div class="form-group">
-		<label for="idNoChambre" class="col-sm-2 control-label">Nombre de
-			Chambre</label>
+		<label for="idDateDispo" class="col-sm-2 control-label">Date
+			Disponibilit&eacute;</label>
 		<div class="col-sm-5">
-			<input type="number" class="form-control" id="idNoChambre"
-				placeholder="NoChambre" ng-model="achatForm.noChambre">
+			<input type="date" class="form-control" id="idDateDispo"
+				placeholder="Date de Disponibilite" ng-model="achatForm.dateDispo">
 		</div>
 	</div>
 
-<!-- ******************************************************************************** -->
-	<div class="form-group">
-		<label for="idPhoto" class="col-sm-2 control-label">Photo</label>
-		<div class="col-sm-5">
-			<input type="file" name="file" class="form-control" id="idPhoto"
-				placeholder="Photo" ng-model="achatForm.photos" accept="image/*" base-sixty-four-input multiple>
-		</div>
-	</div>
 
+
+
+
+	<!-- ******************************************************************************** -->
 	<div class="form-group">
 		<label for="idRevenueCadastre" class="col-sm-2 control-label">Revenue
 			Cadastre</label>
@@ -143,33 +156,17 @@ Propri&eacute;taire : {{achatForm.proprietaire.nom}} {{achatForm.proprietaire.pr
 				placeholder="RevenueCadastre" ng-model="achatForm.revenueCadastre">
 		</div>
 	</div>
-	
-	<div class="form-group">
-		<label for="idStatut" class="col-sm-2 control-label">Statut</label>
-		<div class="col-sm-5">
-			<select id="idStatut" class=form-control ng-model="achatForm.statut">
-				<option value="disponible">Disponible</option>
-				<option value="vendu">Vendu</option>
-				<option value="indisponible">Indisponible</option>
-			</select>
-		</div>
-	</div>
-
 
 	<div class="form-group">
 		<label for="idEtat" class="col-sm-2 control-label">Etat</label>
 		<div class="col-sm-5">
-			<select id="idEtat" class=form-control
-				ng-model="achatForm.etat">
+			<select id="idEtat" class=form-control ng-model="achatForm.etat">
 				<option value="a restaurer">a restaurer</option>
 				<option value="correct">correct</option>
 				<option value="impecable">impeccable</option>
 			</select>
 		</div>
 	</div>
-
-
-
 	<div class="form-group">
 		<label for="idPrixDemande" class="col-sm-2 control-label">Prix
 			Demand&eacute;</label>
@@ -178,21 +175,22 @@ Propri&eacute;taire : {{achatForm.proprietaire.nom}} {{achatForm.proprietaire.pr
 				placeholder="PrixDemande" ng-model="achatForm.prixDemande">
 		</div>
 	</div>
-	
 	<div class="form-group">
-		<label for="idSurface" class="col-sm-2 control-label">Surface</label>
+		<label for="idPhoto" class="col-sm-2 control-label">Photo</label>
 		<div class="col-sm-5">
-			<input type="number" class="form-control" id="idSurface"
-				placeholder="Surface" ng-model="achatForm.surface">
+			<input type="file" name="file" class="form-control" id="idPhoto"
+				placeholder="Photo" ng-model="achatForm.photos" accept="image/*"
+				base-sixty-four-input multiple>
 		</div>
 	</div>
-	
-	
-		<div class="form-group" style="display: none">
+
+
+	<div class="form-group" style="display: none">
 		<label for="idProprio" class="col-sm-2 control-label">Proprietaire</label>
 		<div class="col-sm-5">
 			<input type="text" class="form-control" id="idProprio"
-				placeholder="Propri&eacute;taire du bien" ng-model="achatForm.proprietaire.id">
+				placeholder="Propri&eacute;taire du bien"
+				ng-model="achatForm.proprietaire.id">
 		</div>
 	</div>
 

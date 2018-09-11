@@ -5,38 +5,40 @@
 		ng-model="recherche"
 		style="color: blue; background-image: url(assets/resources/img/search.png); background-repeat: no-repeat; background-position: 1px 1px; padding-left: 25px">
 </h4>
+<div class="col-md-11"
+	style="text-align: center; padding: 5px; margin: 5px">
+	<table class="table table-hover">
+		<tr>
+			<th>ID</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Rue</th>
+			<th>Code Postal</th>
+			<th>Ville</th>
+			<th>Pays</th>
+			<th>T&eacute;l&eacute;phone Priv&eacute;</th>
+			<th>T&eacute;l&eacute;phone Professionnel</th>
+			<th>Mail</th>
+			<th>Op&eacute;rations rapides</th>
+			<th>Gestion Immobili&eacute;re</th>
+		</tr>
+		<tr ng-repeat="proprio in liste|filter:recherche">
+			<td>{{proprio.id}}</td>
+			<td>{{proprio.nom}}</a></td>
+			<td>{{proprio.prenom}}</td>
+			<td>{{proprio.adresse.rue}}</td>
+			<td>{{proprio.adresse.cp}}</td>
+			<td>{{proprio.adresse.ville}}</td>
+			<td>{{proprio.adresse.pays}}</td>
+			<td>{{proprio.telPrive}}</td>
+			<td>{{proprio.telPro}}</td>
+			<td>{{proprio.mail}}</td>
+			<td><a ng-click="deleteLien(proprio)">Supprimer</a> | <a
+				ng-click="updateLien(proprio)">Modifier</a></td>
+			<td><a ng-click="addLocationLien(proprio)">Créer un bien a
+					la location</a> | <a ng-click="addAchatLien(proprio)">Créer un bien
+					a vendre</a></td>
+		</tr>
 
-<table class="table table-hover">
-	<tr>
-		<th>ID</th>
-		<th>Nom</th>
-		<th>Prenom</th>
-		<th>Rue</th>
-		<th>Code Postal</th>
-		<th>Ville</th>
-		<th>Pays</th>
-		<th>T&eacute;l&eacute;phone Priv&eacute;</th>
-		<th>T&eacute;l&eacute;phone Professionnel</th>
-		<th>Mail</th>
-		<th>Op&eacute;rations rapides</th>
-		<th>Gestion Immobili&eacute;re</th>
-	</tr>
-	<tr ng-repeat="proprio in liste|filter:recherche">
-		<td>{{proprio.id}}</td>
-		<td>{{proprio.nom}}</a></td>
-		<td>{{proprio.prenom}}</td>
-		<td>{{proprio.adresse.rue}}</td>
-		<td>{{proprio.adresse.cp}}</td>
-		<td>{{proprio.adresse.ville}}</td>
-		<td>{{proprio.adresse.pays}}</td>
-		<td>{{proprio.telPrive}}</td>
-		<td>{{proprio.telPro}}</td>
-		<td>{{proprio.mail}}</td>
-		<td><a ng-click="deleteLien(proprio)">Supprimer</a> | <a
-			ng-click="updateLien(proprio)">Modifier</a></td>
-		<td><a ng-click="addLocationLien(proprio)">Créer un bien a la
-				location</a> | <a ng-click="addAchatLien(proprio)">Créer un bien a
-				vendre</a></td>
-	</tr>
-
-</table>
+	</table>
+</div>
