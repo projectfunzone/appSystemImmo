@@ -1,15 +1,21 @@
 <h1 style="text-align: center">Les Conseillers</h1>
-<table class="table table-bordered">
-	<tr>
-		<th>id</th>
-		<th>Nom</th>
-		<th>Mot de passe</th>
-	</tr>
-	<tr ng-repeat="co in liste">
-		<td>{{co.id}}</td>
-		<td>{{co.nom}}</td>
-		<td>{{co.mdp}}</td>
-	</tr>
-</table>
-
+<div class="col-md-10"
+	style="text-align: center; padding: 5px; margin: 5px">
+	<table class="table table-bordered col-md-10"
+		style="text-align: center; padding: 5px; margin: 5px">
+		<tr>
+			<th>id</th>
+			<th>Nom</th>
+			<th>Mot de passe</th>
+			<th>Gestion</th>
+		</tr>
+		<tr ng-repeat="co in liste">
+			<td>{{co.id}}</td>
+			<td>{{co.nom}}</td>
+			<td>{{co.mdp}}</td>
+			<td><a ng-click="deleteLien(co)">Supprimer</a> | <a
+				ng-click="updateLien(co)">Modifier</a></td>
+		</tr>
+	</table>
+</div>
 
