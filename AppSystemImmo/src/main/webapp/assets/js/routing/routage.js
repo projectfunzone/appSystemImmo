@@ -13,6 +13,7 @@ monApp.config(function($routeProvider) {
 	.when("/location/add", {templateUrl: "views/locationAdd.html", controller: "locationCtrlAdd"})
 	.when("/location/update", {templateUrl: "views/locationUpdate.html", controller: "locationCtrlUpdate"})
 	.when("/location/delete", {templateUrl: "views/locationDelete.html", controller: "locationCtrlDelete"})
+	.when ("/location/fiche", {templateUrl:"views/locationFiche.html", controller: "locationCtrlFiche"})
 	
 	//****************************************************************************************************************
 	// Demba: routage pour l'achat
