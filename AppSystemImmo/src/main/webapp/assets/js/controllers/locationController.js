@@ -34,7 +34,7 @@ monApp.controller("locationCtrlAdd",
 						id : undefined
 					}
 				}
-				console.log("test if")
+
 			} else {
 				$scope.locIn = {
 					id : undefined,
@@ -76,7 +76,7 @@ monApp.controller("locationCtrlAdd",
 				}
 
 				$scope.locIn.proprietaire = $rootScope.locAdd.proprietaire;
-				console.log("test else")
+
 			}
 
 			$scope.add = function() {
@@ -160,7 +160,6 @@ monApp.controller("locationCtrlAdd",
 						$scope.indice = true;
 
 						$location.path("location/fiche");
-						console.log("test")
 
 					} else {
 						$scope.indice = false;
@@ -169,6 +168,42 @@ monApp.controller("locationCtrlAdd",
 					;
 
 				})
+			}
+
+		}).controller("locationCtrlFiche",
+		function($scope, locationProvider, $location, $rootScope) {
+
+			if ($rootScope.location.id == undefined) {
+				$rootScope.location = {
+					id : undefined,
+					adresse : {
+						cp : "",
+						pays : "",
+						rue : "",
+						ville : "",
+					},
+					categorie : "",
+					dateDispo : "",
+					dateSoumis : "",
+					noChambre : "",
+					photos : [],
+					listeImages : [],
+					revenueCadastre : "",
+					statut : "",
+					type : "",
+					caution : "",
+					loyer : "",
+					charge : "",
+					bail : "",
+					garniture : ""
+				};
+			}
+
+			$scope.addVisiteLien = function(locationIn) {
+				$rootScope.location = locationIn;
+				console.log($rootScope.location)
+				$location.path("visite/add");
+
 			}
 
 		}).controller("locationCtrlUpdate",

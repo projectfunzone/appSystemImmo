@@ -2,12 +2,12 @@
 <h1>Ajouter une visite</h1>
 <br />
 <br />
-Adresse : {{achat.adresse.rue}} {{achat.adresse.cp}}
-{{achat.adresse.ville}} {{achat.adresse.pays}}
+Adresse : {{bien.adresse.rue}} {{bien.adresse.cp}}
+{{bien.adresse.ville}} {{bien.adresse.pays}}
 <br />
-Categorie: {{achat.categorie}}
+Categorie: {{bien.categorie}}
 <br />
-Type: {{achat.type}}
+Type: {{bien.type}}
 <form class="form-horizontal">
 
 	<div class="form-group">
@@ -45,11 +45,21 @@ Type: {{achat.type}}
 		</div>
 	</div>
 
+	<div class="form-group" style="display: none">
+		<label for="id" class="col-sm-4 control-label">
+			S&eacute;lectionner le bien &agrave; visiter </label>
+		<div class="col-sm-5">
+			<input type="text" ng-model="visiteForm.location.id" placeholder="location">
+
+		</div>
+	</div>
+
 	<div class="form-group">
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner le conseiller qui effectura la visite: </label>
 		<div class="col-sm-5">
-			<input type="text" ng-model="visiteForm.conseiller.id" placeholder="conseiller">
+			<input type="text" ng-model="visiteForm.conseiller.id"
+				placeholder="conseiller">
 
 		</div>
 	</div>
