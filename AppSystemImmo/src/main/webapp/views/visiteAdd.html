@@ -1,6 +1,8 @@
 <!-- Formilaire Ajout de visite (sélection date et heure) -->
 <h1>Ajouter une visite</h1>
 <br />
+<br /> id: {{achat.id}} 
+	<br/>Adresse : {{achat.adresse.rue}} {{achat.adresse.cp}} {{achat.adresse.ville}} {{achat.adresse.pays}}
 <form class="form-horizontal">
 
 	<div class="form-group">
@@ -17,9 +19,8 @@
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner un client existant: </label>
 		<div class="col-sm-5" >
-			<select id="id" class=form-control ng-model="visiteForm.client_id" >
-				<option value="{{v.client.id}}" ng-repeat="v in liste">{{v.client.id}} - {{v.client.nom}} {{v.client.prenom}}</option>
-			</select> <a
+			<input type="text" ng-model="visiteForm.client.id"
+				placeholder="id du client"> <a
 				href="http://localhost:8080/AppSystemImmo/index.html#!/client/add">Ou
 				ajouter un nouveau client</a>
 		</div>
@@ -32,9 +33,8 @@
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner le bien &agrave; visiter </label>
 		<div class="col-sm-5">
-			<select id="id" class=form-control ng-model="visiteForm.achat_id">	
-					<option value="{{v.achat_id}}" ng-repeat="v in liste">{{v.achat.categorie}} {{v.achat.adresse.cp}} {{v.achat.adresse.ville}}</option>
-			</select>
+			<input type="text" ng-model="visiteForm.achat.id"
+				placeholder="id du achat">
 
 		</div>
 	</div>
@@ -43,9 +43,8 @@
 		<label for="id" class="col-sm-4 control-label">
 			S&eacute;lectionner le conseiller qui effectura la visite: </label>
 		<div class="col-sm-5">
-				<select id="id" class=form-control ng-model="visiteForm.conseiller_id">	
-					<option value="{{v.conseiller_id}}" ng-repeat="v in liste">{{v.conseiller.nom}}</option>
-			</select>
+		<input type="text" ng-model="visiteForm.conseiller.id"
+				placeholder="id du conseiller">
 		</div>
 	</div>
 

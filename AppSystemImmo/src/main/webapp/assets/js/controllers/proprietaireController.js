@@ -92,7 +92,6 @@ monApp
 				"proprietaireCtrlFiche",
 				function($scope, proprietaireProvider, $location, $rootScope) {
 					$rootScope.proprio;
-					console.log($rootScope.proprio.id)
 
 					proprietaireProvider.getListeLocByProprioS(
 							$rootScope.proprio.id, function(donnees) {

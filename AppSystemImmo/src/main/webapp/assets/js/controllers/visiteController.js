@@ -38,11 +38,7 @@ monApp.controller("visiteCrltGetAll",
 // Fonction ajouter une visite
 .controller("visiteCtrlAdd",
 		function($scope, visiteProvider, $location, $rootScope) {
-
-			visiteProvider.getListes(function(donnees) {
-				$scope.liste = donnees;
-				console.log("-------liste")
-			})
+	console.log($rootScope.achat.id+"visite controller");
 
 			// méthode qui permet de récupérer les information du conseiller
 			// lors de la cr"ation d'une visite
@@ -77,15 +73,7 @@ monApp.controller("visiteCrltGetAll",
 
 			// méthode qui permet de récupérer les information d'une vente
 			// lors de la cr"ation d'une visite
-			$rootScope.achatVisite = {
-				achat : {
-					id : undefined,
-					categorie : "",
-					dateDispo : "",
-					prixDemande : "",
-					surface : ""
-				}
-			};
+			$rootScope.achat;
 
 			$scope.visiteForm = {
 				date : "",
@@ -105,11 +93,13 @@ monApp.controller("visiteCrltGetAll",
 
 			$scope.visiteForm.client = $rootScope.clientVisite;
 			$scope.visiteForm.conseiller = $rootScope.conseillerVisite;
-			$scope.visiteForm.achat = $rootScope.achatVisite;
-			$scope.visiteForm.location = $rootScope.locationVisite;
+			$scope.visiteForm.achat = $rootScope.achat;
+			$scope.visiteForm.location = null;
 
 			// foctionnaliter du bouton ajouter de la vue
 			$scope.adds = function() {
+				
+				
 				visiteProvider.adds($scope.visiteForm, function(donnees) {
 					if (typeof donnees == 'object') {
 						$scope.msg = "";

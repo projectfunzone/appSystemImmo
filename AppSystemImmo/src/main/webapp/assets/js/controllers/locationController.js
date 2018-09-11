@@ -284,8 +284,6 @@ monApp
 
 					$scope.updateLien = function(lIn) {
 						$rootScope.locUpdate = lIn;
-						console.log("----" + lIn.id);
-						console.log("-----" + $rootScope.locUpdate.id);
 						$location.path("location/update");
 					}
 

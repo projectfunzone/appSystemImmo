@@ -62,72 +62,97 @@ monApp
 						$rootScope.achatUpdate = achatIn;
 
 						// aller dans la vue modif
-						$location.path("achat/update");
+						$location.path("achatUpdate");
 					}
 					// *****************************************************************************************************
 				})
-		.controller("achatCtrlGet", function($scope, achatProvider, $rootScope, $location) {
-			$scope.indice = false;
-			$scope.id = undefined;
-			$scope.msg = "";
-			
-			
-			$rootScope.achat = {
-					id : undefined,
-					adresse : {
-						cp : "",
-						pays : "",
-						rue : "",
-						ville : "",
-					},
-					categorie : "",
-					dateDispo : "",
-					dateSoumis : "",
-					noChambre : "",
-					photos : [],
-					listeImages : [],
-					revenueCadastre : "",
-					statut : "",
-					type : "",
-					etat : "",
-					prixDemande : "",
-					surface : ""
-				};
-			
-			
-			$scope.rechercher = function() {
-				// appel de la fonction du achatProvider afin de récupérer
-				// l'achat
-				achatProvider.getById($scope.id, function(donnees) {
+		.controller("achatCtrlGet",
+				function($scope, achatProvider, $rootScope, $location) {
+					$scope.indice = false;
+					$scope.id = undefined;
+					$scope.msg = "";
 
-					if (typeof donnees == 'object') {
-						$rootScope.achat = donnees;
-						$scope.indice = true;
-						
-						
-						$location
-						.path("achat/fiche");
-						console.log("test")
-			
-					} else {
-						$scope.indice = false;
-						$scope.msg = "l'achat recherché n'existe pas"
-					}					;
+					$rootScope.achat = {
+						id : undefined,
+						adresse : {
+							cp : "",
+							pays : "",
+							rue : "",
+							ville : "",
+						},
+						categorie : "",
+						dateDispo : "",
+						dateSoumis : "",
+						noChambre : "",
+						photos : [],
+						listeImages : [],
+						revenueCadastre : "",
+						statut : "",
+						type : "",
+						etat : "",
+						prixDemande : "",
+						surface : ""
+					};
 
+					$scope.rechercher = function() {
+						// appel de la fonction du achatProvider afin de
+						// récupérer
+						// l'achat
+						achatProvider.getById($scope.id, function(donnees) {
+
+							if (typeof donnees == 'object') {
+								$rootScope.achat = donnees;
+								$scope.indice = true;
+
+								$location.path("achat/fiche");
+								console.log("test")
+
+							} else {
+								$scope.indice = false;
+								$scope.msg = "l'achat recherché n'existe pas"
+							}
+							;
+
+						})
+					}
+					// *****************************************************************************************************
 				})
-			}
-			// *****************************************************************************************************
-		})
 		.controller("achatCtrlFiche",
 				function($scope, achatProvider, $location, $rootScope) {
-					$rootScope.achat;
-					
-					
-					
-					
-					
+
+					if ($rootScope.achat.id == undefined) {
+						$rootScope.achat = {
+							id : undefined,
+							adresse : {
+								cp : "",
+								pays : "",
+								rue : "",
+								ville : "",
+							},
+							categorie : "",
+							dateDispo : "",
+							dateSoumis : "",
+							noChambre : "",
+							photos : [],
+							listeImages : [],
+							revenueCadastre : "",
+							statut : "",
+							type : "",
+							etat : "",
+							prixDemande : "",
+							surface : ""
+						};
+					}
+
+					$scope.addVisiteLien = function(achatIn) {
+						$rootScope.achat = achatIn;
+						$location.path("visite/add");
+						console.log($rootScope.achat.id + "achatController");
+					}
+
 				})
-		.controller("achatCtrlAdd",
+		.controller(
+				"achatCtrlAdd",
 				function($scope, achatProvider, $location, $rootScope) {
 
 					$scope.habitation = true;
@@ -156,45 +181,45 @@ monApp
 							prixDemande : "",
 							surface : "",
 							proprietaire : {
-								id:undefined
+								id : undefined
 							}
 						}
 					} else {
 						$scope.achatForm = {
+							adresse : {
+								rue : "",
+								cp : "",
+								ville : "",
+								pays : ""
+							},
+							categorie : "",
+							dateDispo : "",
+							dateSoumis : "",
+							noChambre : "",
+							photos : [],
+							listeImages : [],
+							revenueCadastre : "",
+							statut : "",
+							type : "",
+							etat : "",
+							prixDemande : "",
+							surface : "",
+							proprietaire : {
+								id : undefined,
+								nom : "",
+								prenom : "",
 								adresse : {
 									rue : "",
 									cp : "",
 									ville : "",
 									pays : ""
 								},
-								categorie : "",
-								dateDispo : "",
-								dateSoumis : "",
-								noChambre : "",
-								photos : [],
-								listeImages : [],
-								revenueCadastre : "",
-								statut : "",
-								type : "",
-								etat : "",
-								prixDemande : "",
-								surface : "",
-								proprietaire : {
-									id : undefined,
-									nom : "",
-									prenom : "",
-									adresse : {
-										rue : "",
-										cp : "",
-										ville : "",
-										pays : ""
-									},
-									telPrive : "",
-									telPro : "",
-									mail : ""
-								}
+								telPrive : "",
+								telPro : "",
+								mail : ""
 							}
-						
+						}
+
 						$scope.achatForm.proprietaire = $rootScope.achatAdd.proprietaire;
 					}
 
@@ -244,7 +269,6 @@ monApp
 				"achatCtrlUpdate",
 				function($scope, achatProvider, $location, $rootScope) {
 
-					
 					// initialiser l'objet dans le model du scope s'il n'est pas
 					// dans le
 					// rootscope
@@ -272,7 +296,7 @@ monApp
 							prixDemande : "",
 							surface : ""
 						};
-						
+
 						$scope.habitation = true;
 						$scope.commercial = false;
 						$scope.terrain = false;
@@ -281,7 +305,7 @@ monApp
 						// achatModif
 						// avec
 						$scope.achatModif = $rootScope.achatUpdate;
-						
+
 						if ($rootScope.locUpdate.categorie == "Habitation") {
 							$scope.habitation = true;
 							$scope.commercial = false;
