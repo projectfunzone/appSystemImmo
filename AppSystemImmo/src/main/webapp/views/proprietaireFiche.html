@@ -1,140 +1,79 @@
 
 
 
-
-<div>
-	<br /> 
-	R&eacute;f&eacute;rence du propri&eacute;taire: {{proprio.id}} 
-	<br /> 
-	Nom: {{proprio.nom}} 
-	<br /> 
-	Prénom: {{proprio.prenom}} 
-	<br /> 
-	Rue: {{proprio.adresse.rue}} 
-	<br /> 
-	Code postal: {{proprio.adresse.cp}} 
-	<br /> 
-	Ville: {{proprio.adresse.ville}} 
-	<br />
-	Pays: {{proprio.adresse.pays}}
-	<br/>
-	Téléphone (privé): {{proprio.telPrive}} 
-	<br />
-	Téléphone (professionnel) : {{proprio.telPro}}
-	<br />
-	Mail: {{proprio.mail}} 
-	
-	<a ng-click="deleteLien(proprio)">Supprimer</a> | <a ng-click="updateLien(proprio)">Modifier</a>
-				<br/> <a ng-click="addLocationLien(proprio)">Créer un bien a la location</a> | <a ng-click="addAchatLien(proprio)">Créer un bien
-					a vendre</a>
-</div>
-
-
 <div class="container">
-	<div ng-repeat="l in listeLoc" class="col-md-10"
+	<div class="col-md-6"
 		style="text-align: center; padding: 5px; margin: 5px">
-		<div class="row featurette"
-			style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
-			<div class="col-md-7">
-				<h2 class="featurette-heading"><a ng-click="rechercherLoc(l.id)">Location n&#176;{{l.id}}</a></h2>
-				<div style="margin: 5px; text-align: left;">
-					<div>
-						<h3>{{l.type}}</h3>
-					</div>
-					<div>
-						<em class="detailbien">{{l.surface}}m&#178;</em><em
-							class="detailbien">{{l.noChambre}} chambre(s)</em><em
-							class="detailbien">{{l.statut}}</em><em class="detailbien">{{l.garniture}}</em>
-					</div>
-					<br />
-					<div>
-						{{l.adresse.rue}} {{l.adresse.cp}}<br /> {{l.adresse.ville}}
-						{{l.adresse.pays}}
-					</div>
-					<br>
-					<div>
-						<h4>D&#233;tails location</h4>
-						Caution : {{l.caution}}&#233; <br />Loyer : {{l.loyer}}&#233;<br />Charge
-						: {{l.charge}}&#233;<br /> Disponible au: {{l.dateDispo | date:
-						"dd/MM/yyyy"}}
-					</div>
-					</br>
-					<div>
-						<h4>D&#233;tails Gestion</h4>
-					</div>
-					Soumission: {{l.dateSoumis | date: "dd/MM/yyyy"}} <br />Revenu
-					cadastral : {{l.revenueCadastre}} <br />Type de bail : {{l.bail}}
-				</div>
-				<br /> <a ng-click="deleteLien(l.id)" class="btn btn-danger">Supprimer</a>
-				<a ng-click="updateLien(l)" class="btn btn-info">Modifier</a> <br />
-				<br />
-			</div>
-			<div class="col-md-5">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel"
-					style="width: 250px; height: 250px; border: 1px solid black; margin: none; padding: none">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" ng-repeat="p in l.listeImages"
-							ng-class="{active: ($index === 0)}" data-slide-to="{{$index}}"></li>
-					</ol>
-					<div class="carousel-inner">
-						<div ng-class="{item: true, active: ($index === 0)}"
-							ng-repeat="p in l.listeImages">
-
-							<img class="d-block w-100"
-								ng-src="data:image/JPEG;base64,{{p.image}}"
-								alt="Slide number {{$index}}">
-						</div>
-					</div>
-
-					<span class="left carousel-control" data-target="#myCarousel"
-						data-slide="prev"> <span
-						class="glyphicon glyphicon-chevron-left"></span>
-					</span> <span class="right carousel-control" data-target="#myCarousel"
-						data-slide="next"> <span
-						class="glyphicon glyphicon-chevron-right"></span>
-					</span>
-				</div>
-			</div>
-			<hr class="featurette-divider">
+		<h2 class="featurette-heading">{{proprio.nom}} {{proprio.prenom}}</h2>
+		<div style="text-align: left">
+			<br /> Num&#233;ro de r&eacute;f&eacute;rence: {{proprio.id}} <br />Adresse:
+			{{proprio.adresse.rue}} {{proprio.adresse.cp}} <br />
+			{{proprio.adresse.ville}} {{proprio.adresse.pays}} <br />
+			T&#233;l&#233;phone (priv&#233;): {{proprio.telPrive}} <br />
+			T&#233;l&#233;phone (professionnel) : {{proprio.telPro}} <br />
+			Mail: {{proprio.mail}}
+		</div>
+		<br />
+		<div>
+			<a ng-click="deleteLien(proprio)" class="btn btn-info">Supprimer</a>
+			<a ng-click="updateLien(proprio)" class="btn btn-info">Modifier</a><br />
+			<br /> <a ng-click="addLocationLien(proprio)" class="btn btn-info">Cr&#233;er
+				un bien a la location</a> <a ng-click="addAchatLien(proprio)"
+				class="btn btn-info">Cr&#233;er un bien a vendre</a>
 		</div>
 	</div>
 </div>
 
-	<div class="container">
-		<div ng-repeat="achat in listeAchat" class="col-md-10"
-			style="text-align: center; padding: 5px; margin: 5px">
-			<div class="row featurette"
+
+<div ng-repeat="l in listeLoc" class="col-md-4"
+	style="text-align: center; padding: 5px; margin: 5px">
+	<div class="row featurette"
 		style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
-		<div class="col-md-7">
-			<h2 class="featurette-heading"><a ng-click="rechercherAchat(achat.id)">&Agrave; Vendre n&#176;{{achat.id}}</a></h2>
-			<div style="margin: 5px; text-align: left;">
-			<div><h3>{{achat.type}}</h3></div>
-			<div><em class="detailbien">{{achat.surface}}m&#178;</em><em class="detailbien">{{achat.noChambre}} chambre(s)</em><em class="detailbien">{{achat.statut}}</em></div>
-			<br/>
-			<div>{{achat.adresse.rue}} {{achat.adresse.cp}}<br/>
-			{{achat.adresse.ville}} {{achat.adresse.pays}}</div>
-			<br>
-			<div><h4>D&#233;tails achat</h4>
-			Prix: {{achat.prixDemande}}&#233;<br/>
-			Disponible au: {{achat.dateDispo | date:
-			"dd/MM/yyyy"}}
-			<br/>
-			&Eacute;tat: {{achat.etat}}
+		<h4 class="featurette-heading">
+			<a ng-click="rechercherLoc(l.id)">Location n&#176;{{l.id}}</a>
+		</h4>
+		<div style="margin: 5px; text-align: left;">
+			<div>
+				<h5>
+					{{l.type}}
+					</h3>
 			</div>
-			</br>
-			<div><h4>D&#233;tails Gestion</h4></div>
-			Soumission: {{achat.dateSoumis | date: "dd/MM/yyyy"}}
-			 <br />Revenu cadastral :
-			{{achat.revenueCadastre}}</div>
-			 <br />
-				<a ng-click="deleteLien(achat)" class="btn btn-danger">Supprimer</a>  <a
-					ng-click="updateLien(achat)" class="btn btn-info">Modifier</a> <br /> <br />
+			<div>
+				<em class="detailbien">{{l.surface}}m&#178;</em><em
+					class="detailbien">{{l.noChambre}} chambre(s)</em>
+					<br/>
+					<em class="detailbien">{{l.statut}}</em>
+					<em class="detailbien">{{l.garniture}}</em>
+			</div>
+			<div>{{l.adresse.rue}} {{l.adresse.cp}} {{l.adresse.ville}}
+				{{l.adresse.pays}}</div>
+			<br>
 		</div>
-		<div class="col-md-5">
-		<img class="featurette-image img-responsive center-block" ng-repeat="p in achat.listeImages" ng-src="data:image/JPEG;base64,{{p.image}}" alt="Generic placeholder image" style="width: 250px; height: 250px; border: 1px solid black; margin: none; padding: none">
-		</div>
-		<hr class="featurette-divider">
 	</div>
 </div>
+
+<div ng-repeat="achat in listeAchat" class="col-md-4"
+	style="text-align: center; padding: 5px; margin: 5px">
+	<div class="row featurette"
+		style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none; text-align: center">
+		<h4 class="featurette-heading">
+			<a ng-click="rechercherAchat(achat.id)">&Agrave; Vendre
+				n&#176;{{achat.id}}</a>
+		</h4>
+		<div style="margin: 5px; text-align: left;">
+			<div>
+				<h5>{{achat.type}}</h5>
+			</div>
+			<div>
+				<em class="detailbien">{{achat.surface}}m&#178;</em>
+				<em class="detailbien">{{achat.noChambre}} chambre(s)</em>
+					<br/>
+					<em
+					class="detailbien">{{achat.statut}}</em>
+			</div>
+			<div>{{achat.adresse.rue}} {{achat.adresse.cp}}
+				{{achat.adresse.ville}} {{achat.adresse.pays}}</div>
+			<br />
+		</div>
+	</div>
 </div>
