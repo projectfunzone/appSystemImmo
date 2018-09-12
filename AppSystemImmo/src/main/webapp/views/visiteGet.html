@@ -1,0 +1,19 @@
+<h1>Rechercher un propri&eacute;taire</h1>
+
+<form class="form-horizontal col-md-10" style="text-align: center; padding: 5px; margin: 5px">
+	<div class="form-group">
+		<label for="idId" class="col-sm-2 control-label">R&eacute;f&eacute;rence de la visite</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idId" placeholder="n° r&eacute;f&eacute;rence"
+				ng-model="id">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="get()">Rechercher</button>
+		</div>
+	</div>
+</form>
+
+<h1 style="color: red; text-align: center">{{msg}}</h1>
