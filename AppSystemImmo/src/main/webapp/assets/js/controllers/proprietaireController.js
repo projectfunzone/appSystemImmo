@@ -136,6 +136,122 @@ monApp
 					}
 					
 					
+					// fonction appelée à partir du lien supprimer de la liste
+					$scope.deleteLien = function(proprioIn) {
+						proprietaireProvider.deletS(proprioIn.id, function(
+								retour) {
+							// mettre à jour la liste
+							proprietaireProvider.getListeS(function(donnees) {
+								// stocker les données récupéré de service
+								$scope.liste = donnees;
+							})
+						})
+					}
+
+					// initialiser le propriétaire de rootscop
+					$rootScope.proprioUpdate = {
+						id : undefined,
+						nom : "",
+						prenom : "",
+						adresse : {
+							rue : "",
+							cp : "",
+							ville : "",
+							pays : ""
+						},
+						telPrive : "",
+						telPro : "",
+						mail : ""
+					};
+
+					// fonction appelée à partir du lien modifier de la liste
+					$scope.updateLien = function(proprioIn) {
+						$rootScope.proprioUpdate = proprioIn;
+
+						// aller dans la vue modifier
+						$location.path("proprietaire/update");
+
+					}
+
+					// méthode qui permet de récupérer les information du
+					// propriétaire lors de la cr"ation d'un bien à louer
+					$rootScope.locAdd = {
+						proprietaire : {
+							id : undefined,
+							nom : "",
+							prenom : "",
+							adresse : {
+								rue : "",
+								cp : "",
+								ville : "",
+								pays : ""
+							},
+							telPrive : "",
+							telPro : "",
+							mail : ""
+						}
+					};
+
+					// fonction appelée pour créer une location associé au
+					// propriétaire
+					$scope.addLocationLien = function(proprioIn) {
+						$rootScope.locAdd.proprietaire = proprioIn;
+						// aller dans la vue modifier
+						$location.path("location/add");
+
+					}
+
+					// méthode qui permet de récupérer les information du
+					// propriétaire lors de la cr"ation d'un bien à vendre
+					$rootScope.achatAdd = {
+						proprietaire : {
+							id : undefined,
+							nom : "",
+							prenom : "",
+							adresse : {
+								rue : "",
+								cp : "",
+								ville : "",
+								pays : ""
+							},
+							telPrive : "",
+							telPro : "",
+							mail : ""
+						}
+					};
+
+					// fonction appelée pour créer un bien à vendre associé au
+					// propriétaire
+					$scope.addAchatLien = function(proprioIn) {
+						$rootScope.achatAdd.proprietaire = proprioIn;
+						// aller dans la vue modifier
+						$location.path("achat/add");
+
+					}
+
+					// méthode pour arriver sur la fiche de proprietaire de la
+					// liste
+					// des proprietaire
+					$rootScope.proprio;
+
+					$scope.get = function(id) {
+						// appel de la fonction du proprietaireProvider afin de
+						// récupérer le propriétaire
+						proprietaireProvider
+								.getS(
+										id,
+										function(donnees) {
+											if (typeof donnees == 'object') {
+												$rootScope.proprio = donnees;
+
+												$location
+														.path("proprietaire/fiche");
+											} else {
+												$scope.indice = false;
+												$scope.msg = "Le propriétaire que vous recherchez n'est pas répertorié dans nos fichiers"
+											}
+										})
+					}
 					
 					
 				})
