@@ -31,7 +31,7 @@ public class ClientServiceImplTest {
 	@Rollback(true)
 	public void testAddClient() {
 		int expected = 1;
-		Client clAdd = new Client("JOSSELIN", "Thibault", "0610444267", null, null);
+		Client clAdd = new Client("JOSSELIN", "Thibault", "0610444267", null, null, null);
 		clientService.addClient(clAdd);
 		assertEquals(expected, clientService.getAllClients().size());
 	}
