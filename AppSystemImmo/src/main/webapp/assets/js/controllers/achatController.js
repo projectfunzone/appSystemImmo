@@ -94,6 +94,16 @@ monApp
 
 					}
 
+					$scope.rechercherAchat = function(id) {
+						// appel de la fonction du achatProvider afin de
+						// récupérer
+						// l'achat
+						achatProvider.getById(id, function(donnees) {
+
+							$rootScope.achat = donnees;
+							$location.path("achat/fiche");
+						})
+					}
 				})
 		.controller("achatCtrlGet",
 				function($scope, achatProvider, $rootScope, $location) {
