@@ -211,7 +211,9 @@ monApp
 							surface : "",
 							proprietaire : {
 								id : undefined
-							}
+							},
+							lat : "",
+							lng : ""
 						}
 					} else {
 						$scope.achatForm = {
@@ -246,7 +248,9 @@ monApp
 								telPrive : "",
 								telPro : "",
 								mail : ""
-							}
+							},
+							lat : "",
+							lng : ""
 						}
 
 						$scope.achatForm.proprietaire = $rootScope.achatAdd.proprietaire;
@@ -254,17 +258,25 @@ monApp
 
 					// la fonction ajouter à partir du bouton d'appel "ajouter"
 					$scope.ajouter = function() {
+						achatProvider.geoAdresse($scope.achatForm.adresse.pays,$scope.achatForm.adresse.rue,$scope.achatForm.adresse.cp,$scope.achatForm.adresse.ville, function(calback) {
+		                    if ((calback != 0) && (calback != "")) {
+		                        // $scope.montrerMap=true;
+		                        $scope.map = calback;
+		                        $scope.achatForm.lat = $scope.map[0].lat;
+		                        $scope.achatForm.lng = $scope.map[0].lon;
 
 						// appel de la fonction service pour ajouter dans la bd
-						achatProvider.add($scope.achatForm, function(donnees) {
-							if (typeof donnees == 'object') {
-								$scope.msg = "";
-								// redirection vers l'accueil
-								$location.path("achat/liste");
-							} else {
-								$scope.msg = "L'ajout d'achat a échoué ! ";
-							}
-						})
+		                        	achatProvider.add($scope.achatForm, function(donnees) {
+		                        			if (typeof donnees == 'object') {
+		                        					$scope.msg = "";
+		                        						// redirection vers l'accueil
+		                        					$location.path("achat/liste");
+		                        			} else {
+		                        				$scope.msg = "L'ajout d'achat a échoué ! ";
+		                        			}
+		                        	})
+		                    }
+		                });
 					}
 					// méthode pour permettre de changer la vue lors de la
 					// selection de la

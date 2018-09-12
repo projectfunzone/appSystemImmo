@@ -36,6 +36,7 @@ public class BienImmo implements Serializable {
 
 	private double revenueCadastre;
 
+	/**Les attributs pour la localisation*/
 	protected double lat;
 	protected double lng;
 

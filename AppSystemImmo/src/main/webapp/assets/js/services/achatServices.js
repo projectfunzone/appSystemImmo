@@ -1,7 +1,7 @@
 //création de mon service
 
 monApp.factory("achatProvider", function($http) {
-
+	var geoURL = 'https://nominatim.openstreetmap.org/search';
 	/** récupérer la liste du serveur */
 	function recupListe(callBack) {
 		/** récupérer la liste à partir du serveur */
@@ -106,6 +106,26 @@ monApp.factory("achatProvider", function($http) {
 					callBack(response.statusText)
 				});
 	}
+		
+		 function localiserAdresse(pays, rue, cp,localite, calback) {
+		        $http(
+		                {
+		                    method : 'GET',
+		                    url : geoURL+ '?format=json'
+		                    + "&city="+localite
+		                    + '&street='+ rue
+		                    + "&postalcode="+cp
+		                             
+		                }).then(
+		                function successCalback(response) {
+		                    console.log(response.data);
+		                    calback(response.data);
+		                },
+		                function echecCalback(response) {
+		                    console.log("erreur : " + response.status
+		                            + " " + response.statusText);
+		                });
+	}
 
 	/** le retour de ma fonction factory */
 	return {
@@ -113,7 +133,8 @@ monApp.factory("achatProvider", function($http) {
 		getById : rech,
 		add : ajout,
 		update : modif,
-		delet : delets
+		delet : delets,
+		geoAdresse : localiserAdresse
 	}
 
 });
