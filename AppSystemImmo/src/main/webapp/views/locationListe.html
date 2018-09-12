@@ -11,7 +11,7 @@
 		<div class="row featurette"
 			style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
 			<div class="col-md-7">
-				<h2 class="featurette-heading">Location n&#176;{{l.id}}</h2>
+				<h2 class="featurette-heading"><a ng-click="rechercherLoc(l.id)">Location n&#176;{{l.id}}</a></h2>
 				<div style="margin: 5px; text-align: left;">
 					<div>
 						<h3>{{l.type}}</h3>
@@ -23,26 +23,16 @@
 					</div>
 					<br />
 					<div>
-						{{l.adresse.rue}} {{l.adresse.cp}}<br /> {{l.adresse.ville}}
-						{{l.adresse.pays}}
+						{{l.adresse.ville}} {{l.adresse.pays}}
 					</div>
 					<br>
 					<div>
-						<h4>D&#233;tails location</h4>
-						Caution : {{l.caution}}&euro; <br />Loyer : {{l.loyer}}&euro;<br />Charge
-						: {{l.charge}}&euro;<br /> Disponible au: {{l.dateDispo | date:
-						"dd/MM/yyyy"}}
-					</div>
-					</br>
-					<div>
-						<h4>D&#233;tails Gestion</h4>
-					</div>
-					Soumission: {{l.dateSoumis | date: "dd/MM/yyyy"}} <br />Revenu
-					cadastral : {{l.revenueCadastre}} <br />Type de bail : {{l.bail}}
+						<h4>Loyer : {{l.loyer}}&euro;</h4>
 				</div>
-				<br /> <a ng-click="deleteLien(l.id)" class="btn btn-danger">Supprimer</a>
+				<br /> <a ng-click="deleteLien(l.id)" class="btn btn-info">Supprimer</a>
 				<a ng-click="updateLien(l)" class="btn btn-info">Modifier</a> <br />
 				<br />
+			</div>
 			</div>
 			<div class="col-md-5">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel"
