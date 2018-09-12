@@ -56,11 +56,12 @@ Type: {{bien.type}}
 
 	<div class="form-group">
 		<label for="id" class="col-sm-4 control-label">
-			S&eacute;lectionner le conseiller qui effectura la visite: </label>
+			S&eacute;lectionner le conseiller: </label>
 		<div class="col-sm-5">
-			<input type="text" ng-model="visiteForm.conseiller.id"
-				placeholder="conseiller">
-
+			<select id="id" class=form-control ng-model="visiteForm.conseiller.id">
+				<option value="{{conseil.id}}" ng-repeat="conseil in listeConseiller">{{conseil.id}}
+					- {{conseil.nom}}</option>
+			</select>
 		</div>
 	</div>
 

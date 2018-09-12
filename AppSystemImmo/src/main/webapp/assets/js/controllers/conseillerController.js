@@ -4,16 +4,18 @@
 
 monApp.controller("conseillerCtrlFindAll",
 		function($scope, conseillerProvider, $rootScope, $location) {
+	
 			conseillerProvider.getListe(function(donnees) {
 				$scope.liste = donnees;
 				
-				// initialiser le conseiller de rootScope
-				$rootScope.coUpdate = {
-					id : undefined,
-					nom : "",
-					mdp : "",
-				};
 			})
+			
+			// initialiser le conseiller de rootScope
+			$rootScope.coUpdate = {
+				id : undefined,
+				nom : "",
+				mdp : "",
+			};
 		}).controller("conseillerCtrlAdd",
 		function($scope, conseillerProvider, $location) {
 

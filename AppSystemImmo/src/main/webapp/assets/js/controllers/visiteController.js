@@ -37,20 +37,16 @@ monApp
 					$scope.get = function(id) {
 						// appel de la fonction du proprietaireProvider afin de
 						// récupérer le propriétaire
-						visiteProvider
-								.getS(
-										id,
-										function(donnees) {
-											if (typeof donnees == 'object') {
-												$rootScope.visite = donnees;
+						visiteProvider.getS(id, function(donnees) {
+							if (typeof donnees == 'object') {
+								$rootScope.visite = donnees;
 
-												$location
-														.path("visite/fiche");
-											} else {
-												$scope.indice = false;
-												$scope.msg = "erreur"
-											}
-										})
+								$location.path("visite/fiche");
+							} else {
+								$scope.indice = false;
+								$scope.msg = "erreur"
+							}
+						})
 					}
 
 				})
@@ -58,13 +54,18 @@ monApp
 		// Fonction ajouter une visite
 		.controller(
 				"visiteCtrlAdd",
-				function($scope, visiteProvider, clientProvider, $location,
+				function($scope, visiteProvider, clientProvider, conseillerProvider, $location,
 						$rootScope) {
-					
+
 					// appel de la fonction Liste de 'clientProvider'
 					clientProvider.getListe(function(donnees) {
 						// stocker les données récupéré de service
 						$scope.listeClient = donnees;
+					})
+
+					conseillerProvider.getListe(function(donnees) {
+						$scope.listeConseiller = donnees;
+
 					})
 
 					// méthode qui permet de récupérer les information d'une
@@ -93,15 +94,14 @@ monApp
 					$scope.visiteForm.achat = $rootScope.achat;
 					$scope.visiteForm.location = $rootScope.location;
 
-					
-					//permet d'assigner les informations dans bien sur l'affichage de la page visiteAdd.html
-					if ($rootScope.location != null ) {
-						$scope.bien=$rootScope.location
+					// permet d'assigner les informations dans bien sur
+					// l'affichage de la page visiteAdd.html
+					if ($rootScope.location != null) {
+						$scope.bien = $rootScope.location
 					} else if ($rootScope.achat != null) {
-						$scope.bien=$rootScope.achat
+						$scope.bien = $rootScope.achat
 					}
-					
-					
+
 					console.log($rootScope.location)
 					// foctionnaliter du bouton ajouter de la vue
 					$scope.adds = function() {
@@ -112,8 +112,10 @@ monApp
 										function(donnees) {
 											if (typeof donnees == 'object') {
 												$scope.msg = "";
-												// rediriger vers la page calendar
-												$location.path("visite/calendar");
+												// rediriger vers la page
+												// calendar
+												$location
+														.path("visite/calendar");
 											} else {
 												$scope.msg = "L'ajout de votre visite a &eacutechou&eacute!"
 											}
@@ -125,41 +127,33 @@ monApp
 
 		.controller(
 				"visiteCtrlUpdate",
-				function($scope, visiteProvider, $location, $rootScope) {
-					if ($rootScope.vUpdate.id == undefined) {
+				function($scope, visiteProvider, $location, conseillerProvider,
+						$rootScope) {
 
-						$scope.vModif = {
-							date : "",
-							client : {
-								id : undefined
-							},
-							achat : {
-								id : undefined
-							},
-							conseiller : {
-								id : undefined
-							}
-						}
-					} else {
-						$scope.vModif = $rootScope.vUpdate;
+					$rootScope.visiteForm;
+
+					if ($rootScope.visiteForm.location != null) {
+						$scope.bien = $rootScope.visiteForm.location
+					} else if ($rootScope.visiteForm.achat != null) {
+						$scope.bien = $rootScope.visiteForm.achat
 					}
+
+					conseillerProvider.getListe(function(donnees) {
+						$scope.listeConseiller = donnees;
+
+					})
 
 					// fonction du bouton modifier de la vue
-					$scope.updates = function() {
-						visiteProvider
-								.updates(
-										$scope.vModif,
-										function(donnees) {
-											if (typeof donnees == 'object') {
-												$scope.msg = "";
-												$location.path("visite/liste");
-											} else {
-												$scope.msg = "La modification a &eacutechou&eacute!"
-											}
-										})
+					$scope.update = function() {
+						visiteProvider.updates($rootScope.visiteForm, function(
+								donnees) {
+							$location.path("visite/calendar");
+						})
 					}
 
-				}).controller("visiteCtrlDelete",
+				})
+		.controller(
+				"visiteCtrlDelete",
 				function($scope, visiteProvider, $location) {
 					$scope.id = undefined;
 
@@ -168,21 +162,24 @@ monApp
 
 						// appel de la fonction service pour supprimer dans la
 						// bd
-						visiteProvider.deletes($scope.id, function(retour) {
-							if (retour == 'OK') {
-								$scope.msg = "";
-								// redirection vers l'accueil
-								$location.path("visite/liste");
-							} else {
-								$scope.msg = "La suppression a &eacutechou&eacute ! ";
-							}
-						})
+						visiteProvider
+								.deletes(
+										$scope.id,
+										function(retour) {
+											if (retour == 'OK') {
+												$scope.msg = "";
+												// redirection vers l'accueil
+												$location.path("visite/liste");
+											} else {
+												$scope.msg = "La suppression a &eacutechou&eacute ! ";
+											}
+										})
 					}
 				})
-				.controller(
+		.controller(
 				"visiteCtrlGet",
 				function($scope, visiteProvider, $rootScope, $location) {
-					
+
 					$scope.id = undefined;
 					$scope.msg = "";
 
@@ -197,48 +194,34 @@ monApp
 										function(donnees) {
 											if (typeof donnees == 'object') {
 												$rootScope.visite = donnees;
-												
 
-												$location
-														.path("visite/fiche");
+												$location.path("visite/fiche");
 											} else {
 												$scope.indice = false;
 												$scope.msg = "La r&eacutef&eacuterence de visite recherch&eacute; n'existe pas"
 											}
 										})
 					}
-				})
-				.controller(
-				"visiteCtrlFiche",
+				}).controller("visiteCtrlFiche",
 				function($scope, visiteProvider, $location, $rootScope) {
 					$rootScope.visite;
-					console.log($rootScope.visite.id+"out")
+
 					// fonction appelée à partir du lien supprimer de la liste
 					$scope.deleteLien = function(id) {
-						visiteProvider.deletes(id, function(
-								retour) {
-							
+						visiteProvider.deletes(id, function(retour) {
+
 							// rediriger vers la page calendar
 							$location.path("visite/calendar");
 						})
 					}
 
-					// initialiser le propriétaire de rootscop
-					$rootScope.visiteUpdate = {
-						
-					};
-
 					// fonction appelée à partir du lien modifier de la liste
 					$scope.updateLien = function(visiteIn) {
-						$rootScope.visiteUpdate = visiteIn;
+						$rootScope.visiteForm = visiteIn;
 
 						// aller dans la vue modifier
 						$location.path("visite/update");
 
 					}
 
-				
-
-					
-					
 				});
