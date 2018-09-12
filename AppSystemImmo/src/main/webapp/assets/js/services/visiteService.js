@@ -65,12 +65,30 @@ monApp.factory("visiteProvider", function($http) {
 		});
 	}
 
+	
+	// récupérer une visite par son ID
+	function get(id, callBack) {
+		$http
+				.get(
+						"http://localhost:8080/AppSystemImmo/visite/get",
+						{
+							params : {
+								pId : id
+							}
+						}).then(
+						function successCallback(response) {
+							callBack(response.data);
+						}, function errorCallback(response) {
+
+						});
+	}
 	// retour de la fonction dfactory
 	return {
 		getListes : getListe,
 		adds : add,
 		updates : update,
-		deletes : delet
+		deletes : delet,
+		getS: get
 
 	}
 

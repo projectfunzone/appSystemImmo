@@ -34,8 +34,24 @@ monApp
 						$rootScope.vUpdate = vIn
 					}
 
-					// aller dans la vue modif
-					// $location.path("visite/Update");
+					$scope.get = function(id) {
+						// appel de la fonction du proprietaireProvider afin de
+						// récupérer le propriétaire
+						visiteProvider
+								.getS(
+										id,
+										function(donnees) {
+											if (typeof donnees == 'object') {
+												$rootScope.visite = donnees;
+
+												$location
+														.path("visite/fiche");
+											} else {
+												$scope.indice = false;
+												$scope.msg = "erreur"
+											}
+										})
+					}
 
 				})
 
@@ -99,7 +115,7 @@ monApp
 												// rediriger vers la page liste
 												$location.path("visite/calendar");
 											} else {
-												$scope.msg = "L'ajout de votre visite a échoué!"
+												$scope.msg = "L'ajout de votre visite a &eacutechou&eacute!"
 											}
 										})
 
@@ -138,7 +154,7 @@ monApp
 												$scope.msg = "";
 												$location.path("visite/liste");
 											} else {
-												$scope.msg = "La modification a échoué!"
+												$scope.msg = "La modification a &eacutechou&eacute!"
 											}
 										})
 					}
@@ -158,8 +174,73 @@ monApp
 								// redirection vers l'accueil
 								$location.path("visite/liste");
 							} else {
-								$scope.msg = "La suppression a échoué ! ";
+								$scope.msg = "La suppression a &eacutechou&eacute ! ";
 							}
 						})
 					}
+				})
+				.controller(
+				"visiteCtrlGet",
+				function($scope, visiteProvider, $rootScope, $location) {
+					
+					$scope.id = undefined;
+					$scope.msg = "";
+
+					$rootScope.visite;
+
+					$scope.get = function() {
+						// appel de la fonction du proprietaireProvider afin de
+						// récupérer le propriétaire
+						visiteProvider
+								.getS(
+										$scope.id,
+										function(donnees) {
+											if (typeof donnees == 'object') {
+												$rootScope.visite = donnees;
+												
+
+												$location
+														.path("visite/fiche");
+											} else {
+												$scope.indice = false;
+												$scope.msg = "La r&eacutef&eacuterence de visite recherch&eacute; n'existe pas"
+											}
+										})
+					}
+				})
+				.controller(
+				"visiteCtrlFiche",
+				function($scope, visiteProvider, $location, $rootScope) {
+					$rootScope.visite;
+					
+					// fonction appelée à partir du lien supprimer de la liste
+					$scope.deleteLien = function(visiteIn) {
+						visiteProvider.deletS(visiteIn.id, function(
+								retour) {
+							// mettre à jour la liste
+							visiteProvider.getListeS(function(donnees) {
+								// stocker les données récupéré de service
+								$scope.liste = donnees;
+							})
+						})
+					}
+
+					// initialiser le propriétaire de rootscop
+					$rootScope.visiteUpdate = {
+						
+					};
+
+					// fonction appelée à partir du lien modifier de la liste
+					$scope.updateLien = function(visiteIn) {
+						$rootScope.visiteUpdate = visiteIn;
+
+						// aller dans la vue modifier
+						$location.path("visite/update");
+
+					}
+
+				
+
+					
+					
 				});
