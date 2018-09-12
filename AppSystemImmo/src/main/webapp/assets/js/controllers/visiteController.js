@@ -112,7 +112,7 @@ monApp
 										function(donnees) {
 											if (typeof donnees == 'object') {
 												$scope.msg = "";
-												// rediriger vers la page liste
+												// rediriger vers la page calendar
 												$location.path("visite/calendar");
 											} else {
 												$scope.msg = "L'ajout de votre visite a &eacutechou&eacute!"
@@ -212,16 +212,14 @@ monApp
 				"visiteCtrlFiche",
 				function($scope, visiteProvider, $location, $rootScope) {
 					$rootScope.visite;
-					
+					console.log($rootScope.visite.id+"out")
 					// fonction appelée à partir du lien supprimer de la liste
-					$scope.deleteLien = function(visiteIn) {
-						visiteProvider.deletS(visiteIn.id, function(
+					$scope.deleteLien = function(id) {
+						visiteProvider.deletes(id, function(
 								retour) {
-							// mettre à jour la liste
-							visiteProvider.getListeS(function(donnees) {
-								// stocker les données récupéré de service
-								$scope.liste = donnees;
-							})
+							
+							// rediriger vers la page calendar
+							$location.path("visite/calendar");
 						})
 					}
 

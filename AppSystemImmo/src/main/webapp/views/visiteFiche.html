@@ -1,1 +1,9 @@
 R&eacutef&eacute de la visite : {{visite.id}}
+<br/>{{visite.id}}
+		<br/>{{visite.date | date: "dd/MM/yyyy hh:mm:ss"}} 
+		<br/>{{visite.client.nom}}<br/>{{visite.client.prenom}}<br/>{{visite.client.telPrive}} 
+		<br/>{{visite.conseiller.nom}} 
+		<br/>{{visite.achat.categorie}}<br/>{{visite.achat.type}}<br/>{{visite.achat.adresse.rue}}<br/>{{visite.achat.adresse.cp}} {{visite.achat.adresse.ville}} 
+		<!-- Voir pour mettre achat || location -->
+	<br/><a ng-click="deleteLien(visite.id)">Supprimer</a> | <a ng-click="updateLien(visite)">Modifier</a>
+	</tr>
