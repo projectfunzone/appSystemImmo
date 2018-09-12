@@ -36,6 +36,8 @@ public class BienImmo implements Serializable {
 
 	private double revenueCadastre;
 
+	protected double lat;
+	protected double lng;
 
 	// ************************************************************
 	/** Transformation de l'association UML en JAVA */
@@ -165,5 +167,23 @@ public class BienImmo implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+	
+	
 
 }

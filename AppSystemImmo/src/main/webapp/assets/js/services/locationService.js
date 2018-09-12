@@ -1,5 +1,5 @@
 monApp.factory("locationProvider", function($http) {
-	
+	var geoURL = 'https://nominatim.openstreetmap.org/search';
 	//ajouter une location
 	function add(locIn, callBack) {
 		for ( var i in locIn.photos) {
@@ -92,12 +92,33 @@ monApp.factory("locationProvider", function($http) {
 		});
 	}
 	
+	 function localiserAdresse(pays, rue, cp,localite, calback) {
+	        $http(
+	                {
+	                    method : 'GET',
+	                    url : geoURL+ '?format=json'
+	                    + "&city="+localite
+	                    + '&street='+ rue
+	                    + "&postalcode="+cp
+	                             
+	                }).then(
+	                function successCalback(response) {
+	                    console.log(response.data);
+	                    calback(response.data);
+	                },
+	                function echecCalback(response) {
+	                    console.log("erreur : " + response.status
+	                            + " " + response.statusText);
+	                });
+	 }
+	 
 	return {
 		adds:add,
 		updates:update,
 		getListes:getListe,
 		dels: del,
-		getById : rech
+		getById : rech,
+		geoAdresse : localiserAdresse
 	}
 	
 	

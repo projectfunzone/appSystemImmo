@@ -32,7 +32,10 @@ monApp.controller("locationCtrlAdd",
 					garniture : "",
 					proprietaire : {
 						id : undefined
-					}
+					},
+
+					lat : "",
+					lng : ""
 				}
 
 			} else {
@@ -72,7 +75,9 @@ monApp.controller("locationCtrlAdd",
 						telPrive : "",
 						telPro : "",
 						mail : ""
-					}
+					},
+					lat : "",
+					lng : ""
 				}
 
 				$scope.locIn.proprietaire = $rootScope.locAdd.proprietaire;
@@ -80,15 +85,29 @@ monApp.controller("locationCtrlAdd",
 			}
 
 			$scope.add = function() {
-				locationProvider.adds($scope.locIn, function(donnees) {
-					if (typeof donnees == 'object') {
-						$scope.msg = "";
-						// redirection vers l'accueil
-						$location.path("/location/liste");
-					} else {
-						$scope.msg = "L'ajout a échoué ! ";
-					}
-				})
+				
+				  
+				locationProvider.geoAdresse($scope.locIn.adresse.pays,$scope.locIn.adresse.rue,$scope.locIn.adresse.cp,$scope.locIn.adresse.ville, function(calback) {
+                    if ((calback != 0) && (calback != "")) {
+                        // $scope.montrerMap=true;
+                        $scope.map = calback;
+                        $scope.locIn.lat = $scope.map[0].lat;
+                        $scope.locIn.lng = $scope.map[0].lon;
+                         
+                        locationProvider.adds($scope.locIn, function(donnees) {
+        					if (typeof donnees == 'object') {
+        						$scope.msg = "";
+        						// redirection vers l'accueil
+        						$location.path("/location/liste");
+        					} else {
+        						$scope.msg = "L'ajout a échoué ! ";
+        					}
+        				}) 
+                         
+                    }
+                });
+ 
+				
 			}
 
 			// méthode pour permettre de changer la vue lors de la
@@ -172,7 +191,7 @@ monApp.controller("locationCtrlAdd",
 
 		}).controller("locationCtrlFiche",
 		function($scope, locationProvider, $location, $rootScope) {
-			
+
 			if ($rootScope.location.id == undefined) {
 				$rootScope.location = {
 					id : undefined,
