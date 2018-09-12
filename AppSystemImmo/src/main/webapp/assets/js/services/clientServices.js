@@ -17,7 +17,7 @@ monApp.factory("clientProvider", function($http) {
 			// controller, d'une manière asynchrone
 			callBack(response.data);
 		}, function errorCallback(response) {
-
+			callBack(response.data)
 		});
 
 	}
@@ -37,7 +37,7 @@ monApp.factory("clientProvider", function($http) {
 			// au controller, d'une manière asynchrone
 			callBack(response.data);
 		}, function errorCallback(response) {
-
+			callBack(response.data)
 		});
 
 	}
@@ -58,7 +58,7 @@ monApp.factory("clientProvider", function($http) {
 			// transferer au controller, d'une manière asynchrone
 			callBack(response.data);
 		}, function errorCallback(response) {
-
+			callBack(response.data)
 		});
 	}
 
@@ -76,7 +76,7 @@ monApp.factory("clientProvider", function($http) {
 			// transferer au controller, d'une manière asynchrone
 			callBack(response.data);
 		}, function errorCallback(response) {
-			callback(response.data)
+			callBack(response.data)
 		});
 	}
 
@@ -90,7 +90,7 @@ monApp.factory("clientProvider", function($http) {
 			// transferer au controller, d'une manière asynchrone
 			callBack(response.statusText);
 		}, function errorCallback(response) {
-			callback(response.statusText)
+			callBack(response.statusText)
 		});
 	}
 

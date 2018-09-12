@@ -90,7 +90,8 @@ monApp
 
 		.controller(
 				"proprietaireCtrlFiche",
-				function($scope, proprietaireProvider, achatProvider, locationProvider, $location, $rootScope) {
+				function($scope, proprietaireProvider, achatProvider,
+						locationProvider, $location, $rootScope) {
 					$rootScope.proprio;
 
 					proprietaireProvider.getListeLocByProprioS(
@@ -111,31 +112,28 @@ monApp
 
 							});
 
-					
 					$scope.rechercherLoc = function(id) {
-						// appel de la fonction du achatProvider afin de récupérer
+						// appel de la fonction du achatProvider afin de
+						// récupérer
 						// la location
 						locationProvider.getById(id, function(donnees) {
 
-								$rootScope.location = donnees;
-								$location.path("location/fiche");
+							$rootScope.location = donnees;
+							$location.path("location/fiche");
 						})
 					}
-					
-					
-					
+
 					$scope.rechercherAchat = function(id) {
 						// appel de la fonction du achatProvider afin de
 						// récupérer
 						// l'achat
 						achatProvider.getById(id, function(donnees) {
 
-								$rootScope.achat = donnees;
-								$location.path("achat/fiche");
+							$rootScope.achat = donnees;
+							$location.path("achat/fiche");
 						})
 					}
-					
-					
+
 					// fonction appelée à partir du lien supprimer de la liste
 					$scope.deleteLien = function(proprioIn) {
 						proprietaireProvider.deletS(proprioIn.id, function(
@@ -252,8 +250,7 @@ monApp
 											}
 										})
 					}
-					
-					
+
 				})
 
 		.controller(
@@ -418,20 +415,11 @@ monApp
 					// vue
 					$scope.update = function() {
 						// appel de la fonction service pour modifier dans la bd
-						proprietaireProvider
-								.updateS(
-										$scope.proprioModif,
-										function(retour) {
-											$scope.msg = "";
-											if (retour == 'OK') {
-												// rediriger vers accueil
-												$location
-														.path("proprietaire/liste");
-											} else {
-												$scope.msg = "Les informations n'ont pas pu être modifiées";
-											}
-
-										});
+						proprietaireProvider.updateS($scope.proprioModif,
+								function(retour) {
+									$scope.msg = "";
+									$location.path("proprietaire/liste");
+								});
 					}
 
 				})
@@ -449,13 +437,9 @@ monApp
 						// bd
 						proprietaireProvider.deletS($scope.id,
 								function(retour) {
-									if (retour == 'OK') {
-										// rediriger vers accueil
-										$location.path("proprietaire/liste");
-									} else {
-										$scope.msg = "La suppression a échoué";
-									}
-								})
+									$location.path("proprietaire/liste");
+									} 
+								)
 					}
 
 				});

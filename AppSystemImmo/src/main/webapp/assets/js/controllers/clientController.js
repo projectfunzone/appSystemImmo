@@ -65,6 +65,7 @@ monApp.controller("clientCtrlFindAll",
 			if (typeof donnees == 'object') {
 				$scope.cl = donnees;
 				$scope.indice = true;
+				$scope.msg=""
 			} else {
 				$scope.indice = false;
 				$scope.msg = "le client recherché n'existe pas"
@@ -99,7 +100,7 @@ monApp.controller("clientCtrlFindAll",
 			if (typeof donnees == 'object') {
 				$scope.msg = "";
 				// redirection vers l'accueil
-				$location.path("liste");
+				$location.path("client/liste");
 			} else {
 				$scope.msg = "L'enregistrement a échoué ! ";
 			}
@@ -139,7 +140,7 @@ monApp.controller("clientCtrlFindAll",
 				clientProvider.update($scope.clModif, function(retour) {
 					$scope.msg = "";
 					// redirection vers l'accueil
-					$location.path("liste");
+					$location.path("client/liste");
 				})
 			}
 
@@ -155,7 +156,7 @@ monApp.controller("clientCtrlFindAll",
 					if (retour == 'OK') {
 						$scope.msg = "";
 						// redirection vers l'accueil
-						$location.path("liste");
+						$location.path("client/liste");
 					} else {
 						$scope.msg = "La suppression a échoué ! ";
 					}

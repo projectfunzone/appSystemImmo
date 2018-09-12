@@ -19,8 +19,6 @@
 			<th>T&eacute;l&eacute;phone Priv&eacute;</th>
 			<th>T&eacute;l&eacute;phone Professionnel</th>
 			<th>Mail</th>
-			<th>Op&eacute;rations rapides</th>
-			<th>Gestion Immobili&eacute;re</th>
 		</tr>
 		<tr ng-repeat="proprio in liste|filter:recherche">
 			<td>{{proprio.id}}</td>
@@ -33,11 +31,6 @@
 			<td>{{proprio.telPrive}}</td>
 			<td>{{proprio.telPro}}</td>
 			<td>{{proprio.mail}}</td>
-			<td><a ng-click="deleteLien(proprio)">Supprimer</a> | <a
-				ng-click="updateLien(proprio)">Modifier</a></td>
-			<td><a ng-click="addLocationLien(proprio)">Cr&eacute;er un bien a
-					la location</a> | <a ng-click="addAchatLien(proprio)">Cr&eacute;er un bien
-					&agrave; vendre</a></td>
 		</tr>
 
 	</table>
